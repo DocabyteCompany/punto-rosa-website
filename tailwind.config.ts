@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,43 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom wellness color palette
+				sage: {
+					50: '#f6f7f6',
+					100: '#e3e7e3',
+					200: '#c7d0c7',
+					300: '#a8b5a8',
+					400: '#8a9b8a',
+					500: '#718371',
+					600: '#5a695a',
+					700: '#4a554a',
+					800: '#3d463d',
+					900: '#343a34',
+				},
+				beige: {
+					50: '#fefcf8',
+					100: '#fdf8f0',
+					200: '#f9f0e1',
+					300: '#f5e7d1',
+					400: '#f0dcc0',
+					500: '#ebd1ae',
+					600: '#e0c49b',
+					700: '#d4b487',
+					800: '#c6a472',
+					900: '#b8945c',
+				},
+				lavender: {
+					50: '#faf9fb',
+					100: '#f3f1f6',
+					200: '#e8e2e8',
+					300: '#dbd2db',
+					400: '#cdc2cd',
+					500: '#beb1be',
+					600: '#aea0ae',
+					700: '#9d8e9d',
+					800: '#8b7c8b',
+					900: '#786978',
 				}
 			},
 			borderRadius: {
@@ -84,13 +122,52 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scale-in': {
+					'0%': {
+						transform: 'scale(0.95)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'slide-in-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'scale-in': 'scale-in 0.3s ease-out',
+				'slide-in-right': 'slide-in-right 0.3s ease-out'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities }: { addUtilities: any }) {
+			addUtilities({
+				'.hover-scale': {
+					'@apply transition-transform duration-300 hover:scale-105': {},
+				},
+				'.story-link': {
+					'@apply relative inline-block after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-sage-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left': {},
+				}
+			});
+		}
+	],
 } satisfies Config;

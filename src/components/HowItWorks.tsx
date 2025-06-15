@@ -83,8 +83,25 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
       const newProgressValues = selectedContent.steps.map((_, index) => {
         const center = index + 0.5;
         const distance = Math.abs(scaledTotalProgress - center);
-        const stepProgress = Math.max(0, 1 - distance);
-        return stepProgress;
+
+        // This logic creates a "plateau" where the card stays fully visible.
+        const plateauWidth = 0.4; // Card is fully visible for 40% of its scroll time.
+        const plateauRadius = plateauWidth / 2;
+        const maxDistance = 0.5; // Card is fully faded out at this distance from its center.
+
+        if (distance <= plateauRadius) {
+          return 1; // Inside plateau: full visibility.
+        }
+        if (distance > maxDistance) {
+          return 0; // Outside active zone: fully invisible.
+        }
+
+        // In the fade zone
+        const fadeZoneWidth = maxDistance - plateauRadius;
+        const distanceIntoFade = distance - plateauRadius;
+        const fadeProgress = 1 - (distanceIntoFade / fadeZoneWidth);
+
+        return Math.max(0, Math.min(1, fadeProgress));
       });
       
       setProgressValues(newProgressValues);
@@ -98,7 +115,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
 
 
   return (
-    <section ref={sectionRef} style={{ height: `${100 * numSteps}vh` }} className="relative bg-white">
+    <section ref={sectionRef} style={{ height: `${150 * numSteps}vh` }} className="relative bg-white">
       <div className="sticky top-0 h-screen flex flex-col justify-center py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-16">

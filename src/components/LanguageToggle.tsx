@@ -11,7 +11,7 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ currentLanguage, onLang
   const id = React.useId();
 
   return (
-    <div className="flex items-center space-x-1">
+    <div className="flex items-center space-x-1.5">
       <span className={`text-sm font-medium transition-colors ${!isSpanish ? 'text-sage-800' : 'text-sage-500'}`}>EN</span>
       <div className="custom-language-switch">
         <input 

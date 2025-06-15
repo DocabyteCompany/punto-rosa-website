@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ShoppingCart, Package, CreditCard } from 'lucide-react';
@@ -18,7 +17,7 @@ const StepWrapper: React.FC<StepWrapperProps> = ({ children, index, setActiveInd
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false,
-    rootMargin: "-40% 0px -40% 0px",
+    rootMargin: "-45% 0px -45% 0px",
   });
 
   useEffect(() => {

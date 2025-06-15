@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
+import CandleBanner from '../components/CandleBanner';
 import BlogSection from '../components/BlogSection';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
@@ -204,6 +204,8 @@ const Index = () => {
             products={productsWithWishlist}
           />
         </section>
+
+        <CandleBanner currentLanguage={currentLanguage} />
 
         <section id="blog">
           <BlogSection currentLanguage={currentLanguage} />

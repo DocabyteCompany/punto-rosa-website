@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
@@ -44,7 +43,7 @@ const Navigation: React.FC<NavigationProps> = ({
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
-              src="/lovable-uploads/a4db14b6-4bb8-4695-8ca1-98b52ca444d8.png"
+              src="/lovable-uploads/bc42af10-a390-4a2c-917b-6c68e37b0d6b.png"
               alt="Aumara logo"
               className="h-10 cursor-pointer"
               onClick={() => onSectionChange('home')}

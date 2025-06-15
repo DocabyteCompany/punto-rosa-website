@@ -1,6 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { useState, useEffect, useRef } from 'react';
 import { ShoppingCart, Package, CreditCard } from 'lucide-react';
 import StepCard from './StepCard';
 
@@ -8,31 +7,7 @@ interface HowItWorksProps {
   currentLanguage: string;
 }
 
-interface StepWrapperProps {
-  children: React.ReactNode;
-  index: number;
-  setActiveIndex: (index: number) => void;
-}
-
-const StepWrapper: React.FC<StepWrapperProps> = ({ children, index, setActiveIndex }) => {
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-    rootMargin: "-48% 0px -48% 0px",
-  });
-
-  useEffect(() => {
-    if (inView) {
-      setActiveIndex(index);
-    }
-  }, [inView, index, setActiveIndex]);
-
-  return <div ref={ref}>{children}</div>;
-};
-
 const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const content = {
     en: {
       title: 'How It Works',
@@ -85,6 +60,43 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
   };
 
   const selectedContent = content[currentLanguage as keyof typeof content];
+  
+  const [progressValues, setProgressValues] = useState<number[]>(
+    Array(selectedContent.steps.length).fill(0)
+  );
+
+  const stepRefs = useRef<React.RefObject<HTMLDivElement>[]>(
+    selectedContent.steps.map(() => React.createRef())
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const newProgressValues = stepRefs.current.map(ref => {
+        if (!ref.current) return 0;
+
+        const rect = ref.current.getBoundingClientRect();
+        
+        // The animation happens as the card travels from the bottom of the screen to 40% from the top.
+        const startPoint = viewportHeight;
+        const endPoint = viewportHeight * 0.4;
+        const animationDistance = startPoint - endPoint;
+
+        const rawProgress = (startPoint - rect.top) / animationDistance;
+        const progress = Math.max(0, Math.min(1, rawProgress));
+
+        return progress;
+      });
+      
+      setProgressValues(newProgressValues);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check on load
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedContent.steps.length]);
+
 
   return (
     <section className="py-20 bg-white">
@@ -100,13 +112,13 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
 
         <div className="space-y-8 max-w-4xl mx-auto">
           {selectedContent.steps.map((step, index) => (
-            <StepWrapper key={index} index={index} setActiveIndex={setActiveIndex}>
+            <div key={index} ref={stepRefs.current[index]}>
               <StepCard
                 step={step}
                 index={index}
-                isActive={activeIndex === index}
+                progress={progressValues[index]}
               />
-            </StepWrapper>
+            </div>
           ))}
         </div>
       </div>

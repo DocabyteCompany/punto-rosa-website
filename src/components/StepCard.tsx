@@ -12,14 +12,16 @@ interface Step {
 interface StepCardProps {
   step: Step;
   index: number;
-  isActive: boolean;
+  progress: number;
 }
 
-const StepCard: React.FC<StepCardProps> = ({ step, isActive }) => {
+const StepCard: React.FC<StepCardProps> = ({ step, progress }) => {
+  const contentMaxHeight = 500; // The full height of the content area when expanded
+
   return (
     <div
       className={cn(
-        "bg-beige-50 rounded-2xl overflow-hidden shadow-sm transition-all duration-500 ease-in-out p-8"
+        "bg-beige-50 rounded-2xl overflow-hidden shadow-sm p-8"
       )}
     >
       <div className="flex items-center">
@@ -30,8 +32,8 @@ const StepCard: React.FC<StepCardProps> = ({ step, isActive }) => {
       </div>
       
       <div 
-        style={{ maxHeight: isActive ? '500px' : '0px' }} 
-        className="transition-[max-height] duration-700 ease-in-out overflow-hidden"
+        style={{ maxHeight: `${progress * contentMaxHeight}px` }} 
+        className="overflow-hidden"
       >
         <div className="pt-6 flex flex-col md:flex-row items-center gap-8">
             <p className="text-sage-600 md:w-1/2">

@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import CandleBanner from '../components/CandleBanner';
+import CandleCollection from '../components/CandleCollection';
 import BlogSection from '../components/BlogSection';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
@@ -102,6 +103,39 @@ const Index = () => {
         en: 'Authentic handcrafted Tibetan singing bowl for sound healing, meditation, and energy cleansing.',
         es: 'Auténtico cuenco tibetano artesanal para sanación sonora, meditación y limpieza energética.'
       }
+    },
+    {
+      id: 7,
+      name: { en: 'Moonlight Jasmine Candle', es: 'Vela de Jazmín Lunar' },
+      price: 32,
+      image: 'https://images.unsplash.com/photo-1614237581691-11814138b34f?w=400&h=400&fit=crop',
+      category: 'candles',
+      description: {
+        en: 'An enchanting blend of jasmine, moonflower, and a hint of white musk. Perfect for evening relaxation.',
+        es: 'Una mezcla encantadora de jazmín, flor de luna y un toque de almizcle blanco. Perfecta para la relajación nocturna.'
+      }
+    },
+    {
+      id: 8,
+      name: { en: 'Sandalwood & Amber Candle', es: 'Vela de Sándalo y Ámbar' },
+      price: 30,
+      image: 'https://images.unsplash.com/photo-1600818248487-99578820993f?w=400&h=400&fit=crop',
+      category: 'candles',
+      description: {
+        en: 'A warm, woody aroma of sandalwood combined with the rich, exotic notes of amber. Creates a cozy atmosphere.',
+        es: 'Un aroma cálido y amaderado de sándalo combinado con las ricas y exóticas notas del ámbar. Crea una atmósfera acogedora.'
+      }
+    },
+    {
+      id: 9,
+      name: { en: 'Eucalyptus & Mint Candle', es: 'Vela de Eucalipto y Menta' },
+      price: 28,
+      image: 'https://images.unsplash.com/photo-1594323635759-459918c7209f?w=400&h=400&fit=crop',
+      category: 'candles',
+      description: {
+        en: 'An invigorating and refreshing scent of eucalyptus and spearmint to awaken the senses and clear the mind.',
+        es: 'Un aroma vigorizante y refrescante de eucalipto y menta verde para despertar los sentidos y despejar la mente.'
+      }
     }
   ];
 
@@ -110,6 +144,8 @@ const Index = () => {
     ...product,
     inWishlist: wishlistItems.includes(product.id)
   }));
+  
+  const candleCollectionProducts = productsWithWishlist.filter(p => [7, 8, 9].includes(p.id));
 
   const handleLanguageChange = (language: string) => {
     setCurrentLanguage(language);
@@ -206,6 +242,14 @@ const Index = () => {
         </section>
 
         <CandleBanner currentLanguage={currentLanguage} />
+
+        <CandleCollection
+          products={candleCollectionProducts}
+          currentLanguage={currentLanguage}
+          onAddToCart={handleAddToCart}
+          onToggleWishlist={handleToggleWishlist}
+          onViewDetails={handleViewDetails}
+        />
 
         <section id="blog">
           <BlogSection currentLanguage={currentLanguage} />

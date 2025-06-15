@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { ShoppingCart, Package, CreditCard } from 'lucide-react';
 import StepCard from './StepCard';
@@ -115,7 +114,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
 
 
   return (
-    <section ref={sectionRef} style={{ height: `${150 * numSteps}vh` }} className="relative bg-white">
+    <section ref={sectionRef} style={{ height: `${225 * numSteps}vh` }} className="relative bg-white">
       <div className="sticky top-0 h-screen flex flex-col justify-center py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-16">

@@ -23,6 +23,11 @@ const StepCard: React.FC<StepCardProps> = ({ step, progress }) => {
       className={cn(
         "bg-beige-50 rounded-2xl overflow-hidden shadow-sm p-8"
       )}
+      style={{
+        opacity: Math.pow(progress, 2),
+        transform: `scale(${0.95 + 0.05 * progress})`,
+        zIndex: Math.floor(progress * 10),
+      }}
     >
       <div className="flex items-center">
         {step.icon}

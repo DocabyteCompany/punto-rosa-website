@@ -60,66 +60,67 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
   };
 
   const selectedContent = content[currentLanguage as keyof typeof content];
+  const numSteps = selectedContent.steps.length;
   
   const [progressValues, setProgressValues] = useState<number[]>(
-    Array(selectedContent.steps.length).fill(0)
+    Array(numSteps).fill(0)
   );
 
-  const stepRefs = useRef<React.RefObject<HTMLDivElement>[]>(
-    selectedContent.steps.map(() => React.createRef())
-  );
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const viewportHeight = window.innerHeight;
-      const newProgressValues = stepRefs.current.map(ref => {
-        if (!ref.current) return 0;
+      if (!sectionRef.current) return;
 
-        const rect = ref.current.getBoundingClientRect();
-        
-        // The animation happens as the card travels from the bottom of the screen to 40% from the top.
-        const startPoint = viewportHeight;
-        const endPoint = viewportHeight * 0.4;
-        const animationDistance = startPoint - endPoint;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollableHeight = rect.height - window.innerHeight;
+      
+      if (scrollableHeight <= 0) return;
 
-        const rawProgress = (startPoint - rect.top) / animationDistance;
-        const progress = Math.max(0, Math.min(1, rawProgress));
+      const totalProgress = Math.max(0, Math.min(1, -rect.top / scrollableHeight));
+      const scaledTotalProgress = totalProgress * numSteps;
 
-        return progress;
+      const newProgressValues = selectedContent.steps.map((_, index) => {
+        const center = index + 0.5;
+        const distance = Math.abs(scaledTotalProgress - center);
+        const stepProgress = Math.max(0, 1 - distance);
+        return stepProgress;
       });
       
       setProgressValues(newProgressValues);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check on load
+    handleScroll(); // Initial check
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [selectedContent.steps.length]);
+  }, [numSteps]);
 
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-sage-800 mb-4">
-            {selectedContent.title}
-          </h2>
-          <p className="text-xl text-sage-600 max-w-3xl mx-auto">
-            {selectedContent.subtitle}
-          </p>
-        </div>
+    <section ref={sectionRef} style={{ height: `${100 * numSteps}vh` }} className="relative bg-white">
+      <div className="sticky top-0 h-screen flex flex-col justify-center py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif text-sage-800 mb-4">
+              {selectedContent.title}
+            </h2>
+            <p className="text-xl text-sage-600 max-w-3xl mx-auto">
+              {selectedContent.subtitle}
+            </p>
+          </div>
 
-        <div className="space-y-8 max-w-4xl mx-auto">
-          {selectedContent.steps.map((step, index) => (
-            <div key={index} ref={stepRefs.current[index]}>
-              <StepCard
-                step={step}
-                index={index}
-                progress={progressValues[index]}
-              />
-            </div>
-          ))}
+          <div className="max-w-4xl mx-auto relative" style={{ height: '380px' }}>
+            {selectedContent.steps.map((step, index) => (
+              <div key={index} className="absolute inset-0">
+                <StepCard
+                  step={step}
+                  index={index}
+                  progress={progressValues[index]}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

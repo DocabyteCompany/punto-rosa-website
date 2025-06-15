@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { ShoppingCart, Package, CreditCard } from 'lucide-react';
 import StepCard from './StepCard';
 
@@ -6,7 +8,31 @@ interface HowItWorksProps {
   currentLanguage: string;
 }
 
+interface StepWrapperProps {
+  children: React.ReactNode;
+  index: number;
+  setActiveIndex: (index: number) => void;
+}
+
+const StepWrapper: React.FC<StepWrapperProps> = ({ children, index, setActiveIndex }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+    rootMargin: "-40% 0px -40% 0px",
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setActiveIndex(index);
+    }
+  }, [inView, index, setActiveIndex]);
+
+  return <div ref={ref}>{children}</div>;
+};
+
 const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const content = {
     en: {
       title: 'How It Works',
@@ -72,9 +98,15 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 max-w-4xl mx-auto">
           {selectedContent.steps.map((step, index) => (
-            <StepCard key={index} step={step} index={index} />
+            <StepWrapper key={index} index={index} setActiveIndex={setActiveIndex}>
+              <StepCard
+                step={step}
+                index={index}
+                isActive={activeIndex === index}
+              />
+            </StepWrapper>
           ))}
         </div>
       </div>

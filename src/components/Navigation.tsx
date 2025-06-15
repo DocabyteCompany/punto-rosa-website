@@ -43,9 +43,12 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-serif text-sage-800 cursor-pointer" onClick={() => onSectionChange('home')}>
-              aumara
-            </h1>
+            <img
+              src="/lovable-uploads/a4db14b6-4bb8-4695-8ca1-98b52ca444d8.png"
+              alt="Aumara logo"
+              className="h-10 cursor-pointer"
+              onClick={() => onSectionChange('home')}
+            />
           </div>
 
           {/* Desktop Navigation */}

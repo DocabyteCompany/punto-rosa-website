@@ -23,7 +23,7 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ currentLanguage, onLang
         />
         <label 
           htmlFor={id} 
-          className="w-[5.03em] h-[2em] cursor-pointer relative inline-flex rounded-full bg-sage-200 peer-checked:bg-sage-600 transition-all duration-500 ease-out shadow-[0_0_0_0.66em] shadow-sage-200 peer-checked:shadow-sage-600"
+          className="w-[3.77em] h-[1.5em] cursor-pointer relative inline-flex rounded-full bg-sage-200 peer-checked:bg-sage-600 transition-all duration-500 ease-out shadow-[0_0_0_0.33em] shadow-sage-200 peer-checked:shadow-sage-600"
         >
           <svg viewBox="0 0 212.4992 84.4688" className="h-full text-sage-700 peer-checked:text-white transition-colors duration-500 ease-out" overflow="visible">
             <path 

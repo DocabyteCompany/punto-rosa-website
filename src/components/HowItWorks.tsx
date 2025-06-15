@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { ShoppingCart, Package, CreditCard } from 'lucide-react';
+import StepCard from './StepCard';
 
 interface HowItWorksProps {
   currentLanguage: string;
@@ -74,32 +74,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
 
         <div className="space-y-12">
           {selectedContent.steps.map((step, index) => (
-            <div
-              key={index}
-              className="flex flex-col md:flex-row items-center bg-beige-50 rounded-2xl overflow-hidden shadow-sm animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="p-8 md:p-12 md:w-1/2">
-                <div className="flex items-center mb-4">
-                  {step.icon}
-                  <h3 className="text-2xl font-serif text-sage-700 ml-4">
-                    {step.title}
-                  </h3>
-                </div>
-                <p className="text-sage-600">
-                  {step.description}
-                </p>
-              </div>
-              <div className="md:w-1/2 w-full h-64 md:h-auto self-stretch">
-                <div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ 
-                    backgroundImage: `url(${step.image})`,
-                    clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' 
-                  }}
-                ></div>
-              </div>
-            </div>
+            <StepCard key={index} step={step} index={index} />
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Globe } from 'lucide-react';
+import { Switch } from "@/components/ui/switch";
 
 interface LanguageToggleProps {
   currentLanguage: string;
@@ -8,31 +8,22 @@ interface LanguageToggleProps {
 }
 
 const LanguageToggle: React.FC<LanguageToggleProps> = ({ currentLanguage, onLanguageChange }) => {
+  const isSpanish = currentLanguage === 'es';
+
+  const handleToggle = (checked: boolean) => {
+    onLanguageChange(checked ? 'es' : 'en');
+  };
+
   return (
     <div className="flex items-center space-x-2">
-      <Globe className="w-4 h-4 text-sage-600" />
-      <div className="flex bg-white/10 backdrop-blur-sm rounded-full p-1 border border-white/20">
-        <button
-          onClick={() => onLanguageChange('en')}
-          className={`px-3 py-1 text-sm font-medium rounded-full transition-all duration-300 ${
-            currentLanguage === 'en'
-              ? 'bg-white text-sage-700 shadow-sm'
-              : 'text-sage-600 hover:text-sage-700'
-          }`}
-        >
-          EN
-        </button>
-        <button
-          onClick={() => onLanguageChange('es')}
-          className={`px-3 py-1 text-sm font-medium rounded-full transition-all duration-300 ${
-            currentLanguage === 'es'
-              ? 'bg-white text-sage-700 shadow-sm'
-              : 'text-sage-600 hover:text-sage-700'
-          }`}
-        >
-          ES
-        </button>
-      </div>
+      <span className={`text-sm font-medium transition-colors ${!isSpanish ? 'text-sage-800' : 'text-sage-500'}`}>EN</span>
+      <Switch
+        checked={isSpanish}
+        onCheckedChange={handleToggle}
+        aria-label="Toggle language between English and Spanish"
+        className="data-[state=checked]:bg-sage-600 data-[state=unchecked]:bg-sage-200"
+      />
+      <span className={`text-sm font-medium transition-colors ${isSpanish ? 'text-sage-800' : 'text-sage-500'}`}>ES</span>
     </div>
   );
 };

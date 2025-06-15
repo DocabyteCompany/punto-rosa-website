@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import CandleBanner from '../components/CandleBanner';
 import CandleCollection from '../components/CandleCollection';
+import HowItWorks from '../components/HowItWorks';
 import BlogSection from '../components/BlogSection';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
@@ -250,6 +251,8 @@ const Index = () => {
           onToggleWishlist={handleToggleWishlist}
           onViewDetails={handleViewDetails}
         />
+
+        <HowItWorks currentLanguage={currentLanguage} />
 
         <section id="blog">
           <BlogSection currentLanguage={currentLanguage} />

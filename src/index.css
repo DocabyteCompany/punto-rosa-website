@@ -132,6 +132,19 @@ html {
   @apply bg-sage-200 text-sage-800;
 }
 
+/* Custom Language Switch Animation */
+@layer components {
+  .custom-language-switch .path-anim {
+    stroke-dasharray: 136 224;
+    transition: all 0.5s ease-out, 0s transform;
+    transform-origin: center;
+  }
+  .custom-language-switch .peer:checked + label .path-anim {
+    stroke-dashoffset: 180;
+    transform: scaleY(-1);
+  }
+}
+
 /* Focus states */
 .focus-sage:focus {
   @apply outline-none ring-2 ring-sage-500 ring-offset-2;

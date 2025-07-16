@@ -12,19 +12,19 @@ const Newsletter: React.FC<NewsletterProps> = ({ currentLanguage }) => {
 
   const content = {
     en: {
-      title: 'Join the Flow Community',
-      subtitle: 'Receive weekly rituals, wellness tips, and exclusive offers',
+      title: 'Stay Updated with Punto Rosa',
+      subtitle: 'Receive wellness tips, special promotions, and relaxation techniques',
       placeholder: 'Enter your email address',
       button: 'Subscribe',
       success: 'Thank you! Welcome to our community.',
       privacy: 'We respect your privacy. Unsubscribe at any time.'
     },
     es: {
-      title: 'Únete a la Comunidad Flow',
-      subtitle: 'Recibe rituales semanales, consejos de bienestar y ofertas exclusivas',
+      title: 'Mantente al Día con Punto Rosa',
+      subtitle: 'Recibe consejos de bienestar, promociones especiales y técnicas de relajación',
       placeholder: 'Ingresa tu correo electrónico',
       button: 'Suscribirse',
-      success: 'Gracias! Bienvenido a nuestra comunidad.',
+      success: '¡Gracias! Bienvenido a nuestra comunidad.',
       privacy: 'Respetamos tu privacidad. Cancela en cualquier momento.'
     }
   };

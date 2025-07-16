@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 
 interface NavigationProps {
@@ -20,18 +20,18 @@ const Navigation: React.FC<NavigationProps> = ({
   const navItems = {
     en: [
       { id: 'home', label: 'Home' },
-      { id: 'products', label: 'Products' },
-      { id: 'ceremonies', label: 'Ceremonies' },
-      { id: 'meditation', label: 'Meditation' },
-      { id: 'blog', label: 'Journal' },
+      { id: 'services', label: 'Services' },
+      { id: 'packages', label: 'Packages' },
+      { id: 'booking', label: 'Book Now' },
+      { id: 'blog', label: 'Blog' },
       { id: 'about', label: 'About' }
     ],
     es: [
       { id: 'home', label: 'Inicio' },
-      { id: 'products', label: 'Productos' },
-      { id: 'ceremonies', label: 'Ceremonias' },
-      { id: 'meditation', label: 'Meditación' },
-      { id: 'blog', label: 'Diario' },
+      { id: 'services', label: 'Servicios' },
+      { id: 'packages', label: 'Paquetes' },
+      { id: 'booking', label: 'Reservar' },
+      { id: 'blog', label: 'Blog' },
       { id: 'about', label: 'Nosotros' }
     ]
   };
@@ -42,12 +42,12 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img
-              src="/lovable-uploads/bc42af10-a390-4a2c-917b-6c68e37b0d6b.png"
-              alt="Aumara logo"
-              className="h-10 cursor-pointer"
+            <h1 
+              className="text-2xl font-serif text-sage-800 cursor-pointer"
               onClick={() => onSectionChange('home')}
-            />
+            >
+              Punto Rosa
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -69,9 +69,6 @@ const Navigation: React.FC<NavigationProps> = ({
 
           {/* Right side icons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 text-sage-600 hover:text-sage-800 transition-colors">
-              <Heart className="w-5 h-5" />
-            </button>
             <LanguageToggle currentLanguage={currentLanguage} onLanguageChange={onLanguageChange} />
           </div>
 

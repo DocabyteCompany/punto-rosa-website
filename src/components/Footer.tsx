@@ -9,7 +9,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      tagline: 'A nurturing space where wellness meets intention',
+      tagline: 'Your relaxation sanctuary in the heart of the city',
       quickLinks: 'Quick Links',
       support: 'Support',
       connect: 'Connect',
@@ -19,21 +19,21 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
       contact: 'Contact Us',
       about: 'About',
       faq: 'FAQ',
-      shipping: 'Shipping',
-      returns: 'Returns',
+      appointments: 'Appointments',
+      services: 'Services',
       soundToggle: 'Toggle ambient sounds',
-      copyright: '2024 Aumara. All rights reserved.',
+      copyright: '2024 Punto Rosa. All rights reserved.',
       links: {
         home: 'Home',
-        products: 'Products',
-        ceremonies: 'Ceremonies',
-        meditation: 'Meditation',
-        blog: 'Journal',
+        services: 'Services',
+        packages: 'Packages',
+        booking: 'Book Now',
+        blog: 'Blog',
         about: 'About'
       }
     },
     es: {
-      tagline: 'Un espacio nutritivo donde el bienestar encuentra la intención',
+      tagline: 'Tu santuario de relajación en el corazón de la ciudad',
       quickLinks: 'Enlaces Rápidos',
       support: 'Soporte',
       connect: 'Conectar',
@@ -43,16 +43,16 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
       contact: 'Contáctanos',
       about: 'Nosotros',
       faq: 'FAQ',
-      shipping: 'Envíos',
-      returns: 'Devoluciones',
+      appointments: 'Citas',
+      services: 'Servicios',
       soundToggle: 'Alternar sonidos ambientales',
-      copyright: '2024 Aumara. Todos los derechos reservados.',
+      copyright: '2024 Punto Rosa. Todos los derechos reservados.',
       links: {
         home: 'Inicio',
-        products: 'Productos',
-        ceremonies: 'Ceremonias',
-        meditation: 'Meditación',
-        blog: 'Diario',
+        services: 'Servicios',
+        packages: 'Paquetes',
+        booking: 'Reservar',
+        blog: 'Blog',
         about: 'Nosotros'
       }
     }
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-serif text-white mb-4">aumara</h2>
+            <h2 className="text-3xl font-serif text-white mb-4">Punto Rosa</h2>
             <p className="text-sage-300 mb-6 max-w-md">
               {content[currentLanguage as keyof typeof content].tagline}
             </p>
@@ -118,12 +118,12 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
               </li>
               <li>
                 <button className="text-sage-300 hover:text-white transition-colors">
-                  {content[currentLanguage as keyof typeof content].shipping}
+                  {content[currentLanguage as keyof typeof content].appointments}
                 </button>
               </li>
               <li>
                 <button className="text-sage-300 hover:text-white transition-colors">
-                  {content[currentLanguage as keyof typeof content].returns}
+                  {content[currentLanguage as keyof typeof content].services}
                 </button>
               </li>
             </ul>
@@ -136,15 +136,15 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-sage-300">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>hello@aumara.com</span>
+                <span>info@puntorosa.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+57 (301) 456-7890</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>Los Angeles, CA</span>
+                <span>Bogotá, Colombia</span>
               </div>
             </div>
             

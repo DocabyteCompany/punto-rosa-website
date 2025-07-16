@@ -19,14 +19,14 @@ interface BlogSectionProps {
 const BlogSection: React.FC<BlogSectionProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      title: 'Wellness Journal',
-      subtitle: 'Stories, insights, and guides for mindful living',
+      title: 'Wellness & Relaxation Blog',
+      subtitle: 'Tips, techniques, and insights for a more relaxed and balanced life',
       readMore: 'Read More',
       viewAll: 'View All Articles'
     },
     es: {
-      title: 'Diario de Bienestar',
-      subtitle: 'Historias, perspectivas y guías para una vida consciente',
+      title: 'Blog de Bienestar y Relajación',
+      subtitle: 'Consejos, técnicas y perspectivas para una vida más relajada y equilibrada',
       readMore: 'Leer Más',
       viewAll: 'Ver Todos los Artículos'
     }
@@ -36,47 +36,47 @@ const BlogSection: React.FC<BlogSectionProps> = ({ currentLanguage }) => {
     {
       id: 1,
       title: {
-        en: 'Creating Sacred Space in Your Home',
-        es: 'Creando Espacio Sagrado en tu Hogar'
+        en: 'Benefits of Regular Massage Therapy',
+        es: 'Beneficios de la Terapia de Masajes Regular'
       },
       excerpt: {
-        en: 'Transform any corner of your home into a peaceful sanctuary for daily rituals and meditation.',
-        es: 'Transforma cualquier rincón de tu hogar en un santuario pacífico para rituales diarios y meditación.'
+        en: 'Discover how regular massage therapy can improve your physical and mental well-being.',
+        es: 'Descubre cómo la terapia de masajes regular puede mejorar tu bienestar físico y mental.'
       },
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&h=300&fit=crop',
       date: '2024-06-10',
-      author: 'Luna Martinez',
-      category: 'Home & Space'
+      author: 'Dr. Ana María Torres',
+      category: 'Wellness'
     },
     {
       id: 2,
       title: {
-        en: 'The Art of Moon Rituals',
-        es: 'El Arte de los Rituales Lunares'
+        en: 'Stress Relief Through Therapeutic Touch',
+        es: 'Alivio del Estrés a Través del Toque Terapéutico'
       },
       excerpt: {
-        en: 'Discover how to align your intentions with lunar cycles for deeper spiritual connection.',
-        es: 'Descubre cómo alinear tus intenciones con los ciclos lunares para una conexión espiritual más profunda.'
+        en: 'Learn about the science behind massage therapy and its powerful effects on stress reduction.',
+        es: 'Aprende sobre la ciencia detrás de la terapia de masajes y sus poderosos efectos en la reducción del estrés.'
       },
-      image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=500&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1591343395082-e120087004b4?w=500&h=300&fit=crop',
       date: '2024-06-08',
-      author: 'Sofia Chen',
-      category: 'Rituals'
+      author: 'Carmen Rodríguez',
+      category: 'Relaxation'
     },
     {
       id: 3,
       title: {
-        en: 'Mindful Morning Practices',
-        es: 'Prácticas Matutinas Conscientes'
+        en: 'Creating a Self-Care Routine',
+        es: 'Creando una Rutina de Autocuidado'
       },
       excerpt: {
-        en: 'Start your day with intention through simple, grounding morning rituals that nourish your soul.',
-        es: 'Comienza tu día con intención a través de rituales matutinos simples que nutren tu alma.'
+        en: 'Tips for incorporating massage and relaxation techniques into your daily wellness routine.',
+        es: 'Consejos para incorporar masajes y técnicas de relajación en tu rutina diaria de bienestar.'
       },
-      image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop',
       date: '2024-06-05',
-      author: 'Maya Rodriguez',
-      category: 'Meditation'
+      author: 'Sofía Martínez',
+      category: 'Self-Care'
     }
   ];
 

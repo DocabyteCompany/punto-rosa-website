@@ -28,7 +28,7 @@ interface CartItem extends Product {
 }
 
 const Index = () => {
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [currentLanguage, setCurrentLanguage] = useState('es');
   const [activeSection, setActiveSection] = useState('home');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);

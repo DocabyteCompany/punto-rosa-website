@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShoppingCart, Package, CreditCard } from 'lucide-react';
+import { Calendar, Sparkles, Heart } from 'lucide-react';
 import StepCard from './StepCard';
 
 interface HowItWorksProps {
@@ -9,50 +9,50 @@ interface HowItWorksProps {
 const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      title: 'How It Works',
-      subtitle: 'A simple and mindful journey from our space to yours.',
+      title: 'How to Book Your Appointment',
+      subtitle: 'A simple and peaceful journey to your moment of relaxation.',
       steps: [
         {
-          icon: <ShoppingCart className="w-8 h-8 text-sage-500" />,
-          title: '1. Choose Your Rituals',
-          description: 'Explore our curated collection of wellness products. Add your favorite items to the cart to begin your journey.',
-          image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=500&fit=crop&q=80'
+          icon: <Sparkles className="w-8 h-8 text-punto-rosa-500" />,
+          title: '1. Choose Your Service',
+          description: 'Explore our massage services and wellness packages. Select the perfect treatment for your needs and well-being.',
+          image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&h=500&fit=crop&q=80'
         },
         {
-          icon: <CreditCard className="w-8 h-8 text-sage-500" />,
-          title: '2. Secure Checkout',
-          description: 'Proceed to our secure checkout. We accept various payment methods for a seamless and safe transaction.',
-          image: 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=500&h=500&fit=crop&q=80'
+          icon: <Calendar className="w-8 h-8 text-punto-rosa-500" />,
+          title: '2. Schedule Your Appointment',
+          description: 'Choose your preferred date and time. Our booking system makes it easy to find the perfect slot for your session.',
+          image: 'https://images.unsplash.com/photo-1591019479261-1a103efb15fc?w=500&h=500&fit=crop&q=80'
         },
         {
-          icon: <Package className="w-8 h-8 text-sage-500" />,
-          title: '3. Mindful Delivery',
-          description: 'Your sacred items are mindfully packaged and shipped. Track your order until it arrives at your sanctuary.',
-          image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=500&h=500&fit=crop&q=80'
+          icon: <Heart className="w-8 h-8 text-punto-rosa-500" />,
+          title: '3. Enjoy Your Moment',
+          description: 'Arrive at our spa and let our professional therapists take care of you. Relax and enjoy your moment of peace.',
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop&q=80'
         }
       ]
     },
     es: {
-      title: 'Cómo Funciona',
-      subtitle: 'Un viaje simple y consciente desde nuestro espacio hasta el tuyo.',
+      title: 'Cómo Reservar tu Cita',
+      subtitle: 'Un viaje simple y tranquilo hacia tu momento de relajación.',
       steps: [
         {
-          icon: <ShoppingCart className="w-8 h-8 text-sage-500" />,
-          title: '1. Elige Tus Rituales',
-          description: 'Explora nuestra colección de productos de bienestar. Agrega tus artículos favoritos al carrito para comenzar tu viaje.',
-          image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=500&fit=crop&q=80'
+          icon: <Sparkles className="w-8 h-8 text-punto-rosa-500" />,
+          title: '1. Elige tu Servicio',
+          description: 'Explora nuestros servicios de masajes y paquetes de bienestar. Selecciona el tratamiento perfecto para tus necesidades.',
+          image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&h=500&fit=crop&q=80'
         },
         {
-          icon: <CreditCard className="w-8 h-8 text-sage-500" />,
-          title: '2. Pago Seguro',
-          description: 'Procede a nuestro pago seguro. Aceptamos varios métodos de pago para una transacción fluida y segura.',
-          image: 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=500&h=500&fit=crop&q=80'
+          icon: <Calendar className="w-8 h-8 text-punto-rosa-500" />,
+          title: '2. Agenda tu Cita',
+          description: 'Elige tu fecha y hora preferida. Nuestro sistema de reservas facilita encontrar el horario perfecto para tu sesión.',
+          image: 'https://images.unsplash.com/photo-1591019479261-1a103efb15fc?w=500&h=500&fit=crop&q=80'
         },
         {
-          icon: <Package className="w-8 h-8 text-sage-500" />,
-          title: '3. Entrega Consciente',
-          description: 'Tus artículos sagrados se empaquetan y envían con cuidado. Sigue tu pedido hasta que llegue a tu santuario.',
-          image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=500&h=500&fit=crop&q=80'
+          icon: <Heart className="w-8 h-8 text-punto-rosa-500" />,
+          title: '3. Disfruta tu Momento',
+          description: 'Llega a nuestro spa y deja que nuestros terapeutas profesionales te cuiden. Relájate y disfruta tu momento de paz.',
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop&q=80'
         }
       ]
     }
@@ -118,10 +118,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
       <div className="sticky top-0 h-screen flex flex-col justify-center py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-sage-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
               {selectedContent.title}
             </h2>
-            <p className="text-xl text-sage-600 max-w-3xl mx-auto">
+            <p className="text-xl text-text-deep-600 max-w-3xl mx-auto">
               {selectedContent.subtitle}
             </p>
           </div>

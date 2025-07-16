@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
-import ProductGrid from '../components/ProductGrid';
-import CandleBanner from '../components/CandleBanner';
-import CandleCollection from '../components/CandleCollection';
+import ServicesGrid from '../components/ServicesGrid';
+import PackagesSection from '../components/PackagesSection';
 import HowItWorks from '../components/HowItWorks';
+import InstagramGallery from '../components/InstagramGallery';
+import SocialMedia from '../components/SocialMedia';
+import BookingSystem from '../components/BookingSystem';
 import BlogSection from '../components/BlogSection';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
+import Chatbot from '../components/Chatbot';
 import FloatingCart from '../components/FloatingCart';
 import Cart from '../components/Cart';
 import ProductModal from '../components/ProductModal';
@@ -195,6 +198,22 @@ const Index = () => {
     setIsCheckoutOpen(true);
   };
 
+  const handleBookService = (service: any) => {
+    // Scroll to booking section
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleBookPackage = (packageId: number) => {
+    // Scroll to booking section
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const cartTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   // Smooth scroll to sections
@@ -232,27 +251,29 @@ const Index = () => {
           <Hero currentLanguage={currentLanguage} />
         </section>
 
-        <section id="products">
-          <ProductGrid
+        <section id="services">
+          <ServicesGrid 
             currentLanguage={currentLanguage}
-            onAddToCart={handleAddToCart}
-            onToggleWishlist={handleToggleWishlist}
+            onBookService={handleBookService}
             onViewDetails={handleViewDetails}
-            products={productsWithWishlist}
+            services={[]}
           />
         </section>
 
-        <CandleBanner currentLanguage={currentLanguage} />
-
-        <CandleCollection
-          products={candleCollectionProducts}
+        <PackagesSection 
           currentLanguage={currentLanguage}
-          onAddToCart={handleAddToCart}
-          onToggleWishlist={handleToggleWishlist}
-          onViewDetails={handleViewDetails}
+          onBookPackage={handleBookPackage}
         />
 
         <HowItWorks currentLanguage={currentLanguage} />
+
+        <section id="booking">
+          <BookingSystem currentLanguage={currentLanguage} />
+        </section>
+
+        <InstagramGallery currentLanguage={currentLanguage} />
+
+        <SocialMedia currentLanguage={currentLanguage} />
 
         <section id="blog">
           <BlogSection currentLanguage={currentLanguage} />
@@ -262,6 +283,8 @@ const Index = () => {
       </main>
 
       <Footer currentLanguage={currentLanguage} />
+
+      <Chatbot currentLanguage={currentLanguage} />
 
       <FloatingCart
         itemCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}

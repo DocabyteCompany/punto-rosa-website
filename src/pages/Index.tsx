@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import ServicesGrid from '../components/ServicesGrid';
 import PackagesSection from '../components/PackagesSection';
 import HowItWorks from '../components/HowItWorks';
+import PressurePointsSection from '../components/PressurePointsSection';
 import InstagramGallery from '../components/InstagramGallery';
 import SocialMedia from '../components/SocialMedia';
 import BookingSystem from '../components/BookingSystem';
@@ -86,6 +87,10 @@ const Index = () => {
         />
 
         <HowItWorks currentLanguage={currentLanguage} />
+
+        <section id="pressure-points">
+          <PressurePointsSection currentLanguage={currentLanguage} />
+        </section>
 
         <section id="booking">
           <BookingSystem currentLanguage={currentLanguage} />

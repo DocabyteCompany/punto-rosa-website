@@ -42,6 +42,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({
     <section className="py-20 bg-gradient-to-b from-white to-spa-soft-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-spa-green-400 mx-auto mb-6 rounded-full"></div>
           <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
             {content[currentLanguage as keyof typeof content].featured}
           </h2>

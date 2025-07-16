@@ -39,7 +39,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group border border-neutral-warm-200">
       <div className="relative overflow-hidden">
         <img
           src={service.image}
@@ -47,6 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-punto-rosa-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute top-4 right-4 w-3 h-3 bg-spa-green-400 rounded-full shadow-lg"></div>
       </div>
       
       <div className="p-6">

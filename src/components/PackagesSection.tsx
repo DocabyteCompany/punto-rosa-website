@@ -129,6 +129,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
     <section className="py-20 bg-gradient-to-b from-spa-soft-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="w-24 h-1 bg-gradient-to-r from-spa-green-400 to-punto-rosa-400 mx-auto mb-6 rounded-full"></div>
           <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
             {selectedContent.title}
           </h2>
@@ -148,7 +149,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-punto-rosa-500 text-white px-4 py-1 rounded-full text-xs font-semibold">
+                  <span className="bg-gradient-to-r from-spa-green-500 to-spa-green-600 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
                     {currentLanguage === 'es' ? 'Más Popular' : 'Most Popular'}
                   </span>
                 </div>
@@ -179,7 +180,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
               <ul className="space-y-3 mb-6">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center text-sm text-text-deep-600">
-                    <div className="w-2 h-2 bg-punto-rosa-400 rounded-full mr-3 flex-shrink-0" />
+                    <div className="w-2 h-2 bg-spa-green-400 rounded-full mr-3 flex-shrink-0" />
                     {feature}
                   </li>
                 ))}

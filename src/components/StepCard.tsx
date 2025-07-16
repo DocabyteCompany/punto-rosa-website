@@ -21,7 +21,7 @@ const StepCard: React.FC<StepCardProps> = ({ step, progress }) => {
   return (
     <div
       className={cn(
-        "bg-beige-50 rounded-2xl overflow-hidden shadow-sm p-8"
+        "bg-neutral-warm-50 rounded-2xl overflow-hidden shadow-sm p-8 border border-neutral-warm-200"
       )}
       style={{
         opacity: Math.pow(progress, 2),
@@ -30,8 +30,10 @@ const StepCard: React.FC<StepCardProps> = ({ step, progress }) => {
       }}
     >
       <div className="flex items-center">
-        {step.icon}
-        <h3 className="text-2xl font-serif text-sage-700 ml-4">
+        <div className="p-2 bg-spa-green-100 rounded-lg text-spa-green-600">
+          {step.icon}
+        </div>
+        <h3 className="text-2xl font-serif text-text-deep-800 ml-4">
           {step.title}
         </h3>
       </div>
@@ -41,7 +43,7 @@ const StepCard: React.FC<StepCardProps> = ({ step, progress }) => {
         className="overflow-hidden"
       >
         <div className="pt-6 flex flex-col md:flex-row items-center gap-8">
-            <p className="text-sage-600 md:w-1/2">
+            <p className="text-text-deep-600 md:w-1/2">
                 {step.description}
             </p>
             <div className="md:w-1/2 w-full h-64 self-stretch">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import backSilhouette from '@/assets/back-silhouette-custom.png';
 
 interface PressurePoint {
   id: number;
@@ -206,23 +207,35 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
               />
             </div>
 
-            {/* Back Silhouette Placeholder */}
-            <div className="relative w-48 h-96 bg-neutral-warm-200 rounded-full opacity-30 z-0">
-              {/* Transparent center stripe */}
-              <div className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-4 bg-transparent" />
+            {/* Back Silhouette with Transparent Center */}
+            <div className="relative w-64 h-96 z-0">
+              {/* Main back silhouette image */}
+              <img 
+                src={backSilhouette}
+                alt="Back silhouette"
+                className="w-full h-full object-contain opacity-60 filter brightness-50"
+              />
+              
+              {/* Transparent center stripe overlay - creates the spine gap */}
+              <div 
+                className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-6 z-10"
+                style={{
+                  background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%)'
+                }}
+              />
               
               {/* Pressure points indicators */}
               {pressurePoints.map(point => (
                 <div
                   key={point.id}
-                  className={`absolute w-3 h-3 rounded-full transform transition-all duration-500 z-30 ${
+                  className={`absolute w-4 h-4 rounded-full border-2 border-white shadow-lg transform transition-all duration-500 z-30 ${
                     visiblePoints.has(point.id)
-                      ? 'bg-punto-rosa-500 scale-100 opacity-100'
+                      ? 'bg-punto-rosa-500 scale-100 opacity-100 pulse'
                       : 'bg-transparent scale-0 opacity-0'
                   }`}
                   style={{
                     top: `${point.yPosition}%`,
-                    left: point.position === 'left' ? '35%' : '65%',
+                    left: point.position === 'left' ? '30%' : '70%',
                     transform: 'translate(-50%, -50%)'
                   }}
                 />

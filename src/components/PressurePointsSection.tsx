@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import backSilhouette from '@/assets/back-silhouette-custom.png';
 
 interface PressurePoint {
   id: number;
@@ -211,7 +210,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
             <div className="relative w-64 h-96 z-0">
               {/* Main back silhouette image */}
               <img 
-                src={backSilhouette}
+                src="/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png"
                 alt="Back silhouette"
                 className="w-full h-full object-contain opacity-60 filter brightness-50"
               />

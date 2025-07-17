@@ -145,11 +145,12 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   const selectedContent = content[currentLanguage as keyof typeof content];
 
   return (
-    <section 
+    <section
       ref={ref}
       id="pressure-points-section"
       className="relative min-h-screen py-20 bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50"
     >
+      {/* 2. Contenedor con Márgenes Horizontales */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -162,11 +163,11 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
           </p>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 min-h-[80vh]">
+        {/* 3. Contenedor de 2 Columnas */}
+        <div className="relative grid grid-cols-2 gap-8 min-h-screen">
           
-          {/* Left Column - Points */}
-          <div className="flex flex-col justify-center space-y-12">
+          {/* Columna Izquierda - Puntos del lado izquierdo */}
+          <div className="flex flex-col justify-center space-y-12 pr-8">
             {pressurePoints
               .filter(point => point.position === 'left')
               .map(point => (
@@ -181,7 +182,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
                     transitionDelay: `${point.id * 150}ms`
                   }}
                 >
-                  <div className="text-right lg:text-left">
+                  <div className="text-right">
                     <h3 className="text-2xl font-serif text-text-deep-800 mb-3">
                       {point.title[currentLanguage as keyof typeof point.title]}
                     </h3>
@@ -193,57 +194,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
               ))}
           </div>
 
-          {/* Center Column - Back Image with Progress Bar */}
-          <div className="relative flex items-center justify-center">
-            {/* Progress Bar Background (Transparent) */}
-            <div className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-2 bg-transparent border border-neutral-warm-300 rounded-full z-20">
-              {/* Colored Progress Fill */}
-              <div
-                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-spa-green-500 to-punto-rosa-500 rounded-full transition-all duration-300 ease-out z-10"
-                style={{
-                  height: `${scrollProgress * 100}%`
-                }}
-              />
-            </div>
-
-            {/* Back Silhouette with Transparent Center */}
-            <div className="relative w-64 h-96 z-0">
-              {/* Main back silhouette image */}
-              <img 
-                src="/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png"
-                alt="Back silhouette"
-                className="w-full h-full object-contain opacity-60 filter brightness-50"
-              />
-              
-              {/* Transparent center stripe overlay - creates the spine gap */}
-              <div 
-                className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-6 z-10"
-                style={{
-                  background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%)'
-                }}
-              />
-              
-              {/* Pressure points indicators */}
-              {pressurePoints.map(point => (
-                <div
-                  key={point.id}
-                  className={`absolute w-4 h-4 rounded-full border-2 border-white shadow-lg transform transition-all duration-500 z-30 ${
-                    visiblePoints.has(point.id)
-                      ? 'bg-punto-rosa-500 scale-100 opacity-100 pulse'
-                      : 'bg-transparent scale-0 opacity-0'
-                  }`}
-                  style={{
-                    top: `${point.yPosition}%`,
-                    left: point.position === 'left' ? '30%' : '70%',
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column - Points */}
-          <div className="flex flex-col justify-center space-y-12">
+          {/* Columna Derecha - Puntos del lado derecho */}
+          <div className="flex flex-col justify-center space-y-12 pl-8">
             {pressurePoints
               .filter(point => point.position === 'right')
               .map(point => (
@@ -268,6 +220,58 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
                   </div>
                 </div>
               ))}
+          </div>
+
+          {/* 4. Contenedor de Imagen (Posición Absoluta) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+            <div className="relative w-80 h-screen max-h-[90vh]">
+              
+              {/* Progress Bar Background */}
+              <div className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-2 bg-transparent border border-neutral-warm-300 rounded-full z-20">
+                {/* Colored Progress Fill */}
+                <div
+                  className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-spa-green-500 to-punto-rosa-500 rounded-full transition-all duration-300 ease-out z-10"
+                  style={{
+                    height: `${scrollProgress * 100}%`
+                  }}
+                />
+              </div>
+
+              {/* Back Silhouette */}
+              <div className="relative w-full h-full z-0">
+                {/* Main back silhouette image */}
+                <img 
+                  src="/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png"
+                  alt="Back silhouette"
+                  className="w-full h-full object-contain opacity-60 filter brightness-50"
+                />
+                
+                {/* Transparent center stripe overlay - creates the spine gap */}
+                <div 
+                  className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-6 z-10"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%)'
+                  }}
+                />
+                
+                {/* Pressure points indicators */}
+                {pressurePoints.map(point => (
+                  <div
+                    key={point.id}
+                    className={`absolute w-4 h-4 rounded-full border-2 border-white shadow-lg transform transition-all duration-500 z-30 ${
+                      visiblePoints.has(point.id)
+                        ? 'bg-punto-rosa-500 scale-100 opacity-100 pulse'
+                        : 'bg-transparent scale-0 opacity-0'
+                    }`}
+                    style={{
+                      top: `${point.yPosition}%`,
+                      left: point.position === 'left' ? '30%' : '70%',
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

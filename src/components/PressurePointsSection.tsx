@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -88,7 +89,6 @@ const pressurePoints: PressurePoint[] = [
 ];
 
 const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLanguage }) => {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [visiblePoints, setVisiblePoints] = useState<Set<number>>(new Set());
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -111,8 +111,6 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
       const progress = Math.max(0, Math.min(1, 
         (windowHeight - elementTop) / (elementHeight + windowHeight)
       ));
-      
-      setScrollProgress(progress);
 
       // Determinar qué puntos deben ser visibles
       const newVisiblePoints = new Set<number>();
@@ -224,52 +222,15 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
 
           {/* 4. Contenedor de Imagen (Posición Absoluta) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <div className="relative w-80 h-screen max-h-[90vh]">
-              
-              {/* Progress Bar Background */}
-              <div className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-2 bg-transparent border border-neutral-warm-300 rounded-full z-20">
-                {/* Colored Progress Fill */}
-                <div
-                  className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-spa-green-500 to-punto-rosa-500 rounded-full transition-all duration-300 ease-out z-10"
-                  style={{
-                    height: `${scrollProgress * 100}%`
-                  }}
-                />
-              </div>
-
+            <div className="relative w-80 h-screen">
               {/* Back Silhouette */}
               <div className="relative w-full h-full z-0">
                 {/* Main back silhouette image */}
                 <img 
                   src="/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png"
                   alt="Back silhouette"
-                  className="w-full h-full object-contain opacity-60 filter brightness-50"
+                  className="w-full h-full object-contain"
                 />
-                
-                {/* Transparent center stripe overlay - creates the spine gap */}
-                <div 
-                  className="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-6 z-10"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%)'
-                  }}
-                />
-                
-                {/* Pressure points indicators */}
-                {pressurePoints.map(point => (
-                  <div
-                    key={point.id}
-                    className={`absolute w-4 h-4 rounded-full border-2 border-white shadow-lg transform transition-all duration-500 z-30 ${
-                      visiblePoints.has(point.id)
-                        ? 'bg-punto-rosa-500 scale-100 opacity-100 pulse'
-                        : 'bg-transparent scale-0 opacity-0'
-                    }`}
-                    style={{
-                      top: `${point.yPosition}%`,
-                      left: point.position === 'left' ? '30%' : '70%',
-                      transform: 'translate(-50%, -50%)'
-                    }}
-                  />
-                ))}
               </div>
             </div>
           </div>

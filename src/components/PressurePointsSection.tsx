@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import PressurePointModal from './PressurePointModal';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -45,8 +46,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   const pressurePoints: PressurePoint[] = [
     {
       id: 1,
-      x: '35%',
-      y: '15%',
+      x: '42%',
+      y: '18%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -61,8 +62,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 2,
-      x: '65%',
-      y: '15%',
+      x: '58%',
+      y: '18%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -77,8 +78,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 3,
-      x: '25%',
-      y: '35%',
+      x: '32%',
+      y: '32%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -93,8 +94,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 4,
-      x: '75%',
-      y: '35%',
+      x: '68%',
+      y: '32%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -110,7 +111,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 5,
       x: '50%',
-      y: '45%',
+      y: '42%',
       name: currentLanguage === 'es' ? 'Espalda media' : 'Mid back',
       description: currentLanguage === 'es'
         ? 'Centro de la espalda donde convergen múltiples grupos musculares.'
@@ -125,7 +126,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 6,
-      x: '30%',
+      x: '40%',
       y: '65%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
@@ -141,7 +142,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 7,
-      x: '70%',
+      x: '60%',
       y: '65%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
@@ -184,7 +185,19 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
       id="pressure-points" 
       className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 overflow-hidden"
     >
-      <div className="h-full flex items-center justify-center">
+      {/* Título de la sección */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 text-center">
+        <h2 className={`font-playfair text-neutral-warm-900 mb-2 ${
+          isVisible ? 'animate-fade-in' : 'opacity-0'
+        } ${isMobile ? 'text-3xl' : 'text-4xl'}`}>
+          {currentLanguage === 'es' ? 'Mapa de Relajación' : 'Relaxation Map'}
+        </h2>
+        <div className={`w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-punto-rosa-600 mx-auto rounded-full ${
+          isVisible ? 'animate-scale-in animation-delay-300' : 'opacity-0'
+        }`}></div>
+      </div>
+
+      <div className="h-full flex items-center justify-center pt-24">
         <div className="relative max-w-2xl h-full flex items-center">
           {/* Background image with fade-in animation */}
           <img 
@@ -293,29 +306,6 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
               )}
             </div>
           ))}
-          
-          {/* Floating instruction text with mobile optimization */}
-          {isVisible && (
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 
-              text-center text-neutral-warm-600 animate-fade-in animation-delay-1000 px-4">
-              <p className={`font-medium mb-1 ${isMobile ? 'text-base' : 'text-sm'}`}>
-                {currentLanguage === 'es' 
-                  ? 'Explora los puntos de tensión' 
-                  : 'Explore tension points'
-                }
-              </p>
-              <p className={`opacity-75 ${isMobile ? 'text-sm' : 'text-xs'}`}>
-                {currentLanguage === 'es' 
-                  ? isMobile 
-                    ? 'Toca cualquier punto para obtener información detallada'
-                    : 'Haz click en cualquier punto para obtener información detallada'
-                  : isMobile
-                    ? 'Tap on any point for detailed information'
-                    : 'Click on any point for detailed information'
-                }
-              </p>
-            </div>
-          )}
         </div>
       </div>
 

@@ -47,7 +47,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 1,
       x: '42%',
-      y: '18%',
+      y: '35%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -63,7 +63,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 2,
       x: '58%',
-      y: '18%',
+      y: '35%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -79,7 +79,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 3,
       x: '32%',
-      y: '32%',
+      y: '48%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -95,7 +95,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 4,
       x: '68%',
-      y: '32%',
+      y: '48%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -111,7 +111,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 5,
       x: '50%',
-      y: '42%',
+      y: '58%',
       name: currentLanguage === 'es' ? 'Espalda media' : 'Mid back',
       description: currentLanguage === 'es'
         ? 'Centro de la espalda donde convergen múltiples grupos musculares.'
@@ -127,7 +127,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 6,
       x: '40%',
-      y: '65%',
+      y: '75%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'
@@ -143,7 +143,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 7,
       x: '60%',
-      y: '65%',
+      y: '75%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'
@@ -186,18 +186,18 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
       className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 overflow-hidden"
     >
       {/* Título de la sección */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 text-center">
+      <div className="absolute top-12 left-1/2 transform -translate-x-1/2 z-30 text-center">
         <h2 className={`font-playfair text-neutral-warm-900 mb-2 ${
           isVisible ? 'animate-fade-in' : 'opacity-0'
         } ${isMobile ? 'text-3xl' : 'text-4xl'}`}>
-          {currentLanguage === 'es' ? 'Mapa de Relajación' : 'Relaxation Map'}
+          {currentLanguage === 'es' ? 'Puntos Terapéuticos' : 'Therapeutic Points'}
         </h2>
         <div className={`w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-punto-rosa-600 mx-auto rounded-full ${
           isVisible ? 'animate-scale-in animation-delay-300' : 'opacity-0'
         }`}></div>
       </div>
 
-      <div className="h-full flex items-center justify-center pt-24">
+      <div className="h-full flex items-center justify-center pt-28">
         <div className="relative max-w-2xl h-full flex items-center">
           {/* Background image with fade-in animation */}
           <img 

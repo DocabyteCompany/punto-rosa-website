@@ -183,7 +183,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   return (
     <section 
       id="pressure-points" 
-      className="min-h-screen py-16 bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 relative"
+      className="min-h-screen py-16 bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 relative overflow-hidden"
     >
       {/* Título de la sección - ahora con posición absoluta */}
       <div className="absolute top-0 left-0 right-0 z-40 pt-16 pb-8 text-center">

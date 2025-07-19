@@ -46,7 +46,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   const pressurePoints: PressurePoint[] = [
     {
       id: 1,
-      x: '42%',
+      x: '39%',
       y: '48%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
@@ -62,7 +62,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 2,
-      x: '58%',
+      x: '55%',
       y: '48%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
@@ -78,7 +78,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 3,
-      x: '32%',
+      x: '29%',
       y: '60%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
@@ -94,7 +94,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 4,
-      x: '68%',
+      x: '65%',
       y: '60%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
@@ -110,7 +110,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 5,
-      x: '50%',
+      x: '47%',
       y: '70%',
       name: currentLanguage === 'es' ? 'Espalda media' : 'Mid back',
       description: currentLanguage === 'es'
@@ -126,7 +126,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 6,
-      x: '40%',
+      x: '37%',
       y: '86%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
@@ -142,7 +142,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     },
     {
       id: 7,
-      x: '60%',
+      x: '57%',
       y: '86%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
@@ -183,10 +183,10 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   return (
     <section 
       id="pressure-points" 
-      className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 overflow-hidden"
+      className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 relative"
     >
-      {/* Título de la sección */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-50 text-center">
+      {/* Título de la sección - posicionado correctamente */}
+      <div className="relative z-40 pt-24 pb-8 text-center">
         <h2 className={`font-playfair text-neutral-warm-900 mb-2 font-bold ${
           isVisible ? 'animate-fade-in' : 'opacity-0'
         } ${isMobile ? 'text-3xl' : 'text-4xl'}`}>
@@ -197,7 +197,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
         }`}></div>
       </div>
 
-      <div className="h-full flex items-center justify-center pt-20">
+      {/* Contenedor de la imagen con puntos */}
+      <div className="absolute inset-0 pt-32 flex items-center justify-center">
         <div className="relative max-w-2xl h-full flex items-center">
           {/* Background image with fade-in animation */}
           <img 

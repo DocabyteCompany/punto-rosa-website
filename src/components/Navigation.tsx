@@ -22,7 +22,6 @@ const Navigation: React.FC<NavigationProps> = ({
       { id: 'home', label: 'Home' },
       { id: 'services', label: 'Services' },
       { id: 'packages', label: 'Packages' },
-      { id: 'pressure-points', label: 'Pressure Points' },
       { id: 'booking', label: 'Book Now' },
       { id: 'blog', label: 'Blog' },
       { id: 'about', label: 'About' }
@@ -31,7 +30,6 @@ const Navigation: React.FC<NavigationProps> = ({
       { id: 'home', label: 'Inicio' },
       { id: 'services', label: 'Servicios' },
       { id: 'packages', label: 'Paquetes' },
-      { id: 'pressure-points', label: 'Puntos de Presión' },
       { id: 'booking', label: 'Reservar' },
       { id: 'blog', label: 'Blog' },
       { id: 'about', label: 'Nosotros' }

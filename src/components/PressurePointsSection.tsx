@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PressurePointModal from './PressurePointModal';
 
 interface PressurePointsSectionProps {
@@ -20,6 +19,25 @@ interface PressurePoint {
 const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLanguage }) => {
   const [selectedPoint, setSelectedPoint] = useState<PressurePoint | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+
+  // Animation trigger when component enters viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const section = document.getElementById('pressure-points');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   const pressurePoints: PressurePoint[] = [
     {
@@ -147,40 +165,121 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   };
 
   return (
-    <section className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50">
+    <section 
+      id="pressure-points" 
+      className="h-screen bg-gradient-to-b from-spa-soft-50 to-neutral-warm-50 overflow-hidden"
+    >
       <div className="h-full flex items-center justify-center">
         <div className="relative max-w-2xl h-full flex items-center">
+          {/* Background image with fade-in animation */}
           <img 
             src="/lovable-uploads/9145e19f-ccc7-404d-aef7-f9184eaaba5c.png"
             alt="Puntos de tensión en espalda"
-            className="w-full h-auto object-contain"
+            className={`w-full h-auto object-contain transition-all duration-1000 ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
           />
           
-          {/* Puntos de presión interactivos */}
-          {pressurePoints.map((point) => (
+          {/* Interactive pressure points with advanced animations */}
+          {pressurePoints.map((point, index) => (
             <div
               key={point.id}
               className="absolute group cursor-pointer"
-              style={{ left: point.x, top: point.y, transform: 'translate(-50%, -50%)' }}
+              style={{ 
+                left: point.x, 
+                top: point.y, 
+                transform: 'translate(-50%, -50%)',
+                animationDelay: `${index * 200}ms`
+              }}
               onClick={() => handlePointClick(point)}
+              onMouseEnter={() => setHoveredPoint(point.id)}
+              onMouseLeave={() => setHoveredPoint(null)}
             >
-              {/* Círculo principal del punto */}
-              <div className="w-4 h-4 bg-punto-rosa-500 rounded-full border-2 border-white shadow-lg animate-pulse hover:animate-none transition-all duration-300 hover:scale-150 hover:bg-punto-rosa-400">
-                {/* Efecto de onda */}
-                <div className="absolute inset-0 rounded-full bg-punto-rosa-500 opacity-30 animate-ping"></div>
+              {/* Main pressure point with breathing animation */}
+              <div 
+                className={`relative w-4 h-4 bg-punto-rosa-500 rounded-full border-2 border-white shadow-lg
+                  transition-all duration-500 ease-out cursor-pointer
+                  ${isVisible ? 'animate-pulse' : ''}
+                  ${hoveredPoint === point.id 
+                    ? 'scale-150 bg-punto-rosa-400 shadow-punto-rosa-300/50 shadow-2xl' 
+                    : 'hover:scale-125'
+                  }
+                  ${isVisible ? `animate-fade-in` : 'opacity-0'}
+                `}
+                style={{
+                  animationDelay: `${index * 150}ms`,
+                  animationFillMode: 'forwards'
+                }}
+              >
+                {/* Primary ripple effect */}
+                <div 
+                  className={`absolute inset-0 rounded-full bg-punto-rosa-500 opacity-30 
+                    ${hoveredPoint === point.id ? 'animate-ping' : 'animate-pulse'}
+                  `}
+                ></div>
+                
+                {/* Secondary ripple for depth */}
+                {hoveredPoint === point.id && (
+                  <div className="absolute inset-0 rounded-full bg-punto-rosa-400 opacity-20 animate-ping animation-delay-300"></div>
+                )}
+                
+                {/* Breathing glow effect */}
+                <div 
+                  className={`absolute inset-0 rounded-full bg-gradient-radial from-punto-rosa-300/40 to-transparent
+                    transition-all duration-1000 
+                    ${hoveredPoint === point.id ? 'scale-300 opacity-60' : 'scale-200 opacity-30'}
+                  `}
+                ></div>
               </div>
               
-              {/* Tooltip con información */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-neutral-warm-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-                {point.name}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-warm-900"></div>
+              {/* Enhanced tooltip with slide animation */}
+              <div 
+                className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-2 
+                  bg-gradient-to-r from-neutral-warm-900 to-neutral-warm-800 text-white text-sm rounded-xl 
+                  shadow-xl border border-neutral-warm-700
+                  transition-all duration-300 ease-out pointer-events-none
+                  ${hoveredPoint === point.id 
+                    ? 'opacity-100 translate-y-0 scale-100' 
+                    : 'opacity-0 translate-y-2 scale-95'
+                  }
+                  whitespace-nowrap backdrop-blur-sm
+                `}
+              >
+                <div className="font-medium">{point.name}</div>
+                <div className="text-xs text-neutral-warm-300 mt-1">
+                  {currentLanguage === 'es' ? 'Click para más info' : 'Click for more info'}
+                </div>
+                
+                {/* Tooltip arrow with gradient */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 
+                  border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-warm-800">
+                </div>
               </div>
             </div>
           ))}
+          
+          {/* Floating instruction text */}
+          {isVisible && (
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 
+              text-center text-neutral-warm-600 animate-fade-in animation-delay-1000">
+              <p className="text-sm font-medium mb-1">
+                {currentLanguage === 'es' 
+                  ? 'Explora los puntos de tensión' 
+                  : 'Explore tension points'
+                }
+              </p>
+              <p className="text-xs opacity-75">
+                {currentLanguage === 'es' 
+                  ? 'Haz click en cualquier punto para obtener información detallada' 
+                  : 'Click on any point for detailed information'
+                }
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Modal de información del punto de presión */}
+      {/* Enhanced modal with advanced animations */}
       <PressurePointModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

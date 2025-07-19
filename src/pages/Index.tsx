@@ -40,7 +40,7 @@ const Index = () => {
   // Smooth scroll to sections
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'services', 'blog'];
+      const sections = ['home', 'services', 'pressure-points', 'blog'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {

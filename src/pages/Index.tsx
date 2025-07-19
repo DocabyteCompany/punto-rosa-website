@@ -3,13 +3,11 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ServicesGrid from '../components/ServicesGrid';
 import PackagesSection from '../components/PackagesSection';
-import HowItWorks from '../components/HowItWorks';
 import PressurePointsSection from '../components/PressurePointsSection';
 import InstagramGallery from '../components/InstagramGallery';
 import SocialMedia from '../components/SocialMedia';
 import BookingSystem from '../components/BookingSystem';
-import BlogSection from '../components/BlogSection';
-import Newsletter from '../components/Newsletter';
+import TestimonialsSection from '../components/TestimonialsSection';
 import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
 
@@ -40,7 +38,7 @@ const Index = () => {
   // Smooth scroll to sections
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'services', 'pressure-points', 'blog'];
+      const sections = ['home', 'services', 'pressure-points', 'testimonials'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -86,25 +84,21 @@ const Index = () => {
           onBookPackage={handleBookPackage}
         />
 
-        <HowItWorks currentLanguage={currentLanguage} />
-
         <section id="pressure-points">
           <PressurePointsSection currentLanguage={currentLanguage} />
-        </section>
-
-        <section id="booking">
-          <BookingSystem currentLanguage={currentLanguage} />
         </section>
 
         <InstagramGallery currentLanguage={currentLanguage} />
 
         <SocialMedia currentLanguage={currentLanguage} />
 
-        <section id="blog">
-          <BlogSection currentLanguage={currentLanguage} />
+        <section id="testimonials">
+          <TestimonialsSection currentLanguage={currentLanguage} />
         </section>
 
-        <Newsletter currentLanguage={currentLanguage} />
+        <section id="booking">
+          <BookingSystem currentLanguage={currentLanguage} />
+        </section>
       </main>
 
       <Footer currentLanguage={currentLanguage} />

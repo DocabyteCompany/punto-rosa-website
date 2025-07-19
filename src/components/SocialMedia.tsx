@@ -8,20 +8,28 @@ interface SocialMediaProps {
 const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      title: "Connect With Us",
-      subtitle: "Follow us on social media and stay updated with our latest offers",
-      whatsapp: "WhatsApp",
-      facebook: "Facebook",
-      instagram: "Instagram",
-      phone: "Call Us"
+      title: "Contact Us Directly",
+      subtitle: "Reach out through WhatsApp for instant booking or follow our social media to see our latest work and results",
+      whatsapp: "Book via WhatsApp",
+      facebook: "Follow on Facebook",
+      instagram: "Follow on Instagram",
+      phone: "Call Us",
+      whatsappDesc: "Instant booking and consultation",
+      facebookDesc: "See our latest treatments",
+      instagramDesc: "Client results and tips",
+      phoneDesc: "Direct consultation"
     },
     es: {
-      title: "Conéctate Con Nosotros",
-      subtitle: "Síguenos en redes sociales y mantente al día con nuestras últimas ofertas",
-      whatsapp: "WhatsApp",
-      facebook: "Facebook", 
-      instagram: "Instagram",
-      phone: "Llámanos"
+      title: "Contáctanos Directamente",
+      subtitle: "Comunícate por WhatsApp para reservas instantáneas o sigue nuestras redes sociales para ver nuestro trabajo más reciente y resultados",
+      whatsapp: "Reservar por WhatsApp",
+      facebook: "Seguir en Facebook", 
+      instagram: "Seguir en Instagram",
+      phone: "Llámanos",
+      whatsappDesc: "Reservas instantáneas y consulta",
+      facebookDesc: "Ve nuestros últimos tratamientos",
+      instagramDesc: "Resultados de clientes y consejos",
+      phoneDesc: "Consulta directa"
     }
   };
 
@@ -29,30 +37,38 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
     {
       name: content[currentLanguage as keyof typeof content].whatsapp,
       icon: MessageCircle,
-      url: "https://wa.me/573001234567",
+      url: "https://wa.me/573001234567?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20masajes",
       color: "from-green-500 to-green-600",
-      hoverColor: "hover:shadow-green-500/25"
-    },
-    {
-      name: content[currentLanguage as keyof typeof content].facebook,
-      icon: Facebook,
-      url: "https://facebook.com/puntorosamassage",
-      color: "from-blue-600 to-blue-700", 
-      hoverColor: "hover:shadow-blue-600/25"
+      hoverColor: "hover:shadow-green-500/25",
+      description: content[currentLanguage as keyof typeof content].whatsappDesc,
+      priority: true
     },
     {
       name: content[currentLanguage as keyof typeof content].instagram,
       icon: Instagram,
       url: "https://instagram.com/puntorosamassage",
       color: "from-pink-500 to-purple-600",
-      hoverColor: "hover:shadow-pink-500/25"
+      hoverColor: "hover:shadow-pink-500/25",
+      description: content[currentLanguage as keyof typeof content].instagramDesc,
+      priority: true
+    },
+    {
+      name: content[currentLanguage as keyof typeof content].facebook,
+      icon: Facebook,
+      url: "https://facebook.com/puntorosamassage",
+      color: "from-blue-600 to-blue-700", 
+      hoverColor: "hover:shadow-blue-600/25",
+      description: content[currentLanguage as keyof typeof content].facebookDesc,
+      priority: false
     },
     {
       name: content[currentLanguage as keyof typeof content].phone,
       icon: Phone,
       url: "tel:+573001234567",
       color: "from-punto-rosa-primary to-punto-rosa-accent",
-      hoverColor: "hover:shadow-punto-rosa-primary/25"
+      hoverColor: "hover:shadow-punto-rosa-primary/25",
+      description: content[currentLanguage as keyof typeof content].phoneDesc,
+      priority: false
     }
   ];
 
@@ -70,7 +86,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {socialLinks.map((social, index) => (
             <a
               key={index}
@@ -78,14 +94,20 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
               target="_blank"
               rel="noopener noreferrer"
               className={`
-                group flex items-center gap-3 px-6 py-4 
+                group flex flex-col md:flex-row items-center gap-4 p-6 
                 bg-gradient-to-r ${social.color} text-white
-                rounded-full font-medium transition-all duration-300
+                rounded-2xl font-medium transition-all duration-300
                 hover-scale ${social.hoverColor} hover:shadow-xl
+                ${social.priority ? 'ring-2 ring-white/20' : ''}
               `}
             >
-              <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>{social.name}</span>
+              <div className="flex-shrink-0">
+                <social.icon className="w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-semibold mb-1">{social.name}</h3>
+                <p className="text-sm text-white/80">{social.description}</p>
+              </div>
             </a>
           ))}
         </div>

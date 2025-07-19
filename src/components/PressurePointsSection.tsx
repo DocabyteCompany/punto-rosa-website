@@ -47,7 +47,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 1,
       x: '42%',
-      y: '40%',
+      y: '48%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -63,7 +63,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 2,
       x: '58%',
-      y: '40%',
+      y: '48%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -79,7 +79,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 3,
       x: '32%',
-      y: '52%',
+      y: '60%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -95,7 +95,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 4,
       x: '68%',
-      y: '52%',
+      y: '60%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -111,7 +111,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 5,
       x: '50%',
-      y: '62%',
+      y: '70%',
       name: currentLanguage === 'es' ? 'Espalda media' : 'Mid back',
       description: currentLanguage === 'es'
         ? 'Centro de la espalda donde convergen múltiples grupos musculares.'
@@ -127,7 +127,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 6,
       x: '40%',
-      y: '78%',
+      y: '86%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'
@@ -143,7 +143,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     {
       id: 7,
       x: '60%',
-      y: '78%',
+      y: '86%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'

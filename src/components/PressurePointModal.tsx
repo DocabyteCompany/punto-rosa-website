@@ -17,13 +17,15 @@ interface PressurePointModalProps {
   onClose: () => void;
   point: PressurePoint | null;
   currentLanguage: string;
+  isMobile?: boolean;
 }
 
 const PressurePointModal: React.FC<PressurePointModalProps> = ({ 
   isOpen, 
   onClose, 
   point, 
-  currentLanguage 
+  currentLanguage,
+  isMobile = false
 }) => {
   if (!point) return null;
 
@@ -46,26 +48,47 @@ const PressurePointModal: React.FC<PressurePointModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md mx-4 bg-spa-soft-50 border-punto-rosa-200">
+      <DialogContent className={`
+        bg-spa-soft-50 border-punto-rosa-200
+        ${isMobile 
+          ? 'max-w-[95vw] max-h-[90vh] mx-2 my-4 overflow-y-auto' 
+          : 'max-w-md mx-4'
+        }
+      `}>
         <DialogHeader>
-          <DialogTitle className="text-xl font-playfair text-neutral-warm-900 mb-2">
+          <DialogTitle className={`
+            font-playfair text-neutral-warm-900 mb-2
+            ${isMobile ? 'text-2xl' : 'text-xl'}
+          `}>
             {point.name}
           </DialogTitle>
-          <DialogDescription className="text-neutral-warm-700 text-sm leading-relaxed">
+          <DialogDescription className={`
+            text-neutral-warm-700 leading-relaxed
+            ${isMobile ? 'text-base' : 'text-sm'}
+          `}>
             {point.description}
           </DialogDescription>
         </DialogHeader>
         
-        <div className="space-y-4 mt-4">
+        <div className={`space-y-4 mt-4 ${isMobile ? 'space-y-6' : ''}`}>
           {/* Técnicas */}
           <div>
-            <h4 className="font-semibold text-punto-rosa-700 mb-2 text-sm">
+            <h4 className={`
+              font-semibold text-punto-rosa-700 mb-2
+              ${isMobile ? 'text-base' : 'text-sm'}
+            `}>
               {t.techniques}
             </h4>
-            <ul className="space-y-1">
+            <ul className={`space-y-1 ${isMobile ? 'space-y-2' : ''}`}>
               {point.techniques.map((technique, index) => (
-                <li key={index} className="text-neutral-warm-700 text-sm flex items-start">
-                  <span className="w-1.5 h-1.5 bg-punto-rosa-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                <li key={index} className={`
+                  text-neutral-warm-700 flex items-start
+                  ${isMobile ? 'text-base' : 'text-sm'}
+                `}>
+                  <span className={`
+                    bg-punto-rosa-400 rounded-full mt-2 mr-2 flex-shrink-0
+                    ${isMobile ? 'w-2 h-2' : 'w-1.5 h-1.5'}
+                  `}></span>
                   {technique}
                 </li>
               ))}
@@ -74,13 +97,22 @@ const PressurePointModal: React.FC<PressurePointModalProps> = ({
 
           {/* Beneficios */}
           <div>
-            <h4 className="font-semibold text-punto-rosa-700 mb-2 text-sm">
+            <h4 className={`
+              font-semibold text-punto-rosa-700 mb-2
+              ${isMobile ? 'text-base' : 'text-sm'}
+            `}>
               {t.benefits}
             </h4>
-            <ul className="space-y-1">
+            <ul className={`space-y-1 ${isMobile ? 'space-y-2' : ''}`}>
               {point.benefits.map((benefit, index) => (
-                <li key={index} className="text-neutral-warm-700 text-sm flex items-start">
-                  <span className="w-1.5 h-1.5 bg-spa-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                <li key={index} className={`
+                  text-neutral-warm-700 flex items-start
+                  ${isMobile ? 'text-base' : 'text-sm'}
+                `}>
+                  <span className={`
+                    bg-spa-green-400 rounded-full mt-2 mr-2 flex-shrink-0
+                    ${isMobile ? 'w-2 h-2' : 'w-1.5 h-1.5'}
+                  `}></span>
                   {benefit}
                 </li>
               ))}
@@ -88,13 +120,36 @@ const PressurePointModal: React.FC<PressurePointModalProps> = ({
           </div>
 
           {/* Duración */}
-          <div className="bg-punto-rosa-50 p-3 rounded-lg border border-punto-rosa-100">
-            <h4 className="font-semibold text-punto-rosa-700 mb-1 text-sm">
+          <div className={`
+            bg-punto-rosa-50 rounded-lg border border-punto-rosa-100
+            ${isMobile ? 'p-4' : 'p-3'}
+          `}>
+            <h4 className={`
+              font-semibold text-punto-rosa-700 mb-1
+              ${isMobile ? 'text-base' : 'text-sm'}
+            `}>
               {t.duration}
             </h4>
-            <p className="text-neutral-warm-700 text-sm">{point.duration}</p>
+            <p className={`
+              text-neutral-warm-700
+              ${isMobile ? 'text-base' : 'text-sm'}
+            `}>
+              {point.duration}
+            </p>
           </div>
         </div>
+
+        {/* Mobile-optimized close button */}
+        {isMobile && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full bg-neutral-warm-200 hover:bg-neutral-warm-300 
+              transition-colors duration-200 touch-manipulation"
+            aria-label={t.close}
+          >
+            <X className="h-5 w-5 text-neutral-warm-700" />
+          </button>
+        )}
       </DialogContent>
     </Dialog>
   );

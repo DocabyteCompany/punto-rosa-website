@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PressurePointModal from './PressurePointModal';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface PressurePointsSectionProps {
   currentLanguage: string;
@@ -21,6 +22,8 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+  const [touchedPoint, setTouchedPoint] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   // Animation trigger when component enters viewport
   useEffect(() => {
@@ -164,6 +167,18 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
     setSelectedPoint(null);
   };
 
+  const handleTouchStart = (pointId: number) => {
+    if (isMobile) {
+      setTouchedPoint(pointId);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (isMobile) {
+      setTouchedPoint(null);
+    }
+  };
+
   return (
     <section 
       id="pressure-points" 
@@ -180,7 +195,7 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
             }`}
           />
           
-          {/* Interactive pressure points with advanced animations */}
+          {/* Interactive pressure points with mobile optimization */}
           {pressurePoints.map((point, index) => (
             <div
               key={point.id}
@@ -192,17 +207,30 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
                 animationDelay: `${index * 200}ms`
               }}
               onClick={() => handlePointClick(point)}
-              onMouseEnter={() => setHoveredPoint(point.id)}
-              onMouseLeave={() => setHoveredPoint(null)}
+              onMouseEnter={() => !isMobile && setHoveredPoint(point.id)}
+              onMouseLeave={() => !isMobile && setHoveredPoint(null)}
+              onTouchStart={() => handleTouchStart(point.id)}
+              onTouchEnd={handleTouchEnd}
             >
-              {/* Main pressure point with breathing animation */}
+              {/* Larger touch area for mobile */}
+              <div className={`absolute inset-0 ${isMobile ? 'w-11 h-11 -m-3.5' : 'w-8 h-8 -m-2'} rounded-full`} />
+              
+              {/* Main pressure point with mobile-optimized size */}
               <div 
-                className={`relative w-4 h-4 bg-punto-rosa-500 rounded-full border-2 border-white shadow-lg
+                className={`relative rounded-full border-2 border-white shadow-lg
                   transition-all duration-500 ease-out cursor-pointer
+                  ${isMobile 
+                    ? 'w-6 h-6 bg-punto-rosa-500' 
+                    : 'w-4 h-4 bg-punto-rosa-500'
+                  }
                   ${isVisible ? 'animate-pulse' : ''}
-                  ${hoveredPoint === point.id 
+                  ${isMobile && touchedPoint === point.id
                     ? 'scale-150 bg-punto-rosa-400 shadow-punto-rosa-300/50 shadow-2xl' 
-                    : 'hover:scale-125'
+                    : !isMobile && hoveredPoint === point.id 
+                      ? 'scale-150 bg-punto-rosa-400 shadow-punto-rosa-300/50 shadow-2xl' 
+                      : isMobile 
+                        ? 'hover:scale-125' 
+                        : 'hover:scale-125'
                   }
                   ${isVisible ? `animate-fade-in` : 'opacity-0'}
                 `}
@@ -214,12 +242,15 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
                 {/* Primary ripple effect */}
                 <div 
                   className={`absolute inset-0 rounded-full bg-punto-rosa-500 opacity-30 
-                    ${hoveredPoint === point.id ? 'animate-ping' : 'animate-pulse'}
+                    ${(isMobile && touchedPoint === point.id) || (!isMobile && hoveredPoint === point.id) 
+                      ? 'animate-ping' 
+                      : 'animate-pulse'
+                    }
                   `}
                 ></div>
                 
                 {/* Secondary ripple for depth */}
-                {hoveredPoint === point.id && (
+                {((isMobile && touchedPoint === point.id) || (!isMobile && hoveredPoint === point.id)) && (
                   <div className="absolute inset-0 rounded-full bg-punto-rosa-400 opacity-20 animate-ping animation-delay-300"></div>
                 )}
                 
@@ -227,51 +258,60 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
                 <div 
                   className={`absolute inset-0 rounded-full bg-gradient-radial from-punto-rosa-300/40 to-transparent
                     transition-all duration-1000 
-                    ${hoveredPoint === point.id ? 'scale-300 opacity-60' : 'scale-200 opacity-30'}
+                    ${(isMobile && touchedPoint === point.id) || (!isMobile && hoveredPoint === point.id)
+                      ? 'scale-300 opacity-60' 
+                      : 'scale-200 opacity-30'
+                    }
                   `}
                 ></div>
               </div>
               
-              {/* Enhanced tooltip with slide animation */}
-              <div 
-                className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-2 
-                  bg-gradient-to-r from-neutral-warm-900 to-neutral-warm-800 text-white text-sm rounded-xl 
-                  shadow-xl border border-neutral-warm-700
-                  transition-all duration-300 ease-out pointer-events-none
-                  ${hoveredPoint === point.id 
-                    ? 'opacity-100 translate-y-0 scale-100' 
-                    : 'opacity-0 translate-y-2 scale-95'
-                  }
-                  whitespace-nowrap backdrop-blur-sm
-                `}
-              >
-                <div className="font-medium">{point.name}</div>
-                <div className="text-xs text-neutral-warm-300 mt-1">
-                  {currentLanguage === 'es' ? 'Click para más info' : 'Click for more info'}
+              {/* Desktop-only tooltip */}
+              {!isMobile && (
+                <div 
+                  className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-2 
+                    bg-gradient-to-r from-neutral-warm-900 to-neutral-warm-800 text-white text-sm rounded-xl 
+                    shadow-xl border border-neutral-warm-700
+                    transition-all duration-300 ease-out pointer-events-none
+                    ${hoveredPoint === point.id 
+                      ? 'opacity-100 translate-y-0 scale-100' 
+                      : 'opacity-0 translate-y-2 scale-95'
+                    }
+                    whitespace-nowrap backdrop-blur-sm
+                  `}
+                >
+                  <div className="font-medium">{point.name}</div>
+                  <div className="text-xs text-neutral-warm-300 mt-1">
+                    {currentLanguage === 'es' ? 'Click para más info' : 'Click for more info'}
+                  </div>
+                  
+                  {/* Tooltip arrow with gradient */}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 
+                    border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-warm-800">
+                  </div>
                 </div>
-                
-                {/* Tooltip arrow with gradient */}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 
-                  border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-warm-800">
-                </div>
-              </div>
+              )}
             </div>
           ))}
           
-          {/* Floating instruction text */}
+          {/* Floating instruction text with mobile optimization */}
           {isVisible && (
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 
-              text-center text-neutral-warm-600 animate-fade-in animation-delay-1000">
-              <p className="text-sm font-medium mb-1">
+              text-center text-neutral-warm-600 animate-fade-in animation-delay-1000 px-4">
+              <p className={`font-medium mb-1 ${isMobile ? 'text-base' : 'text-sm'}`}>
                 {currentLanguage === 'es' 
                   ? 'Explora los puntos de tensión' 
                   : 'Explore tension points'
                 }
               </p>
-              <p className="text-xs opacity-75">
+              <p className={`opacity-75 ${isMobile ? 'text-sm' : 'text-xs'}`}>
                 {currentLanguage === 'es' 
-                  ? 'Haz click en cualquier punto para obtener información detallada' 
-                  : 'Click on any point for detailed information'
+                  ? isMobile 
+                    ? 'Toca cualquier punto para obtener información detallada'
+                    : 'Haz click en cualquier punto para obtener información detallada'
+                  : isMobile
+                    ? 'Tap on any point for detailed information'
+                    : 'Click on any point for detailed information'
                 }
               </p>
             </div>
@@ -279,12 +319,13 @@ const PressurePointsSection: React.FC<PressurePointsSectionProps> = ({ currentLa
         </div>
       </div>
 
-      {/* Enhanced modal with advanced animations */}
+      {/* Mobile-optimized modal */}
       <PressurePointModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         point={selectedPoint}
         currentLanguage={currentLanguage}
+        isMobile={isMobile}
       />
     </section>
   );

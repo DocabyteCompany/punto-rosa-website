@@ -261,7 +261,10 @@ Notes: ${formData.notes}`;
               <div className="space-y-3">
                 <Button
                   onClick={handleBooking}
-                  className="w-full bg-gradient-to-r from-punto-rosa-primary to-punto-rosa-accent hover:shadow-lg"
+                  className="w-full hover:shadow-lg rounded-full"
+                  style={{
+                    backgroundColor: '#e399a3'
+                  }}
                 >
                   <Calendar className="w-5 h-5 mr-2" />
                   {currentContent.bookNow}

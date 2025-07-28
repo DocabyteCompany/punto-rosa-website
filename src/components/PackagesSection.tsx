@@ -213,7 +213,10 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
               {/* Book Button */}
               <button
                 onClick={() => onBookPackage(currentPackage.id)}
-                className="w-full bg-gradient-to-r from-punto-rosa-500 to-punto-rosa-600 hover:from-punto-rosa-600 hover:to-punto-rosa-700 text-white px-8 py-4 rounded-2xl font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full text-white px-8 py-4 rounded-full font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                style={{
+                  backgroundColor: '#e399a3'
+                }}
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 {selectedContent.book}

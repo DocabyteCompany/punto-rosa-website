@@ -332,7 +332,10 @@ Notes: ${formData.notes}`;
               <div className="mt-6 space-y-3">
                 <Button
                   onClick={handleBooking}
-                  className="w-full bg-gradient-to-r from-punto-rosa-500 to-punto-rosa-600 hover:from-punto-rosa-600 hover:to-punto-rosa-700 hover:scale-105 text-white py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                  className="w-full hover:scale-105 text-white py-3 rounded-full font-medium transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                  style={{
+                    backgroundColor: '#e399a3'
+                  }}
                 >
                   <Calendar className="w-5 h-5 mr-2" />
                   {currentContent.bookNow}
@@ -394,7 +397,9 @@ Notes: ${formData.notes}`;
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 border border-neutral-warm-200 rounded-xl hover:border-pink-300 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{
+                    backgroundColor: '#e399a3'
+                  }}>
                     <Instagram className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -413,7 +418,9 @@ Notes: ${formData.notes}`;
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 border border-neutral-warm-200 rounded-xl hover:border-blue-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{
+                    backgroundColor: '#e399a3'
+                  }}>
                     <Facebook className="w-6 h-6 text-white" />
                   </div>
                   <div>

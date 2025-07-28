@@ -88,7 +88,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         {/* Botón principal de agendar */}
         <button
           onClick={() => onBookService(service)}
-          className="w-full bg-gradient-to-r from-punto-rosa-500 to-punto-rosa-600 hover:from-punto-rosa-600 hover:to-punto-rosa-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 mt-auto"
+          className="w-full text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 mt-auto"
+          style={{
+            backgroundColor: '#e399a3'
+          }}
         >
           <Calendar className="w-4 h-4 mr-2" />
           {content[currentLanguage as keyof typeof content].book}

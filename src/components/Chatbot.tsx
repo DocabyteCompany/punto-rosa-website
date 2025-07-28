@@ -117,7 +117,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ currentLanguage }) => {
           onClick={() => setIsOpen(!isOpen)}
           className="w-14 h-14 text-white rounded-full transition-all duration-300 hover:scale-105 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
           style={{
-            background: 'radial-gradient(circle, hsla(0, 87%, 79%, 1) 0%, hsla(6, 77%, 85%, 1) 70%, hsla(6, 77%, 85%, 1) 100%)'
+            background: 'radial-gradient(circle, hsla(6, 77%, 85%, 1) 0%, hsla(6, 77%, 85%, 1) 60%, hsla(0, 87%, 79%, 1) 100%)'
           }}
         >
           {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
@@ -128,7 +128,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ currentLanguage }) => {
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl border border-spa-soft-primary/20 z-50 flex flex-col animate-scale-in">
           {/* Header */}
-          <div className="bg-gradient-to-r from-punto-rosa-primary to-punto-rosa-accent text-white p-4 rounded-t-lg flex items-center gap-2">
+          <div className="text-white p-4 rounded-t-lg flex items-center gap-2"           style={{
+            backgroundColor: '#e399a3'
+          }}>
             <Bot className="w-5 h-5" />
             <h3 className="font-medium">{currentContent.title}</h3>
           </div>

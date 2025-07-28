@@ -110,7 +110,10 @@ const InstagramGallery: React.FC<InstagramGalleryProps> = ({ currentLanguage }) 
             href="https://instagram.com/puntorosamassage"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-punto-rosa-primary to-punto-rosa-accent text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 hover-scale"
+            className="inline-flex items-center gap-2 px-8 py-4 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 hover-scale"
+            style={{
+              backgroundColor: '#e399a3'
+            }}
           >
             <Instagram className="w-5 h-5" />
             {currentContent.followButton}

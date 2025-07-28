@@ -64,7 +64,9 @@ const CTASection: React.FC<CTASectionProps> = ({
             <div className="space-y-4">
               {currentContent.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="w-6 h-6 bg-gradient-to-r from-punto-rosa-500 to-spa-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{
+                    backgroundColor: '#e399a3'
+                  }}>
                     <Star className="w-3 h-3 text-white" />
                   </div>
                   <p className="text-text-deep-700 text-lg">{benefit}</p>
@@ -76,7 +78,9 @@ const CTASection: React.FC<CTASectionProps> = ({
           {/* Right Column - CTA */}
           <div className="bg-white rounded-3xl shadow-lg p-8 border border-neutral-warm-200">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-punto-rosa-500 to-spa-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{
+                backgroundColor: '#e399a3'
+              }}>
                 <Calendar className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-text-deep-800 mb-4">
@@ -90,7 +94,11 @@ const CTASection: React.FC<CTASectionProps> = ({
               </p>
               <button
                 onClick={onBookService}
-                className="w-full bg-gradient-to-r from-punto-rosa-500 to-spa-green-500 hover:from-punto-rosa-600 hover:to-spa-green-600 text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 group"
+                className="w-full text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 group"
+                style={{
+                  background: 'linear-gradient(90deg, hsla(0, 87%, 79%, 1) 0%, hsla(6, 77%, 85%, 1) 100%)',
+                  filter: 'progid:DXImageTransform.Microsoft.gradient( startColorstr="#F89999", endColorstr="#F6C0BA", GradientType=1 )'
+                }}
               >
                 <span className="mr-2">{currentContent.ctaButton}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

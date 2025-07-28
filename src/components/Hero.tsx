@@ -52,8 +52,12 @@ const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
            style={{ animationDelay: '0.3s' }}>
           {content[currentLanguage as keyof typeof content].subtitle}
         </p>
-        <button className="bg-punto-rosa-500 hover:bg-punto-rosa-600 text-white px-12 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in shadow-punto-rosa-200"
-                style={{ animationDelay: '0.6s' }}>
+        <button className="text-white px-12 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in shadow-punto-rosa-200"
+                style={{ 
+                  animationDelay: '0.6s',
+                  background: 'linear-gradient(90deg, hsla(0, 87%, 79%, 1) 0%, hsla(6, 77%, 85%, 1) 100%)',
+                  filter: 'progid:DXImageTransform.Microsoft.gradient( startColorstr="#F89999", endColorstr="#F6C0BA", GradientType=1 )'
+                }}>
           {content[currentLanguage as keyof typeof content].cta}
         </button>
       </div>

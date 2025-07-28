@@ -42,12 +42,12 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 
-              className="text-2xl font-serif text-sage-800 cursor-pointer"
+            <img 
+              src="/toque-rosa-logo.png"
+              alt="Punto Rosa"
+              className="h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105"
               onClick={() => onSectionChange('home')}
-            >
-              Punto Rosa
-            </h1>
+            />
           </div>
 
           {/* Desktop Navigation */}

@@ -115,7 +115,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ currentLanguage }) => {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 bg-gradient-to-r from-punto-rosa-primary to-punto-rosa-accent text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-scale flex items-center justify-center"
+          className="w-14 h-14 text-white rounded-full transition-all duration-300 hover:scale-105 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
+          style={{
+            background: 'radial-gradient(circle, hsla(0, 87%, 79%, 1) 0%, hsla(6, 77%, 85%, 1) 70%, hsla(6, 77%, 85%, 1) 100%)'
+          }}
         >
           {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
         </button>

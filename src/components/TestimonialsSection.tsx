@@ -1,193 +1,113 @@
 import React from 'react';
-import { Star, Quote } from 'lucide-react';
-
-interface Testimonial {
-  id: number;
-  name: string;
-  service: { en: string; es: string };
-  rating: number;
-  comment: { en: string; es: string };
-  image: string;
-  date: string;
-}
+import { AnimatedTestimonials } from './ui/animated-testimonials';
 
 interface TestimonialsSectionProps {
   currentLanguage: string;
 }
 
 const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ currentLanguage }) => {
-  const content = {
-    en: {
-      title: 'What Our Clients Say',
-      subtitle: 'Real experiences from people who have transformed their wellness with us',
-      serviceLabel: 'Service:'
-    },
-    es: {
-      title: 'Lo Que Dicen Nuestros Clientes',
-      subtitle: 'Experiencias reales de personas que han transformado su bienestar con nosotros',
-      serviceLabel: 'Servicio:'
-    }
-  };
-
-  const testimonials: Testimonial[] = [
+  const testimonials = [
     {
-      id: 1,
-      name: 'María González',
-      service: {
-        en: 'Relaxing Massage',
-        es: 'Masaje Relajante'
-      },
-      rating: 5,
-      comment: {
-        en: 'Incredible experience! The pressure point therapy completely relieved my back pain. I feel renewed and relaxed. Highly recommend Punto Rosa!',
-        es: 'Experiencia increíble! La terapia de puntos de presión alivió completamente mi dolor de espalda. Me siento renovada y relajada. ¡Recomiendo totalmente Punto Rosa!'
-      },
-      image: 'https://images.unsplash.com/photo-1544717440-fe3444dc3cd0?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-15'
+      quote: currentLanguage === 'es' 
+        ? "El Masaje Harmony fue exactamente lo que necesitaba. La técnica suave y profunda me ayudó a reducir completamente la tensión de mi espalda. Me siento renovada y con mucha más energía."
+        : "The Harmony Massage was exactly what I needed. The soft and deep technique helped me completely reduce the tension in my back. I feel renewed and with much more energy.",
+      name: "María González",
+      designation: currentLanguage === 'es' ? "Masaje Harmony" : "Harmony Massage",
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      id: 2,
-      name: 'Carlos Ramírez',
-      service: {
-        en: 'Deep Tissue Massage',
-        es: 'Masaje de Tejido Profundo'
-      },
-      rating: 5,
-      comment: {
-        en: 'Outstanding service! The professional was very knowledgeable and made me feel comfortable throughout the session. The results are amazing.',
-        es: 'Servicio excepcional! La profesional era muy conocedora y me hizo sentir cómodo durante toda la sesión. Los resultados son increíbles.'
-      },
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-10'
+      quote: currentLanguage === 'es'
+        ? "El masaje de liberación miofascial alivió mis tensiones musculares profundas como nunca antes. Como deportista, necesitaba algo que realmente llegara a las capas profundas. Excelente técnica."
+        : "The myofascial release massage relieved my deep muscle tensions like never before. As an athlete, I needed something that really reached the deep layers. Excellent technique.",
+      name: "Ana Rodríguez",
+      designation: currentLanguage === 'es' ? "Masaje de Liberación Miofascial" : "Myofascial Release Massage",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      id: 3,
-      name: 'Ana Martínez',
-      service: {
-        en: 'Therapeutic Massage',
-        es: 'Masaje Terapéutico'
-      },
-      rating: 5,
-      comment: {
-        en: 'Perfect for stress relief! The environment is very peaceful and the technique is excellent. I always leave feeling like a new person.',
-        es: 'Perfecto para aliviar el estrés! El ambiente es muy tranquilo y la técnica es excelente. Siempre salgo sintiéndome como una nueva persona.'
-      },
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-08'
+      quote: currentLanguage === 'es'
+        ? "El masaje mixto combinó perfectamente técnicas relajantes y descontracturantes. Fue un tratamiento completo que me dejó completamente renovada. La combinación de técnicas es increíble."
+        : "The mixed massage perfectly combined relaxing and decontracting techniques. It was a complete treatment that left me completely renewed. The combination of techniques is incredible.",
+      name: "Carmen López",
+      designation: currentLanguage === 'es' ? "Masaje Mixto" : "Mixed Massage",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      id: 4,
-      name: 'Luis Fernández',
-      service: {
-        en: 'Couples Massage',
-        es: 'Masaje en Pareja'
-      },
-      rating: 5,
-      comment: {
-        en: 'My partner and I had an amazing experience. Very professional service and a relaxing atmosphere. We will definitely be back!',
-        es: 'Mi pareja y yo tuvimos una experiencia increíble. Servicio muy profesional y un ambiente relajante. ¡Definitivamente volveremos!'
-      },
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-05'
+      quote: currentLanguage === 'es'
+        ? "El drenaje linfático manual eliminó completamente la retención de líquidos en mis piernas. Me siento mucho más ligera y la circulación ha mejorado notablemente. Técnica profesional excelente."
+        : "The manual lymphatic drainage completely eliminated fluid retention in my legs. I feel much lighter and circulation has improved remarkably. Excellent professional technique.",
+      name: "Patricia Kim",
+      designation: currentLanguage === 'es' ? "Drenaje Linfático Manual" : "Manual Lymphatic Drainage",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      id: 5,
-      name: 'Patricia Silva',
-      service: {
-        en: 'Hot Stone Therapy',
-        es: 'Terapia con Piedras Calientes'
-      },
-      rating: 5,
-      comment: {
-        en: 'The hot stone therapy was exactly what I needed. The warmth and pressure were perfect. I felt so relaxed and my muscles feel great.',
-        es: 'La terapia con piedras calientes fue exactamente lo que necesitaba. El calor y la presión fueron perfectos. Me sentí muy relajada y mis músculos se sienten geniales.'
-      },
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-03'
+      quote: currentLanguage === 'es'
+        ? "Como deportista, el masaje deportivo ha sido fundamental para mi recuperación. Me ayuda a mantener la flexibilidad y mejorar la circulación después de entrenamientos intensos."
+        : "As an athlete, the sports massage has been fundamental for my recovery. It helps me maintain flexibility and improve circulation after intense training sessions.",
+      name: "Laura Thompson",
+      designation: currentLanguage === 'es' ? "Masaje Deportivo" : "Sports Massage",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      id: 6,
-      name: 'Roberto Herrera',
-      service: {
-        en: 'Sports Massage',
-        es: 'Masaje Deportivo'
-      },
-      rating: 5,
-      comment: {
-        en: 'As an athlete, I need quality massage therapy. This exceeded my expectations. Great technique and very professional approach.',
-        es: 'Como atleta, necesito terapia de masajes de calidad. Esto superó mis expectativas. Gran técnica y enfoque muy profesional.'
-      },
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
-      date: '2024-06-01'
+      quote: currentLanguage === 'es'
+        ? "La presoterapia optimizó mi circulación y aceleró mi recuperación muscular de manera increíble. Es perfecta para después del ejercicio. Me siento mucho más energética."
+        : "Pressotherapy optimized my circulation and accelerated my muscle recovery incredibly. It's perfect for after exercise. I feel much more energetic.",
+      name: "Sofia Martínez",
+      designation: currentLanguage === 'es' ? "Presoterapia" : "Pressotherapy",
+      src: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+    },
+    {
+      quote: currentLanguage === 'es'
+        ? "La gimnasia pasiva me ha ayudado a tonificar sin impacto físico. Es ideal para mi recuperación y como complemento estético. Los resultados son visibles desde la primera sesión."
+        : "Passive gymnastics has helped me tone without physical impact. It's ideal for my recovery and as an aesthetic complement. The results are visible from the first session.",
+      name: "Elena García",
+      designation: currentLanguage === 'es' ? "Gimnasia Pasiva" : "Passive Gymnastics",
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    },
+    {
+      quote: currentLanguage === 'es'
+        ? "La cavitación me ayudó a reducir medidas corporales de manera no invasiva. Es un tratamiento estético muy efectivo. Los resultados superaron mis expectativas."
+        : "Cavitation helped me reduce body measurements in a non-invasive way. It's a very effective aesthetic treatment. The results exceeded my expectations.",
+      name: "Claudia Ruiz",
+      designation: currentLanguage === 'es' ? "Cavitación" : "Cavitation",
+      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    },
+    {
+      quote: currentLanguage === 'es'
+        ? "El suero vitaminado ha mejorado significativamente mi salud y bienestar. Es un refuerzo vitamínico que me da energía y vitalidad. Lo recomiendo totalmente."
+        : "The vitamin serum has significantly improved my health and wellness. It's a vitamin boost that gives me energy and vitality. I totally recommend it.",
+      name: "Verónica Silva",
+      designation: currentLanguage === 'es' ? "Suero Vitaminado" : "Vitamin Serum",
+      src: "https://images.unsplash.com/photo-1544717440-fe3444dc3cd0?w=100&h=100&fit=crop&crop=face",
     }
   ];
 
-  const currentContent = content[currentLanguage as keyof typeof content];
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star
-        key={index}
-        className={`w-4 h-4 ${
-          index < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-        }`}
-      />
-    ));
+  const content = {
+    en: {
+      title: "What My Clients Say",
+      subtitle: "Real experiences from people who have transformed their wellness with my services"
+    },
+    es: {
+      title: "Lo que Dicen Mis Clientes",
+      subtitle: "Experiencias reales de personas que han transformado su bienestar con mis servicios"
+    }
   };
 
+  const currentContent = content[currentLanguage as keyof typeof content];
+
   return (
-    <section className="py-20 bg-gradient-to-br from-spa-soft-50 to-neutral-warm-50">
+    <section className="py-20 bg-gradient-to-b from-white to-spa-soft-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-text-deep-primary mb-4">
+          <div className="w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-spa-green-400 mx-auto mb-6 rounded-full"></div>
+          <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
             {currentContent.title}
           </h2>
-          <p className="text-xl text-text-deep-secondary max-w-2xl mx-auto">
+          <p className="text-xl text-text-deep-600 max-w-3xl mx-auto">
             {currentContent.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.id}
-              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 p-6 animate-fade-in hover-scale"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="relative mb-4">
-                <Quote className="absolute -top-2 -left-2 w-8 h-8 text-punto-rosa-primary/20" />
-                <p className="text-text-deep-secondary leading-relaxed italic pl-6">
-                  "{testimonial.comment[currentLanguage as keyof typeof testimonial.comment]}"
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center space-x-1">
-                  {renderStars(testimonial.rating)}
-                </div>
-                <span className="text-sm text-text-deep-tertiary">
-                  {new Date(testimonial.date).toLocaleDateString()}
-                </span>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h4 className="font-semibold text-text-deep-primary">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm text-punto-rosa-primary">
-                    {currentContent.serviceLabel} {testimonial.service[currentLanguage as keyof typeof testimonial.service]}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
       </div>
     </section>
   );

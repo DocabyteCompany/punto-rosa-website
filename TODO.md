@@ -5,182 +5,179 @@
 
 ---
 
-## **FASE 1: Preparación y Estructura de Datos**
+## **FASE 1: ESTRUCTURA DEL MENÚ** ✅ **COMPLETADA**
+### **1.1 Analizar secciones actuales vs menú**
+- [x] Mapear secciones existentes: Home, Services, Testimonials, Packages, CTA, Pressure Points, Contact
+- [x] Identificar secciones faltantes: Blog, About
+- [x] Reorganizar orden de navegación en Navigation.tsx
+- [x] Crear secciones Blog y About si no existen
 
-### **Tarea 1.1: Actualizar Tipos y Interfaces**
-- [ ] **ANALIZAR:** Componentes que usan interfaces de servicios actuales
-- [ ] Crear `types/services.ts` con interfaces actualizadas
-- [ ] Definir estructura de datos para servicios mexicanos
-- [ ] Actualizar tipos en componentes existentes
-
-### **Tarea 1.2: Crear Datos de Servicios**
-- [ ] **ANALIZAR:** Dónde se usan los datos de servicios actuales
-- [ ] Crear `data/services.ts` con todos los servicios reales
-- [ ] Organizar por categorías: Masajes, Tratamientos, Especiales
-- [ ] Incluir precios en MXN, descripciones, imágenes
-- [ ] Agregar contenido bilingüe (ES/EN)
-
-### **Tarea 1.3: Actualizar Información de Contacto**
-- [ ] **ANALIZAR:** Componentes que contienen información de contacto
-- [ ] Cambiar número WhatsApp a mexicano: (55) 49186534
-- [ ] Actualizar precios en `BookingSystem.tsx`
-- [ ] Actualizar precios en `Chatbot.tsx`
-- [ ] Actualizar `SocialMedia.tsx`
+### **1.2 Implementar navegación funcional**
+- [x] Modificar Navigation.tsx para scroll suave a secciones
+- [x] Implementar estados activos en el menú según sección visible
+- [x] Asegurar que el logo navegue a Home
+- [x] Probar navegación en móvil y desktop
 
 ---
 
-## **FASE 2: Componentes Base**
+## **FASE 2: CORREGIR ALTURA DE TARJETAS** ✅ **COMPLETADA**
+### **2.1 Analizar problema actual**
+- [x] Revisar ServiceCard.tsx para identificar inconsistencias de altura
+- [x] Analizar ServicesCarousel.tsx para verificar layout
+- [x] Identificar componentes con alturas variables
+- [x] Determinar altura óptima para todas las tarjetas
 
-### **Tarea 2.1: Crear Sistema de Pestañas**
-- [ ] **ANALIZAR:** Estructura actual de ServicesGrid y componentes relacionados
-- [ ] Crear `components/ServicesTabs.tsx`
-  - [ ] Componente de pestañas con animaciones
-  - [ ] Estados activos e inactivos
-  - [ ] Transiciones suaves
-  - [ ] Responsive design
-
-### **Tarea 2.2: Actualizar ServiceCard**
-- [ ] **ANALIZAR:** Estructura actual de ServiceCard y sus dependencias
-- [ ] Rediseñar `components/ServiceCard.tsx`
-  - [ ] Nuevo layout con imagen prominente
-  - [ ] Botón "Reservar" destacado
-  - [ ] Hover effects mejorados
-  - [ ] Información de precio en MXN
-
-### **Tarea 2.3: Crear Controles de Carrusel**
-- [ ] **ANALIZAR:** Componentes de navegación existentes
-- [ ] Crear `components/CarouselControls.tsx`
-  - [ ] Flechas de navegación
-  - [ ] Indicadores de puntos
-  - [ ] Controles responsive
+### **2.2 Implementar solución**
+- [x] Usar CSS Grid o Flexbox para altura uniforme
+- [x] Implementar min-height y max-height en ServiceCard
+- [x] Asegurar que el contenido se ajuste correctamente
+- [x] Probar en diferentes tamaños de pantalla
 
 ---
 
-## **FASE 3: Carrusel Principal**
+## **FASE 3: MEJORAR RESPONSIVIDAD** ✅ **COMPLETADA**
+### **3.1 Revisar componentes principales**
+- [x] Optimizar Hero.tsx para móviles
+- [x] Ajustar ServicesCarousel.tsx en pantallas pequeñas
+- [x] Mejorar TestimonialsSection.tsx responsividad
+- [x] Optimizar PackagesSection.tsx para móviles
 
-### **Tarea 3.1: Implementar Carrusel Base**
-- [ ] **ANALIZAR:** Estructura de grid actual y componentes de navegación
-- [ ] Crear `components/ServicesCarousel.tsx`
-  - [ ] Integrar Embla Carousel
-  - [ ] Configurar 3 slides visibles en desktop
-  - [ ] Implementar responsive (2 en tablet, 1 en mobile)
-  - [ ] Agregar auto-play con pausa en hover
-
-### **Tarea 3.2: Funcionalidades Avanzadas**
-- [ ] **ANALIZAR:** Interacciones de usuario existentes
-- [ ] Implementar navegación por teclado
-- [ ] Agregar swipe gestures para mobile
-- [ ] Crear indicadores de progreso
-- [ ] Optimizar performance
+### **3.2 Optimizar carruseles y grids**
+- [x] Ajustar número de elementos visibles en móviles
+- [x] Mejorar controles de navegación táctil
+- [x] Optimizar imágenes para diferentes resoluciones
+- [x] Probar en dispositivos reales
 
 ---
 
-## **FASE 4: Sistema Integrado**
+## **FASE 4: CONECTAR REDES SOCIALES** 📱
+### **4.1 Configurar enlaces en Footer**
+- [ ] Modificar Footer.tsx para incluir URLs reales
+- [ ] Agregar enlaces a Instagram, Facebook, WhatsApp
+- [ ] Implementar tracking de clics
+- [ ] Probar enlaces en diferentes dispositivos
 
-### **Tarea 4.1: Crear Componente Principal**
-- [ ] **ANALIZAR:** ServicesGrid actual y su integración en Index.tsx
-- [ ] Crear `components/ServicesSection.tsx`
-  - [ ] Integrar pestañas + carrusel
-  - [ ] Manejar cambio de categorías
-  - [ ] Gestionar estado global
-  - [ ] Conectar con sistema de reservas
-
-### **Tarea 4.2: Integración con Booking**
-- [ ] **ANALIZAR:** Sistema de booking actual y sus props
-- [ ] Conectar botones "Reservar" con `BookingSystem`
-  - [ ] Pasar datos del servicio seleccionado
-  - [ ] Scroll automático a sección de booking
-  - [ ] Pre-llenar formulario con servicio
-
-### **Tarea 4.3: Actualizar Página Principal**
-- [ ] **ANALIZAR:** Estructura completa de Index.tsx y navegación
-- [ ] Reemplazar `ServicesGrid` en `pages/Index.tsx`
-  - [ ] Integrar nuevo `ServicesSection`
-  - [ ] Mantener funcionalidades existentes
-  - [ ] Actualizar navegación
+### **4.2 Agregar botones de compartir**
+- [ ] Implementar botones de compartir en secciones clave
+- [ ] Agregar meta tags para redes sociales
+- [ ] Configurar Open Graph tags
+- [ ] Probar compartir en redes sociales
 
 ---
 
-## **FASE 5: Optimización y Pulido**
+## **FASE 5: CONECTAR CHATBOT** 🤖
+### **5.1 Integrar API de chatbot**
+- [ ] Investigar servicios de chatbot (Dialogflow, Botpress)
+- [ ] Implementar respuestas automáticas para preguntas frecuentes
+- [ ] Configurar integración con WhatsApp Business
+- [ ] Probar respuestas del chatbot
 
-### **Tarea 5.1: Animaciones y Transiciones**
-- [ ] **ANALIZAR:** Animaciones existentes en el proyecto
-- [ ] Implementar animaciones de entrada
-  - [ ] Fade-in escalonado para cards
-  - [ ] Transiciones entre pestañas
-  - [ ] Efectos hover refinados
-
-### **Tarea 5.2: Responsive y Accesibilidad**
-- [ ] **ANALIZAR:** Implementación responsive actual
-- [ ] Optimizar para todos los dispositivos
-  - [ ] Implementar navegación por teclado
-  - [ ] Agregar ARIA labels
-  - [ ] Optimizar para lectores de pantalla
-
-### **Tarea 5.3: Performance**
-- [ ] **ANALIZAR:** Performance actual del proyecto
-- [ ] Lazy loading de imágenes
-- [ ] Optimizar re-renders
-- [ ] Implementar memoización
-- [ ] Optimizar bundle size
+### **5.2 Mejorar experiencia del usuario**
+- [ ] Agregar más respuestas rápidas en Chatbot.tsx
+- [ ] Implementar sistema de tickets
+- [ ] Conectar con sistema de citas
+- [ ] Optimizar interfaz del chatbot
 
 ---
 
-## **FASE 6: Testing y Finalización**
+## **FASE 6: AÑADIR ANIMACIONES** ✨
+### **6.1 Implementar animaciones de entrada**
+- [ ] Instalar Framer Motion si es necesario
+- [ ] Agregar animaciones con Framer Motion o CSS
+- [ ] Implementar scroll-triggered animations
+- [ ] Añadir micro-interacciones
 
-### **Tarea 6.1: Testing Funcional**
-- [ ] **ANALIZAR:** Funcionalidades existentes que deben mantenerse
-- [ ] Probar navegación entre pestañas
-- [ ] Verificar carrusel en diferentes dispositivos
-- [ ] Testear integración con booking
-- [ ] Validar responsive design
+### **6.2 Optimizar rendimiento**
+- [ ] Usar will-change y transform3d
+- [ ] Implementar lazy loading para animaciones
+- [ ] Optimizar para dispositivos de gama baja
+- [ ] Probar rendimiento en diferentes dispositivos
 
-### **Tarea 6.2: Testing de UX**
-- [ ] **ANALIZAR:** Flujo de usuario actual
-- [ ] Verificar flujo de reserva
-- [ ] Probar animaciones y transiciones
+---
+
+## **FASE 7: VERIFICAR FUNCIONALIDADES** ✅
+### **7.1 Revisar botones de acción**
+- [ ] Verificar botones "Agendar" en ServiceCard
+- [ ] Probar botones "Ver Detalles"
+- [ ] Implementar scroll suave a sección de contacto
+- [ ] Asegurar que los formularios funcionen
+
+### **7.2 Probar navegación**
+- [ ] Verificar enlaces del menú
+- [ ] Probar navegación móvil
 - [ ] Validar accesibilidad
-- [ ] Optimizar velocidad de carga
-
-### **Tarea 6.3: Limpieza y Documentación**
-- [ ] **ANALIZAR:** Código que puede quedar obsoleto
-- [ ] Limpiar código no utilizado
-- [ ] Documentar componentes nuevos
-- [ ] Actualizar README si es necesario
-- [ ] Commit final con todos los cambios
+- [ ] Probar en diferentes navegadores
 
 ---
 
-## **Cronograma Estimado:**
-- **Fase 1:** 1-2 horas
-- **Fase 2:** 2-3 horas  
-- **Fase 3:** 2-3 horas
-- **Fase 4:** 1-2 horas
-- **Fase 5:** 1-2 horas
-- **Fase 6:** 1 hora
+## **FASE 8: ACTUALIZAR DATOS DEL FOOTER** 📞
+### **8.1 Recopilar información real**
+- [ ] Obtener datos de contacto reales de Punto Rosa
+- [ ] Recopilar enlaces de redes sociales reales
+- [ ] Definir políticas de privacidad y términos
+- [ ] Obtener información de ubicación real
 
-**Total estimado: 8-13 horas**
+### **8.2 Implementar datos reales**
+- [ ] Actualizar Footer.tsx con información real
+- [ ] Agregar enlaces funcionales
+- [ ] Implementar formulario de newsletter
+- [ ] Probar formularios de contacto
 
 ---
 
-## **Servicios a Implementar:**
+## **FASE 9: ACTUALIZAR IMÁGENES** 🖼️ **ÚLTIMA FASE**
+### **9.1 Inventariar imágenes actuales**
+- [ ] Listar 5 imágenes en /public/lovable-uploads/
+- [ ] Crear lista de servicios específicos de Punto Rosa
+- [ ] Identificar qué imágenes representan cada servicio
+- [ ] Planificar nuevas imágenes necesarias
 
-### **Masajes:**
-1. **Masaje Harmony** - $500 MXN
-2. **Masaje Mixto** - $550 MXN
-3. **Masaje de Liberación Miofascial** - $500 MXN
-4. **Drenaje Linfático Manual** - $500 MXN
-5. **Masaje Deportivo** - $500 MXN
-6. **Masajes en Cabina** - $500 MXN
+### **9.2 Implementar nuevas imágenes**
+- [ ] Reemplazar imágenes genéricas con fotos reales de servicios
+- [ ] Optimizar imágenes para web (formato, tamaño, compresión)
+- [ ] Implementar lazy loading para mejor rendimiento
+- [ ] Probar carga de imágenes en diferentes dispositivos
 
-### **Tratamientos:**
-7. **Presoterapia** - $550 MXN
-8. **Gimnasia Pasiva** - $550 MXN
-9. **Cavitación** - $400 MXN
+---
 
-### **Especiales:**
-10. **Suero Vitaminado** - $1,200 MXN
+## **COMANDOS POWERSHELL** ⚡
+```powershell
+# Navegar al proyecto
+cd C:\docabyte-proyects\punto-rosa
 
-### **Contacto:**
-- **Teléfono:** (55) 49186534
-- **Servicios adicionales:** Sueros vitaminados a domicilio 
+# Instalar dependencias
+npm install
+
+# Ejecutar en modo desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Verificar linting
+npm run lint
+```
+
+## **NOTAS IMPORTANTES** 📝
+- **Prioridad inmediata:** Fase 4 - Conectar redes sociales
+- **Antes de cada tarea:** Analizar componentes afectados
+- **Después de cada fase:** Probar en diferentes dispositivos
+- **Última fase:** Actualización de imágenes (requiere contenido real)
+
+## **LOGROS COMPLETADOS** 🎉
+- ✅ **Fase 1:** Estructura del menú completada
+  - Secciones Blog y About creadas e integradas
+  - Navegación funcional con scroll suave
+  - Estados activos en el menú implementados
+  - Orden de navegación optimizado
+- ✅ **Fase 2:** Altura de tarjetas corregida
+  - Altura mínima establecida en ServiceCard
+  - Layout flexbox mejorado para distribución uniforme
+  - Botones alineados en la parte inferior
+  - Altura consistente en todas las tarjetas del carrusel
+- ✅ **Fase 3:** Responsividad mejorada
+  - Hero optimizado para móviles con tamaños de texto adaptativos
+  - ServicesCarousel ajustado con controles táctiles mejorados
+  - TestimonialsSection optimizado con layout responsive
+  - PackagesSection mejorado con tabs adaptativos y layout flexible
+  - AnimatedTestimonials optimizado para pantallas pequeñas

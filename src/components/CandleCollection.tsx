@@ -30,11 +30,11 @@ const CandleCollection: React.FC<CandleCollectionProps> = ({
   const content = {
     en: {
       title: 'Complete Your Ritual',
-      subtitle: 'Discover our hand-poured candles, crafted to inspire tranquility and mindfulness.'
+      subtitle: 'Discover my hand-poured candles, crafted to inspire tranquility and mindfulness.'
     },
     es: {
       title: 'Completa Tu Ritual',
-      subtitle: 'Descubre nuestras velas artesanales, creadas para inspirar tranquilidad y conciencia plena.'
+      subtitle: 'Descubre mis velas artesanales, creadas para inspirar tranquilidad y conciencia plena.'
     }
   };
 

@@ -27,7 +27,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ currentLanguage }) => {
       title: "Asistente Punto Rosa",
       placeholder: "Escribe tu mensaje...",
       send: "Enviar",
-      welcomeMessage: "¡Hola! Estoy aquí para ayudarte con información sobre nuestros servicios de masajes. ¿Cómo puedo asistirte hoy?",
+      welcomeMessage: "¡Hola! Estoy aquí para ayudarte con información sobre mis servicios de masajes. ¿Cómo puedo asistirte hoy?",
       quickReplies: [
         "Precios de servicios",
         "Horarios disponibles",
@@ -78,12 +78,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ currentLanguage }) => {
       let responseText = '';
       if (reply.includes('precio') || reply.includes('price')) {
         responseText = currentLanguage === 'es' 
-          ? "Nuestros precios van desde $80,000 para masajes relajantes hasta $150,000 para terapias especializadas."
-          : "Our prices range from $80,000 for relaxing massages to $150,000 for specialized therapies.";
+          ? "Mis precios van desde $80,000 para masajes relajantes hasta $150,000 para terapias especializadas."
+          : "My prices range from $80,000 for relaxing massages to $150,000 for specialized therapies.";
       } else if (reply.includes('horario') || reply.includes('schedule')) {
         responseText = currentLanguage === 'es'
-          ? "Atendemos de lunes a sábado de 9:00 AM a 7:00 PM. Domingos con cita previa."
-          : "We serve Monday to Saturday from 9:00 AM to 7:00 PM. Sundays by appointment only.";
+          ? "Atiendo de lunes a sábado de 9:00 AM a 7:00 PM. Domingos con cita previa."
+          : "I serve Monday to Saturday from 9:00 AM to 7:00 PM. Sundays by appointment only.";
       } else {
         responseText = currentLanguage === 'es'
           ? "Te ayudo con esa información. ¿Podrías ser más específico sobre lo que necesitas?"

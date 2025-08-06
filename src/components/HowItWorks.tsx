@@ -39,19 +39,19 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ currentLanguage }) => {
         {
           icon: <Sparkles className="w-8 h-8 text-punto-rosa-500" />,
           title: '1. Elige tu Servicio',
-          description: 'Explora nuestros servicios de masajes y paquetes de bienestar. Selecciona el tratamiento perfecto para tus necesidades.',
+          description: 'Explora mis servicios de masajes y paquetes de bienestar. Selecciona el tratamiento perfecto para tus necesidades.',
           image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&h=500&fit=crop&q=80'
         },
         {
           icon: <Calendar className="w-8 h-8 text-punto-rosa-500" />,
           title: '2. Agenda tu Cita',
-          description: 'Elige tu fecha y hora preferida. Nuestro sistema de reservas facilita encontrar el horario perfecto para tu sesión.',
+          description: 'Elige tu fecha y hora preferida. Mi sistema de reservas facilita encontrar el horario perfecto para tu sesión.',
           image: 'https://images.unsplash.com/photo-1591019479261-1a103efb15fc?w=500&h=500&fit=crop&q=80'
         },
         {
           icon: <Heart className="w-8 h-8 text-punto-rosa-500" />,
           title: '3. Disfruta tu Momento',
-          description: 'Llega a nuestro spa y deja que nuestros terapeutas profesionales te cuiden. Relájate y disfruta tu momento de paz.',
+          description: 'Llega a mi spa y deja que te cuide profesionalmente. Relájate y disfruta tu momento de paz.',
           image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop&q=80'
         }
       ]

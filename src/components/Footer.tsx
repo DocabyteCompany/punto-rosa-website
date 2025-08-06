@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Instagram, Facebook, Mail, Phone, MapPin, Volume2 } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Volume2 } from 'lucide-react';
 
 interface FooterProps {
   currentLanguage: string;
@@ -40,8 +40,8 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
       newsletter: 'Boletín',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Servicio',
-      contact: 'Contáctanos',
-      about: 'Nosotros',
+      contact: 'Contáctame',
+      about: 'Sobre Mí',
       faq: 'FAQ',
       appointments: 'Citas',
       services: 'Servicios',
@@ -53,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
         packages: 'Paquetes',
         booking: 'Reservar',
         blog: 'Blog',
-        about: 'Nosotros'
+        about: 'Sobre Mí'
       }
     }
   };
@@ -135,16 +135,12 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-sage-300">
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>info@puntorosa.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+57 (301) 456-7890</span>
+                <span>+52 554 918 6534</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>Bogotá, Colombia</span>
+                <span>Cocoyoc, Morelos</span>
               </div>
             </div>
             

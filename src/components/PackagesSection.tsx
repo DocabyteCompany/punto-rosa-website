@@ -61,13 +61,13 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       },
       detailedDescription: {
         en: 'Transform your figure with our most comprehensive package. This combo includes specialized techniques that work in synergy: cavitation reduces localized measurements, abdominal massage activates your metabolism, passive gymnastics tones without effort, and pressotherapy optimizes circulation and drains toxins. Ideal for those seeking visible results from the first session.',
-        es: 'Transforma tu figura con nuestro paquete más completo. Este combo incluye técnicas especializadas que trabajan en sinergia: la cavitación reduce medidas localizadas, el masaje abdominal activa tu metabolismo, la gimnasia pasiva tonifica sin esfuerzo, y la presoterapia optimiza la circulación y drena toxinas. Ideal para quienes buscan resultados visibles desde la primera sesión.'
+        es: 'Transforma tu figura con mi paquete más completo. Este combo incluye técnicas especializadas que trabajan en sinergia: la cavitación reduce medidas localizadas, el masaje abdominal activa tu metabolismo, la gimnasia pasiva tonifica sin esfuerzo, y la presoterapia optimiza la circulación y drena toxinas. Ideal para quienes buscan resultados visibles desde la primera sesión.'
       },
       regularPrice: 1600,
       specialPrice: 1300,
       packagePrice: 9000,
       savings: 7000,
-      image: '/lovable-uploads/31349569-7ca5-4ae3-8fcd-c3c058516f41.png'
+      image: '/imgs/package-1.jpg'
     },
     {
       id: 2,
@@ -85,7 +85,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 900,
       packagePrice: 7500,
       savings: 3500,
-      image: '/lovable-uploads/9145e19f-ccc7-404d-aef7-f9184eaaba5c.png'
+      image: '/imgs/package-2.jpg'
     },
     {
       id: 3,
@@ -103,7 +103,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 1300,
       packagePrice: 9990,
       savings: 6510,
-      image: '/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png'
+      image: '/imgs/package-3.jpg'
     },
     {
       id: 4,
@@ -114,14 +114,14 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
         es: 'Transforma tu cuerpo y activa tu metabolismo desde la primera sesión.'
       },
       detailedDescription: {
-        en: 'Our most comprehensive transformation package. This total reductive combo combines all our specialized techniques: therapeutic massage for deep relaxation, cavitation for localized fat reduction, abdominal massage to activate metabolism, passive gymnastics for muscle toning without effort, and pressotherapy for optimal circulation and detoxification. The ultimate package for complete body transformation.',
-        es: 'Nuestro paquete de transformación más completo. Este combo reductivo total combina todas nuestras técnicas especializadas: masaje terapéutico para relajación profunda, cavitación para reducción localizada de grasa, masaje abdominal para activar el metabolismo, gimnasia pasiva para tonificación muscular sin esfuerzo, y presoterapia para circulación óptima y desintoxicación. El paquete definitivo para transformación corporal completa.'
+        en: 'My most comprehensive transformation package. This total reductive combo combines all my specialized techniques: therapeutic massage for deep relaxation, cavitation for localized fat reduction, abdominal massage to activate metabolism, passive gymnastics for muscle toning without effort, and pressotherapy for optimal circulation and detoxification. The ultimate package for complete body transformation.',
+        es: 'Mi paquete de transformación más completo. Este combo reductivo total combina todas mis técnicas especializadas: masaje terapéutico para relajación profunda, cavitación para reducción localizada de grasa, masaje abdominal para activar el metabolismo, gimnasia pasiva para tonificación muscular sin esfuerzo, y presoterapia para circulación óptima y desintoxicación. El paquete definitivo para transformación corporal completa.'
       },
       regularPrice: 2150,
       specialPrice: 1600,
       packagePrice: 12500,
       savings: 9000,
-      image: '/lovable-uploads/bc42af10-a390-4a2c-917b-6c68e37b0d6b.png'
+      image: '/imgs/package-4.png'
     }
   ];
 
@@ -129,26 +129,26 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
   const currentPackage = packages[activeTab];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-spa-soft-50 to-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-spa-soft-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="w-24 h-1 bg-gradient-to-r from-spa-green-400 to-punto-rosa-400 mx-auto mb-6 rounded-full"></div>
-          <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-spa-green-400 to-punto-rosa-400 mx-auto mb-4 sm:mb-6 rounded-full"></div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-deep-800 mb-3 sm:mb-4">
             {selectedContent.title}
           </h2>
-          <p className="text-xl text-text-deep-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-text-deep-600 max-w-3xl mx-auto px-2 sm:px-0">
             {selectedContent.subtitle}
           </p>
         </div>
 
         {/* Tabs Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-1 bg-white rounded-2xl p-2 shadow-lg border border-neutral-warm-200">
+        <div className="flex justify-center mb-8 sm:mb-12 px-2 sm:px-0">
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-0 bg-white rounded-2xl p-2 shadow-lg border border-neutral-warm-200">
             {selectedContent.tabs.map((tab, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 text-sm sm:text-base touch-manipulation ${
                   activeTab === index
                     ? 'bg-punto-rosa-500 text-white shadow-lg'
                     : 'text-text-deep-600 hover:text-punto-rosa-600 hover:bg-punto-rosa-50'
@@ -160,76 +160,76 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
           </div>
         </div>
 
-        {/* Package Content - Two Columns */}
+        {/* Package Content - Responsive Layout */}
         <div className="bg-white rounded-3xl shadow-lg border border-neutral-warm-200 overflow-hidden max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2">
             {/* Left Column - Package Details */}
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-text-deep-800 mb-4">
+            <div className="p-4 sm:p-6 lg:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-text-deep-800 mb-3 sm:mb-4">
                 {currentPackage.name[currentLanguage as keyof typeof currentPackage.name]}
               </h3>
               
-              <p className="text-text-deep-600 mb-6">
+              <p className="text-sm sm:text-base text-text-deep-600 mb-4 sm:mb-6">
                 {currentPackage.description[currentLanguage as keyof typeof currentPackage.description]}
               </p>
 
               {/* Services List */}
-              <div className="mb-6">
-                <h4 className="font-semibold text-text-deep-800 mb-3">Servicios incluidos:</h4>
-                <div className="space-y-2">
+              <div className="mb-4 sm:mb-6">
+                <h4 className="font-semibold text-text-deep-800 mb-2 sm:mb-3 text-sm sm:text-base">Servicios incluidos:</h4>
+                <div className="space-y-1 sm:space-y-2">
                   {currentPackage.services.map((service, index) => (
                     <div key={index} className="flex items-center">
-                      <div className="w-2 h-2 bg-punto-rosa-400 rounded-full mr-3"></div>
-                      <span className="text-text-deep-600">{service}</span>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-punto-rosa-400 rounded-full mr-2 sm:mr-3"></div>
+                      <span className="text-xs sm:text-sm text-text-deep-600">{service}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Pricing */}
-              <div className="space-y-3 mb-6">
+              <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 <div className="flex justify-between items-center">
-                  <span className="text-text-deep-600">Precio Regular:</span>
-                  <span className="text-lg font-semibold text-text-deep-800">${currentPackage.regularPrice}</span>
+                  <span className="text-xs sm:text-sm text-text-deep-600">Precio Regular:</span>
+                  <span className="text-base sm:text-lg font-semibold text-text-deep-800">${currentPackage.regularPrice}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-text-deep-600">Promoción Especial:</span>
-                  <span className="text-lg font-semibold text-punto-rosa-600">${currentPackage.specialPrice} por sesión</span>
+                  <span className="text-xs sm:text-sm text-text-deep-600">Promoción Especial:</span>
+                  <span className="text-base sm:text-lg font-semibold text-punto-rosa-600">${currentPackage.specialPrice} por sesión</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-text-deep-600">Paquete de 10 sesiones:</span>
-                  <span className="text-xl font-bold text-spa-green-600">${currentPackage.packagePrice}</span>
+                  <span className="text-xs sm:text-sm text-text-deep-600">Paquete de 10 sesiones:</span>
+                  <span className="text-lg sm:text-xl font-bold text-spa-green-600">${currentPackage.packagePrice}</span>
                 </div>
               </div>
 
               {/* Savings */}
-              <div className="bg-gradient-to-r from-punto-rosa-50 to-spa-green-50 rounded-2xl p-4 border border-punto-rosa-200 mb-6">
+              <div className="bg-gradient-to-r from-punto-rosa-50 to-spa-green-50 rounded-2xl p-3 sm:p-4 border border-punto-rosa-200 mb-4 sm:mb-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-text-deep-700 font-medium">Ahorro total:</span>
-                  <span className="text-2xl font-bold text-punto-rosa-600">${currentPackage.savings}</span>
+                  <span className="text-text-deep-700 font-medium text-sm sm:text-base">Ahorro total:</span>
+                  <span className="text-xl sm:text-2xl font-bold text-punto-rosa-600">${currentPackage.savings}</span>
                 </div>
               </div>
 
               {/* Book Button */}
               <button
                 onClick={() => onBookPackage(currentPackage.id)}
-                className="w-full text-white px-8 py-4 rounded-full font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 touch-manipulation text-sm sm:text-base"
                 style={{
                   backgroundColor: '#e399a3'
                 }}
               >
-                <Calendar className="w-5 h-5 mr-2" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 {selectedContent.book}
               </button>
             </div>
 
             {/* Right Column - Image with Gradient and Description */}
-            <div className="relative">
+            <div className="relative min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${currentPackage.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent"></div>
             </div>
           </div>
         </div>

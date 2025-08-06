@@ -27,25 +27,25 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({
 }) => {
   const content = {
     en: {
-      featured: 'Our Services',
+      featured: 'My Services',
       wellness: 'Professional Massage Therapy',
       subtitle: 'Specialized treatments designed for your wellness and relaxation',
-      description: 'Discover our comprehensive range of therapeutic and wellness services, each designed to provide you with the ultimate relaxation and health benefits.',
-      contact: 'Contact us to schedule your appointment',
+      description: 'Discover my comprehensive range of therapeutic and wellness services, each designed to provide you with the ultimate relaxation and health benefits.',
+      contact: 'Contact me to schedule your appointment',
       phone: '(55) 49186534'
     },
     es: {
-      featured: 'Nuestros Servicios',
+      featured: 'Mis Servicios',
       wellness: 'Terapia de Masajes Profesional',
       subtitle: 'Tratamientos especializados diseñados para tu bienestar y relajación',
-      description: 'Descubre nuestra amplia gama de servicios terapéuticos y de bienestar, cada uno diseñado para brindarte la máxima relajación y beneficios para la salud.',
-      contact: 'Contáctanos para agendar tu cita',
+      description: 'Descubre mi amplia gama de servicios terapéuticos y de bienestar, cada uno diseñado para brindarte la máxima relajación y beneficios para la salud.',
+      contact: 'Contáctame para agendar tu cita',
       phone: '(55) 49186534'
     }
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-spa-soft-50">
+    <section className="py-20 bg-gradient-to-r from-white to-spa-soft-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-spa-green-400 mx-auto mb-6 rounded-full"></div>

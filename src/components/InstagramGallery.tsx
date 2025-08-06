@@ -8,15 +8,15 @@ interface InstagramGalleryProps {
 const InstagramGallery: React.FC<InstagramGalleryProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      title: "See Our Work",
-      subtitle: "Real results from our massage therapies and wellness treatments - updated automatically from our social media",
+      title: "See My Work",
+      subtitle: "Real results from my massage therapies and wellness treatments - updated automatically from my social media",
       followButton: "Follow @PuntoRosa",
       imageAlt: "Professional massage therapy session",
       viewMore: "View More Results"
     },
     es: {
-      title: "Mira Nuestro Trabajo",
-      subtitle: "Resultados reales de nuestras terapias de masajes y tratamientos de bienestar - actualizados automáticamente desde nuestras redes sociales",
+      title: "Mira Mi Trabajo",
+      subtitle: "Resultados reales de mis terapias de masajes y tratamientos de bienestar - actualizados automáticamente desde mis redes sociales",
       followButton: "Seguir @PuntoRosa",
       imageAlt: "Sesión profesional de terapia de masajes",
       viewMore: "Ver Más Resultados"
@@ -99,8 +99,8 @@ const InstagramGallery: React.FC<InstagramGalleryProps> = ({ currentLanguage }) 
         <div className="text-center mb-8">
           <p className="text-sm text-text-deep-secondary max-w-xl mx-auto">
             {currentLanguage === 'en' 
-              ? "These images are automatically updated from our Instagram and Facebook to show our latest work and client results."
-              : "Estas imágenes se actualizan automáticamente desde nuestro Instagram y Facebook para mostrar nuestro trabajo más reciente y resultados de clientes."
+              ? "These images are automatically updated from my Instagram and Facebook to show my latest work and client results."
+              : "Estas imágenes se actualizan automáticamente desde mi Instagram y Facebook para mostrar mi trabajo más reciente y resultados de clientes."
             }
           </p>
         </div>

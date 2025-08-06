@@ -16,16 +16,16 @@ const Newsletter: React.FC<NewsletterProps> = ({ currentLanguage }) => {
       subtitle: 'Receive wellness tips, special promotions, and relaxation techniques',
       placeholder: 'Enter your email address',
       button: 'Subscribe',
-      success: 'Thank you! Welcome to our community.',
-      privacy: 'We respect your privacy. Unsubscribe at any time.'
+      success: 'Thank you! Welcome to my community.',
+      privacy: 'I respect your privacy. Unsubscribe at any time.'
     },
     es: {
       title: 'Mantente al Día con Punto Rosa',
       subtitle: 'Recibe consejos de bienestar, promociones especiales y técnicas de relajación',
       placeholder: 'Ingresa tu correo electrónico',
       button: 'Suscribirse',
-      success: '¡Gracias! Bienvenido a nuestra comunidad.',
-      privacy: 'Respetamos tu privacidad. Cancela en cualquier momento.'
+      success: '¡Gracias! Bienvenido a mi comunidad.',
+      privacy: 'Respeto tu privacidad. Cancela en cualquier momento.'
     }
   };
 

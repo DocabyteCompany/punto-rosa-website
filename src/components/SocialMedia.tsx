@@ -8,26 +8,26 @@ interface SocialMediaProps {
 const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
   const content = {
     en: {
-      title: "Contact Us Directly",
-      subtitle: "Reach out through WhatsApp for instant booking or follow our social media to see our latest work and results",
+      title: "Contact Me Directly",
+      subtitle: "Reach out through WhatsApp for instant booking or follow my social media to see my latest work and results",
       whatsapp: "Book via WhatsApp",
       facebook: "Follow on Facebook",
       instagram: "Follow on Instagram",
-      phone: "Call Us",
+      phone: "Call Me",
       whatsappDesc: "Instant booking and consultation",
-      facebookDesc: "See our latest treatments",
+      facebookDesc: "See my latest treatments",
       instagramDesc: "Client results and tips",
       phoneDesc: "Direct consultation"
     },
     es: {
-      title: "Contáctanos Directamente",
-      subtitle: "Comunícate por WhatsApp para reservas instantáneas o sigue nuestras redes sociales para ver nuestro trabajo más reciente y resultados",
+      title: "Contáctame Directamente",
+      subtitle: "Comunícate por WhatsApp para reservas instantáneas o sigue mis redes sociales para ver mi trabajo más reciente y resultados",
       whatsapp: "Reservar por WhatsApp",
       facebook: "Seguir en Facebook", 
       instagram: "Seguir en Instagram",
       phone: "Llámanos",
       whatsappDesc: "Reservas instantáneas y consulta",
-      facebookDesc: "Ve nuestros últimos tratamientos",
+      facebookDesc: "Ve mis últimos tratamientos",
       instagramDesc: "Resultados de clientes y consejos",
       phoneDesc: "Consulta directa"
     }

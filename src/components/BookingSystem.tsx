@@ -100,7 +100,7 @@ Phone: ${formData.phone}
 Email: ${formData.email}
 Notes: ${formData.notes}`;
 
-    const whatsappUrl = `https://wa.me/573001234567?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5549186534?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -109,7 +109,7 @@ Notes: ${formData.notes}`;
       ? 'Hola! Me gustaría agendar una cita para un masaje. ¿Podrían ayudarme con la disponibilidad?'
       : 'Hello! I would like to book a massage appointment. Could you help me with availability?';
     
-    const whatsappUrl = `https://wa.me/573001234567?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5549186534?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

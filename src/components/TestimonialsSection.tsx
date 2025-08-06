@@ -95,19 +95,21 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ currentLangua
   const currentContent = content[currentLanguage as keyof typeof content];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-spa-soft-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-white to-spa-soft-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-spa-green-400 mx-auto mb-6 rounded-full"></div>
-          <h2 className="text-4xl md:text-5xl font-serif text-text-deep-800 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-punto-rosa-400 to-spa-green-400 mx-auto mb-4 sm:mb-6 rounded-full"></div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-deep-800 mb-3 sm:mb-4">
             {currentContent.title}
           </h2>
-          <p className="text-xl text-text-deep-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-text-deep-600 max-w-3xl mx-auto px-2 sm:px-0">
             {currentContent.subtitle}
           </p>
         </div>
 
-        <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+        <div className="px-2 sm:px-0">
+          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+        </div>
       </div>
     </section>
   );

@@ -17,22 +17,29 @@ const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleSectionChange = (sectionId: string) => {
+    onSectionChange(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   const navItems = {
     en: [
       { id: 'home', label: 'Home' },
       { id: 'services', label: 'Services' },
       { id: 'packages', label: 'Packages' },
-      { id: 'booking', label: 'Book Now' },
-      { id: 'blog', label: 'Blog' },
-      { id: 'about', label: 'About' }
+      { id: 'about', label: 'About' },
+      { id: 'contact', label: 'Contact' }
     ],
     es: [
       { id: 'home', label: 'Inicio' },
       { id: 'services', label: 'Servicios' },
       { id: 'packages', label: 'Paquetes' },
-      { id: 'booking', label: 'Reservar' },
-      { id: 'blog', label: 'Blog' },
-      { id: 'about', label: 'Nosotros' }
+      { id: 'about', label: 'Sobre Mí' },
+      { id: 'contact', label: 'Contacto' }
     ]
   };
 
@@ -46,7 +53,7 @@ const Navigation: React.FC<NavigationProps> = ({
               src="/toque-rosa-logo.png"
               alt="Punto Rosa"
               className="h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105"
-              onClick={() => onSectionChange('home')}
+              onClick={() => handleSectionChange('home')}
             />
           </div>
 
@@ -55,14 +62,17 @@ const Navigation: React.FC<NavigationProps> = ({
             {navItems[currentLanguage as keyof typeof navItems].map((item) => (
               <button
                 key={item.id}
-                onClick={() => onSectionChange(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                onClick={() => handleSectionChange(item.id)}
+                className={`text-sm font-medium transition-all duration-300 relative ${
                   activeSection === item.id
-                    ? 'text-sage-800 border-b-2 border-sage-600'
-                    : 'text-sage-600 hover:text-sage-800'
+                    ? 'text-punto-rosa-700'
+                    : 'text-sage-600 hover:text-punto-rosa-600'
                 }`}
               >
                 {item.label}
+                {activeSection === item.id && (
+                  <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gradient-to-r from-punto-rosa-500 to-punto-rosa-600 rounded-full"></div>
+                )}
               </button>
             ))}
           </div>
@@ -91,17 +101,17 @@ const Navigation: React.FC<NavigationProps> = ({
               {navItems[currentLanguage as keyof typeof navItems].map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => {
-                    onSectionChange(item.id);
-                    setIsMenuOpen(false);
-                  }}
-                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  onClick={() => handleSectionChange(item.id)}
+                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-all duration-300 relative ${
                     activeSection === item.id
-                      ? 'text-sage-800 bg-sage-50'
-                      : 'text-sage-600 hover:text-sage-800 hover:bg-sage-50'
+                      ? 'text-punto-rosa-700 bg-punto-rosa-50'
+                      : 'text-sage-600 hover:text-punto-rosa-600 hover:bg-punto-rosa-25'
                   }`}
                 >
                   {item.label}
+                  {activeSection === item.id && (
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-punto-rosa-500 to-punto-rosa-600 rounded-r-full"></div>
+                  )}
                 </button>
               ))}
             </div>

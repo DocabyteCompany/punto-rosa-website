@@ -5,7 +5,8 @@ import ServicesCarousel from '../components/ServicesCarousel';
 import TestimonialsSection from '../components/TestimonialsSection';
 import PackagesSection from '../components/PackagesSection';
 import CTASection from '../components/CTASection';
-import PressurePointsSection from '../components/PressurePointsSection';
+import TherapeuticPointsSection from '../components/TherapeuticPointsSection';
+import AboutSection from '../components/AboutSection';
 import InstagramGallery from '../components/InstagramGallery';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -25,6 +26,7 @@ interface Service {
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState('es');
   const [activeSection, setActiveSection] = useState('home');
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Definición de todos los servicios basados en las imágenes
   const services: Service[] = [
@@ -178,6 +180,16 @@ const Index = () => {
     setCurrentLanguage(language);
   };
 
+  const handleManualNavigation = (section: string) => {
+    setIsNavigating(true);
+    setActiveSection(section);
+    
+    // Resetear el flag después de un tiempo para permitir scroll automático
+    setTimeout(() => {
+      setIsNavigating(false);
+    }, 1000);
+  };
+
   const handleBookService = (service: any) => {
     // Scroll to contact section
     const contactSection = document.getElementById('contact');
@@ -197,7 +209,10 @@ const Index = () => {
   // Smooth scroll to sections
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'services', 'testimonials', 'packages', 'cta', 'pressure-points', 'contact'];
+      // No cambiar la sección activa si el usuario está navegando manualmente
+      if (isNavigating) return;
+      
+      const sections = ['home', 'services', 'testimonials', 'packages', 'cta', 'pressure-points', 'about', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -213,7 +228,7 @@ const Index = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, [activeSection, isNavigating]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -221,7 +236,7 @@ const Index = () => {
         currentLanguage={currentLanguage}
         onLanguageChange={handleLanguageChange}
         activeSection={activeSection}
-        onSectionChange={setActiveSection}
+        onSectionChange={handleManualNavigation}
       />
 
       <main>
@@ -256,8 +271,10 @@ const Index = () => {
           />
         </section>
 
-        <section id="pressure-points">
-          <PressurePointsSection currentLanguage={currentLanguage} />
+        <TherapeuticPointsSection currentLanguage={currentLanguage} />
+
+        <section id="about">
+          <AboutSection currentLanguage={currentLanguage} />
         </section>
 
         <InstagramGallery currentLanguage={currentLanguage} />

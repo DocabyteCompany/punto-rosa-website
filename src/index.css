@@ -145,6 +145,47 @@ html {
   }
 }
 
+/* Therapeutic points ripple animations */
+@keyframes pulse-outer {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@keyframes pulse-middle {
+  0%, 20% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+}
+
+.animate-pulse-middle {
+  /* La pequeña inicia primero */
+  animation: pulse-middle 2.5s infinite ease-out;
+}
+
+.animate-pulse-outer {
+  /* La grande inicia después */
+  animation: pulse-outer 2.5s infinite ease-out 0.3s;
+}
+
 /* Focus states */
 .focus-punto-rosa:focus {
   @apply outline-none ring-2 ring-punto-rosa-500 ring-offset-2;

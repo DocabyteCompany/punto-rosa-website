@@ -35,7 +35,7 @@ const Index = () => {
       name: { en: 'Harmony Massage', es: 'Masaje Harmony' },
       price: 500,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/31349569-7ca5-4ae3-8fcd-c3c058516f41.png',
+      image: '/imgs/harmony.webp',
       category: 'massage',
       description: { 
         en: 'Therapeutic massage, soft and deep technique that reduces tension and renews body and mind.',
@@ -51,7 +51,7 @@ const Index = () => {
       name: { en: 'Myofascial Release Massage', es: 'Masaje de liberación miofascial' },
       price: 500,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/9145e19f-ccc7-404d-aef7-f9184eaaba5c.png',
+      image: '/imgs/miofascial.webp',
       category: 'massage',
       description: { 
         en: 'Technique that relieves deep muscular tensions.',
@@ -67,7 +67,7 @@ const Index = () => {
       name: { en: 'Mixed Massage', es: 'Masaje mixto' },
       price: 550,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png',
+      image: '/imgs/mixto.webp',
       category: 'massage',
       description: { 
         en: 'Integral massage with relaxing and decontracting techniques.',
@@ -83,7 +83,7 @@ const Index = () => {
       name: { en: 'Manual Lymphatic Drainage', es: 'Drenaje linfático manual' },
       price: 500,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/bc42af10-a390-4a2c-917b-6c68e37b0d6b.png',
+      image: '/imgs/drenage_linfatico.webp',
       category: 'massage',
       description: { 
         en: 'Professional technique for toxin elimination, reduces edema and improves circulation.',
@@ -99,7 +99,7 @@ const Index = () => {
       name: { en: 'Sports Massage', es: 'Masaje deportivo' },
       price: 500,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/a4db14b6-4bb8-4695-8ca1-98b52ca444d8.png',
+      image: '/imgs/masage-deportivo.webp',
       category: 'massage',
       description: { 
         en: 'Relieves muscle tension, improving flexibility and circulation.',
@@ -115,7 +115,7 @@ const Index = () => {
       name: { en: 'Pressotherapy', es: 'Presoterapia' },
       price: 550,
       duration: { en: '45 minutes', es: '45 minutos' },
-      image: '/lovable-uploads/31349569-7ca5-4ae3-8fcd-c3c058516f41.png',
+      image: '/imgs/presoterapia.webp',
       category: 'therapy',
       description: { 
         en: 'Pressotherapy is a comprehensive therapy that optimizes circulation, drains liquids, and accelerates muscle recovery.',
@@ -131,7 +131,7 @@ const Index = () => {
       name: { en: 'Passive Gymnastics', es: 'Gimnasia pasiva' },
       price: 550,
       duration: { en: '30 minutes', es: '30 minutos' },
-      image: '/lovable-uploads/9145e19f-ccc7-404d-aef7-f9184eaaba5c.png',
+      image: '/imgs/gimnasia_pasiva.webp',
       category: 'therapy',
       description: { 
         en: 'Passive gymnastics is a technique that uses electrical impulses to stimulate muscles and generate contractions without physical effort.',
@@ -147,7 +147,7 @@ const Index = () => {
       name: { en: 'Cavitation', es: 'Cavitación' },
       price: 400,
       duration: { en: '30 minutes', es: '30 minutos' },
-      image: '/lovable-uploads/c5d32113-4b94-4ad8-98ee-08abbd8435d1.png',
+      image: '/imgs/cavitation.webp',
       category: 'aesthetic',
       description: { 
         en: 'Non-invasive aesthetic treatment to reduce body measurements.',
@@ -163,7 +163,7 @@ const Index = () => {
       name: { en: 'Vitamin Serum', es: 'Suero vitaminado' },
       price: 1200,
       duration: { en: '60 minutes', es: '60 minutos' },
-      image: '/lovable-uploads/bc42af10-a390-4a2c-917b-6c68e37b0d6b.png',
+      image: '/imgs/serum.jpg',
       category: 'wellness',
       description: { 
         en: 'Vitamin serum treatment for health and wellness.',

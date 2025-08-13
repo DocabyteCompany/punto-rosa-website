@@ -45,10 +45,10 @@ const TherapeuticPointsSection: React.FC<TherapeuticPointsSectionProps> = ({ cur
   return (
     <section 
       id="therapeutic-points" 
-      className="min-h-screen bg-gradient-to-r from-spa-soft-50 to-neutral-warm-50 relative overflow-hidden"
+      className="min-h-fit sm:min-h-screen bg-gradient-to-r from-spa-soft-50 to-neutral-warm-50 relative overflow-hidden"
     >
       {/* Título de la sección */}
-      <div className="absolute top-0 left-0 right-0 z-40 text-center">
+      <div className="absolute top-0 left-0 right-0 z-40 text-center mt-20">
         <h2 className={`font-playfair text-neutral-warm-900 mb-2 font-bold ${
           isVisible ? 'animate-fade-in' : 'opacity-0'
         }`}>
@@ -60,10 +60,10 @@ const TherapeuticPointsSection: React.FC<TherapeuticPointsSectionProps> = ({ cur
         <div className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 ${
           isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-4'
         }`}>
-          <p className="text-lg sm:text-xl md:text-2xl text-neutral-warm-700 mb-4 font-light">
+          <p className="text-lg sm:text-xl md:text-2xl text-neutral-warm-700 mb-2 sm:mb-4 font-light">
             {currentContent.subtitle}
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-neutral-warm-600 mb-2">
+          <p className="text-sm sm:text-base md:text-lg text-neutral-warm-600 mb-1 sm:mb-2">
             {currentContent.description}
           </p>
           <div className="inline-flex items-center px-4 py-2 bg-punto-rosa-100 text-punto-rosa-700 rounded-full text-sm font-medium">
@@ -76,7 +76,7 @@ const TherapeuticPointsSection: React.FC<TherapeuticPointsSectionProps> = ({ cur
       </div>
 
       {/* Contenedor principal para el componente dinámico */}
-      <div className="relative w-full h-full pt-[140px] sm:pt-24 md:pt-32 lg:pt-40 px-4 sm:px-6 lg:px-8 z-30">
+      <div className="relative w-full h-auto sm:h-full pt-[260px] sm:pt-44 md:pt-52 lg:pt-60 px-4 sm:px-6 lg:px-8 z-30">
         <div className="max-w-6xl mx-auto">
           {/* Contenedor con aspect ratio fijo para la imagen */}
           <div className="relative w-full" style={{ aspectRatio: '4/5' }}>

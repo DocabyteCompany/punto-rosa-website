@@ -9,75 +9,59 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ currentLangua
   const testimonials = [
     {
       quote: currentLanguage === 'es' 
-        ? "El Masaje Harmony fue exactamente lo que necesitaba. La técnica suave y profunda me ayudó a reducir completamente la tensión de mi espalda. Me siento renovada y con mucha más energía."
-        : "The Harmony Massage was exactly what I needed. The soft and deep technique helped me completely reduce the tension in my back. I feel renewed and with much more energy.",
-      name: "María González",
-      designation: currentLanguage === 'es' ? "Masaje Harmony" : "Harmony Massage",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ? "Nataly Gama: masajista súper profesional, con excelentes condiciones de limpieza, comodidad al 100%, estoy segura que disfrutarás tu masaje tal cual u como lo requieras ✨"
+        : "Nataly Gama: super professional masseuse, with excellent cleanliness conditions, 100% comfort, I'm sure you'll enjoy your massage exactly as you require ✨",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
+      src: "/imgs/testimonies/testimony_1.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "El masaje de liberación miofascial alivió mis tensiones musculares profundas como nunca antes. Como deportista, necesitaba algo que realmente llegara a las capas profundas. Excelente técnica."
-        : "The myofascial release massage relieved my deep muscle tensions like never before. As an athlete, I needed something that really reached the deep layers. Excellent technique.",
-      name: "Ana Rodríguez",
-      designation: currentLanguage === 'es' ? "Masaje de Liberación Miofascial" : "Myofascial Release Massage",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ? "Nataly excelente servicio de masaje, me encanta que tenga servicio a domicilio, eso lo hace más relajate y se adapta a lo que necesitas en ese momento, seguro que vas a disfrutar mucho de sus masajes"
+        : "Nataly excellent massage service, I love that she has home service, that makes it more relaxing and adapts to what you need at that moment, I'm sure you'll really enjoy her massages",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
+      src: "/imgs/testimonies/testimony_2.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "El masaje mixto combinó perfectamente técnicas relajantes y descontracturantes. Fue un tratamiento completo que me dejó completamente renovada. La combinación de técnicas es increíble."
-        : "The mixed massage perfectly combined relaxing and decontracting techniques. It was a complete treatment that left me completely renewed. The combination of techniques is incredible.",
-      name: "Carmen López",
-      designation: currentLanguage === 'es' ? "Masaje Mixto" : "Mixed Massage",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ? "Como practicante de ejercicio funcional y calistenia, constantemente busco cuidar mi recuperación física. En los masajes de Nat encontré el alivio perfecto para mis dolores y la descarga muscular que necesito después de entrenamientos intensos. Profesionalismo, técnica y resultados que realmente se sienten."
+        : "As a functional exercise and calisthenics practitioner, I constantly seek to take care of my physical recovery. In Nat's massages I found the perfect relief for my pains and the muscle release I need after intense training sessions. Professionalism, technique and results that you can really feel.",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Practicante de Ejercicio" : "Exercise Practitioner",
+      src: "/imgs/testimonies/testimony_3.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "El drenaje linfático manual eliminó completamente la retención de líquidos en mis piernas. Me siento mucho más ligera y la circulación ha mejorado notablemente. Técnica profesional excelente."
-        : "The manual lymphatic drainage completely eliminated fluid retention in my legs. I feel much lighter and circulation has improved remarkably. Excellent professional technique.",
-      name: "Patricia Kim",
-      designation: currentLanguage === 'es' ? "Drenaje Linfático Manual" : "Manual Lymphatic Drainage",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ? "El masaje descontracturante fue justo lo que necesitaba. Noté una gran diferencia en la tensión muscular después de la sesión. ¡Gracias por tu excelente Natt💖! Lo recomiendo mucho."
+        : "The decontracting massage was exactly what I needed. I noticed a big difference in muscle tension after the session. Thank you for your excellent work Natt💖! I highly recommend it.",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
+      src: "/imgs/testimonies/testimony_4.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "Como deportista, el masaje deportivo ha sido fundamental para mi recuperación. Me ayuda a mantener la flexibilidad y mejorar la circulación después de entrenamientos intensos."
-        : "As an athlete, the sports massage has been fundamental for my recovery. It helps me maintain flexibility and improve circulation after intense training sessions.",
-      name: "Laura Thompson",
-      designation: currentLanguage === 'es' ? "Masaje Deportivo" : "Sports Massage",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ? "El masaje fue increíble. Llegué con mucho estrés laboral y cansancio acumulado, y salí sintiéndome renovado. Me ayudó a liberar tensión por completo ahora me siento mucho mejor, con más energía y tranquilidad."
+        : "The massage was incredible. I arrived with a lot of work stress and accumulated fatigue, and left feeling renewed. It helped me release tension completely, now I feel much better, with more energy and tranquility.",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
+      src: "/imgs/testimonies/testimony_5.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "La presoterapia optimizó mi circulación y aceleró mi recuperación muscular de manera increíble. Es perfecta para después del ejercicio. Me siento mucho más energética."
-        : "Pressotherapy optimized my circulation and accelerated my muscle recovery incredibly. It's perfect for after exercise. I feel much more energetic.",
-      name: "Sofia Martínez",
-      designation: currentLanguage === 'es' ? "Presoterapia" : "Pressotherapy",
-      src: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+        ? "Fue una experiencia de masaje transformadora. Nat me ayudó a deshacerme del estrés acumulado y del cansancio físico. Salí sintiéndome revitalizada, con una sensación de tranquilidad y una energía renovada."
+        : "It was a transformative massage experience. Nat helped me get rid of accumulated stress and physical fatigue. I left feeling revitalized, with a sense of tranquility and renewed energy.",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
+      src: "/imgs/testimonies/testimony_6.webp",
     },
     {
       quote: currentLanguage === 'es'
-        ? "La gimnasia pasiva me ha ayudado a tonificar sin impacto físico. Es ideal para mi recuperación y como complemento estético. Los resultados son visibles desde la primera sesión."
-        : "Passive gymnastics has helped me tone without physical impact. It's ideal for my recovery and as an aesthetic complement. The results are visible from the first session.",
-      name: "Elena García",
-      designation: currentLanguage === 'es' ? "Gimnasia Pasiva" : "Passive Gymnastics",
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    },
-    {
-      quote: currentLanguage === 'es'
-        ? "La cavitación me ayudó a reducir medidas corporales de manera no invasiva. Es un tratamiento estético muy efectivo. Los resultados superaron mis expectativas."
-        : "Cavitation helped me reduce body measurements in a non-invasive way. It's a very effective aesthetic treatment. The results exceeded my expectations.",
-      name: "Claudia Ruiz",
-      designation: currentLanguage === 'es' ? "Cavitación" : "Cavitation",
-      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    },
-    {
-      quote: currentLanguage === 'es'
-        ? "El suero vitaminado ha mejorado significativamente mi salud y bienestar. Es un refuerzo vitamínico que me da energía y vitalidad. Lo recomiendo totalmente."
-        : "The vitamin serum has significantly improved my health and wellness. It's a vitamin boost that gives me energy and vitality. I totally recommend it.",
-      name: "Verónica Silva",
-      designation: currentLanguage === 'es' ? "Suero Vitaminado" : "Vitamin Serum",
-      src: "https://images.unsplash.com/photo-1544717440-fe3444dc3cd0?w=100&h=100&fit=crop&crop=face",
+        ? "Les súper recomiendo los servicios de: \"Masajes toque rosa\" ☺. Cuenta con una amplia cartera de servicios y precios accesibles. Me dedico a dar clases de Indoor Cycling y mis piernas estaban mega contracturadas 😩 pero, con los masajes de descarga y con la presoterapia he sentido mucho alivio. No duden en probar los diferentes servicios que ofrecen."
+        : "I super recommend the services of: \"Masajes toque rosa\" ☺. They have a wide portfolio of services and accessible prices. I dedicate myself to teaching Indoor Cycling classes and my legs were mega contracted 😩 but, with the discharge massages and with pressotherapy I have felt much relief. Don't hesitate to try the different services they offer.",
+      name: ".",
+      designation: currentLanguage === 'es' ? "Instructora de Cycling" : "Cycling Instructor",
+      src: "/imgs/testimonies/testimony_7.webp",
     }
   ];
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useMemo } from 'react';
 import PressurePointModal from './PressurePointModal';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -42,11 +42,38 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
   const imageRef = useRef<HTMLImageElement>(null);
   const isMobile = useIsMobile();
 
+  // Configuración unificada y responsiva para ondas y punto
+  const layoutConfig = useMemo(() => {
+    // Redondea a par para evitar subpíxeles y desfases en translate(-50%, -50%)
+    const toEven = (n: number): number => 2 * Math.round(n / 2);
+
+    if (isMobile) {
+      const outerRaw = 32; // diámetro px
+      const middleRaw = 22; // diámetro px
+      const dotScale = 0.5; // proporción del punto respecto a middle
+      const outerSize = toEven(outerRaw);
+      const middleSize = toEven(middleRaw);
+      let dotDiameter = toEven(middleSize * dotScale);
+      if (dotDiameter >= middleSize) dotDiameter = middleSize - 4; // garantizar punto < onda interna
+      return { outerSize, middleSize, dotDiameter };
+    }
+
+    // Desktop: hacer el conjunto un poco más grande
+    const outerRaw = 64;
+    const middleRaw = 44;
+    const dotScale = 0.5;
+    const outerSize = toEven(outerRaw);
+    const middleSize = toEven(middleRaw);
+    let dotDiameter = toEven(middleSize * dotScale);
+    if (dotDiameter >= middleSize) dotDiameter = middleSize - 4;
+    return { outerSize, middleSize, dotDiameter };
+  }, [isMobile]);
+
   const pressurePoints: PressurePoint[] = [
     {
       id: 1,
-      x: '40.5%',
-      y: '48%',
+      x: '38.5%',
+      y: '44.5%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -61,8 +88,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 2,
-      x: '56.5%',
-      y: '48%',
+      x: '51.5%',
+      y: '44.5%',
       name: currentLanguage === 'es' ? 'Cuello superior' : 'Upper neck',
       description: currentLanguage === 'es' 
         ? 'Zona de alta tensión donde se acumulan contracturas por estrés y malas posturas.'
@@ -77,8 +104,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 3,
-      x: '30.5%',
-      y: '53%',
+      x: '28%',
+      y: '50.5%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -93,8 +120,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 4,
-      x: '66.5%',
-      y: '53%',
+      x: '62%',
+      y: '50.5%',
       name: currentLanguage === 'es' ? 'Hombros' : 'Shoulders',
       description: currentLanguage === 'es'
         ? 'Área que soporta gran tensión por el peso de los brazos y estrés laboral.'
@@ -109,8 +136,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 5,
-      x: '48.5%',
-      y: '70%',
+      x: '45%',
+      y: '66.5%',
       name: currentLanguage === 'es' ? 'Espalda media' : 'Mid back',
       description: currentLanguage === 'es'
         ? 'Centro de la espalda donde convergen múltiples grupos musculares.'
@@ -125,8 +152,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 6,
-      x: '38.5%',
-      y: '81%',
+      x: '35%',
+      y: '77.5%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'
@@ -141,8 +168,8 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     },
     {
       id: 7,
-      x: '58.5%',
-      y: '81%',
+      x: '55%',
+      y: '77.5%',
       name: currentLanguage === 'es' ? 'Espalda baja' : 'Lower back',
       description: currentLanguage === 'es'
         ? 'Zona lumbar que soporta el peso corporal y es propensa a contracturas.'
@@ -157,26 +184,19 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
     }
   ];
 
-  // Lógica de medición dinámica con ResizeObserver
   useLayoutEffect(() => {
     const calculateOverlayDimensions = () => {
       if (!containerRef.current || !imageRef.current) return;
 
       const container = containerRef.current;
       const image = imageRef.current;
+      
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
 
-      // Obtener dimensiones del contenedor
-      const containerRect = container.getBoundingClientRect();
-      const containerWidth = containerRect.width;
-      const containerHeight = containerRect.height;
+      const { naturalWidth, naturalHeight } = image;
+      if (naturalWidth === 0 || naturalHeight === 0) return;
 
-      // Obtener dimensiones intrínsecas de la imagen
-      const naturalWidth = image.naturalWidth;
-      const naturalHeight = image.naturalHeight;
-
-      if (naturalWidth === 0 || naturalHeight === 0) return; // Imagen aún no cargada
-
-      // Calcular relaciones de aspecto
       const containerAspectRatio = containerWidth / containerHeight;
       const imageAspectRatio = naturalWidth / naturalHeight;
 
@@ -185,22 +205,18 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
       let offsetX: number;
       let offsetY: number;
 
-      // Lógica de object-contain: determinar limitación por ancho o alto
       if (containerAspectRatio > imageAspectRatio) {
-        // Limitado por altura: la imagen ocupa toda la altura del contenedor
         renderedHeight = containerHeight;
         renderedWidth = renderedHeight * imageAspectRatio;
         offsetX = (containerWidth - renderedWidth) / 2;
         offsetY = 0;
       } else {
-        // Limitado por ancho: la imagen ocupa todo el ancho del contenedor
         renderedWidth = containerWidth;
         renderedHeight = renderedWidth / imageAspectRatio;
         offsetX = 0;
         offsetY = (containerHeight - renderedHeight) / 2;
       }
 
-      // Actualizar el estilo del overlay
       setOverlayStyle({
         position: 'absolute',
         top: `${offsetY}px`,
@@ -210,44 +226,35 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
       });
     };
 
-    // Crear ResizeObserver para monitorear cambios de tamaño
-    const resizeObserver = new ResizeObserver(() => {
-      calculateOverlayDimensions();
-    });
+    const imageElement = imageRef.current;
+    if (!imageElement) return;
 
-    // Observar el contenedor
+    const resizeObserver = new ResizeObserver(calculateOverlayDimensions);
+
     if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+        resizeObserver.observe(containerRef.current);
     }
 
-    // También calcular cuando la imagen se carga
-    const image = imageRef.current;
-    if (image) {
-      if (image.complete) {
-        calculateOverlayDimensions();
-      } else {
-        image.addEventListener('load', calculateOverlayDimensions);
-      }
+    if (imageElement.complete) {
+      calculateOverlayDimensions();
+    } else {
+      imageElement.addEventListener('load', calculateOverlayDimensions);
     }
 
-    // Limpieza
     return () => {
       resizeObserver.disconnect();
-      if (image) {
-        image.removeEventListener('load', calculateOverlayDimensions);
-      }
+      imageElement.removeEventListener('load', calculateOverlayDimensions);
     };
   }, []);
 
   const handlePointClick = (point: PressurePoint) => {
     setSelectedPoint(point);
     setIsModalOpen(true);
-    setTouchedPoint(null); // Reset touch state
+    setTouchedPoint(null);
   };
 
   const handlePointTouch = (pointId: number) => {
     setTouchedPoint(pointId);
-    // Auto-dismiss touch feedback after 2 seconds
     setTimeout(() => {
       setTouchedPoint(null);
     }, 2000);
@@ -260,95 +267,121 @@ const TherapeuticPointsDynamic: React.FC<TherapeuticPointsDynamicProps> = ({ cur
 
   return (
     <div className="w-full h-full relative" ref={containerRef}>
-      {/* Imagen principal con object-contain */}
       <img
         ref={imageRef}
-        src="/imgs/body_pressure_points.png"
+        src="/imgs/body_pressure_points.webp"
         alt={currentLanguage === 'es' ? 'Puntos de presión terapéuticos' : 'Therapeutic pressure points'}
         className="w-full h-full object-contain"
       />
 
-      {/* Overlay dinámico para puntos */}
       <div style={overlayStyle}>
-        {pressurePoints.map((point) => (
-          <button
-            key={point.id}
-            className={`
-              absolute transform -translate-x-1/2 -translate-y-1/2 
-              w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7
-              border border-white sm:border-2
-              transition-all duration-300 ease-in-out
-              ${hoveredPoint === point.id || touchedPoint === point.id
-                ? 'bg-punto-rosa-500 scale-125 shadow-lg shadow-punto-rosa-500/50'
-                : 'bg-punto-rosa-400 hover:bg-punto-rosa-500 hover:scale-110'
-              }
-              rounded-full cursor-pointer
-              animate-pulse hover:animate-none
-              focus:outline-none focus:ring-2 focus:ring-punto-rosa-300 focus:ring-offset-2
-              active:scale-95
-              ${isMobile ? 'touch-manipulation' : ''}
-            `}
-            style={{
-              left: point.x,
-              top: point.y,
-            }}
-            onClick={() => handlePointClick(point)}
-            onMouseEnter={() => !isMobile && setHoveredPoint(point.id)}
-            onMouseLeave={() => !isMobile && setHoveredPoint(null)}
-            onTouchStart={() => isMobile && handlePointTouch(point.id)}
-            aria-label={`${point.name} - ${point.description}`}
-            title={isMobile ? undefined : point.name}
-          >
-            <span className="sr-only">{point.name}</span>
-          </button>
-        ))}
+        {pressurePoints.map((point) => {
+          const isHovered = hoveredPoint === point.id;
+          const isTouched = touchedPoint === point.id;
+          
+          return (
+            // Ancla absoluto: tamaño cero, centrado exacto en (x,y)
+            <div
+              key={point.id}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={{ left: point.x, top: point.y, width: 0, height: 0 }}
+            >
+              {/* Wrapper relativo que define el tamaño total (diámetro = outerSize) */}
+              <div
+                className="relative grid place-items-center"
+                style={{ width: `${layoutConfig.outerSize}px`, height: `${layoutConfig.outerSize}px` }}
+              >
+                {/* Onda externa ocupa todo el wrapper */}
+                <div
+                  className={`absolute inset-0 rounded-full border-2 border-punto-rosa-300/60 ${
+                    !isHovered && !isTouched ? 'animate-pulse-outer' : 'hidden'
+                  }`}
+                />
+                {/* Onda media centrada */}
+                <div
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-punto-rosa-400/80 ${
+                    !isHovered && !isTouched ? 'animate-pulse-middle' : 'hidden'
+                  }`}
+                  style={{
+                    width: `${layoutConfig.middleSize}px`,
+                    height: `${layoutConfig.middleSize}px`,
+                  }}
+                />
 
-        {/* Etiquetas flotantes para hover (solo desktop) */}
+                {/* Punto principal - tamaño derivado de la onda pequeña (diámetro) */}
+                <button
+                  className={`
+                    relative z-10
+                    box-border border border-white sm:border-2
+                    transition-all duration-300 ease-in-out
+                    ${isHovered || isTouched
+                      ? 'bg-punto-rosa-500 scale-125 shadow-lg shadow-punto-rosa-500/50'
+                      : 'bg-punto-rosa-400 hover:bg-punto-rosa-500 hover:scale-110'}
+                    rounded-full cursor-pointer
+                    focus:outline-none focus:ring-2 focus:ring-punto-rosa-300 focus:ring-offset-2
+                    active:scale-95
+                    ${isMobile ? 'touch-manipulation' : ''}
+                  `}
+                  style={{ width: `${layoutConfig.dotDiameter}px`, height: `${layoutConfig.dotDiameter}px` }}
+                  onClick={() => handlePointClick(point)}
+                  onMouseEnter={() => !isMobile && setHoveredPoint(point.id)}
+                  onMouseLeave={() => !isMobile && setHoveredPoint(null)}
+                  onTouchStart={() => isMobile && handlePointTouch(point.id)}
+                  aria-label={`${point.name} - ${point.description}`}
+                  title={isMobile ? undefined : point.name}
+                >
+                  <span className="sr-only">{point.name}</span>
+                </button>
+              </div>
+            </div>
+          );
+        })}
+
         {!isMobile && hoveredPoint && (
-          <div
-            className="absolute z-50 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-3 border border-neutral-warm-200 pointer-events-none"
-            style={{
-              left: pressurePoints.find(p => p.id === hoveredPoint)?.x,
-              top: pressurePoints.find(p => p.id === hoveredPoint)?.y,
-              transform: 'translate(-50%, -120%)',
-            }}
-          >
-            <div className="text-sm font-semibold text-text-deep-800">
-              {pressurePoints.find(p => p.id === hoveredPoint)?.name}
+            <div
+                className="absolute z-50 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-3 border border-neutral-warm-200 pointer-events-none"
+                style={{
+                left: pressurePoints.find(p => p.id === hoveredPoint)?.x,
+                top: pressurePoints.find(p => p.id === hoveredPoint)?.y,
+                transform: 'translate(-50%, -120%)',
+                }}
+            >
+                <div className="text-sm font-semibold text-text-deep-800">
+                {pressurePoints.find(p => p.id === hoveredPoint)?.name}
+                </div>
+                <div className="text-xs text-text-deep-600 mt-1 max-w-48">
+                {pressurePoints.find(p => p.id === hoveredPoint)?.description}
+                </div>
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95"></div>
+                </div>
             </div>
-            <div className="text-xs text-text-deep-600 mt-1 max-w-48">
-              {pressurePoints.find(p => p.id === hoveredPoint)?.description}
-            </div>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-              <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95"></div>
-            </div>
-          </div>
         )}
 
-        {/* Indicador de toque para móviles */}
         {isMobile && touchedPoint && (
-          <div
-            className="absolute z-50 bg-punto-rosa-500/90 text-white rounded-full px-3 py-1 text-xs font-medium pointer-events-none"
-            style={{
-              left: pressurePoints.find(p => p.id === touchedPoint)?.x,
-              top: pressurePoints.find(p => p.id === touchedPoint)?.y,
-              transform: 'translate(-50%, -120%)',
-            }}
-          >
-            {pressurePoints.find(p => p.id === touchedPoint)?.name}
-          </div>
+            <div
+                className="absolute z-50 bg-punto-rosa-500/90 text-white rounded-full px-3 py-1 text-xs font-medium pointer-events-none"
+                style={{
+                left: pressurePoints.find(p => p.id === touchedPoint)?.x,
+                top: pressurePoints.find(p => p.id === touchedPoint)?.y,
+                transform: 'translate(-50%, -120%)',
+                }}
+            >
+                {pressurePoints.find(p => p.id === touchedPoint)?.name}
+            </div>
         )}
       </div>
 
-      {/* Modal */}
       {selectedPoint && (
         <PressurePointModal
           isOpen={isModalOpen}
           onClose={closeModal}
           point={selectedPoint}
           currentLanguage={currentLanguage}
+          isMobile={isMobile}
         />
       )}
+      
     </div>
   );
 };

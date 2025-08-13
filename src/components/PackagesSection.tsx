@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, DollarSign, Star } from 'lucide-react';
+import { formatMexicanPrice } from '../lib/utils';
 
 interface Package {
   id: number;
@@ -67,7 +68,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 1300,
       packagePrice: 9000,
       savings: 7000,
-      image: '/imgs/package-1.jpg'
+              image: '/imgs/package-1.webp'
     },
     {
       id: 2,
@@ -85,7 +86,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 900,
       packagePrice: 7500,
       savings: 3500,
-      image: '/imgs/package-2.jpg'
+              image: '/imgs/package-2.webp'
     },
     {
       id: 3,
@@ -103,7 +104,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 1300,
       packagePrice: 9990,
       savings: 6510,
-      image: '/imgs/package-3.jpg'
+              image: '/imgs/package-3.webp'
     },
     {
       id: 4,
@@ -121,7 +122,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
       specialPrice: 1600,
       packagePrice: 12500,
       savings: 9000,
-      image: '/imgs/package-4.png'
+              image: '/imgs/package-4.webp'
     }
   ];
 
@@ -190,15 +191,15 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
               <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 <div className="flex justify-between items-center">
                   <span className="text-xs sm:text-sm text-text-deep-600">Precio Regular:</span>
-                  <span className="text-base sm:text-lg font-semibold text-text-deep-800">${currentPackage.regularPrice}</span>
+                  <span className="text-base sm:text-lg font-semibold text-text-deep-800">{formatMexicanPrice(currentPackage.regularPrice)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-xs sm:text-sm text-text-deep-600">Promoción Especial:</span>
-                  <span className="text-base sm:text-lg font-semibold text-punto-rosa-600">${currentPackage.specialPrice} por sesión</span>
+                  <span className="text-base sm:text-lg font-semibold text-punto-rosa-600">{formatMexicanPrice(currentPackage.specialPrice)} por sesión</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-xs sm:text-sm text-text-deep-600">Paquete de 10 sesiones:</span>
-                  <span className="text-lg sm:text-xl font-bold text-spa-green-600">${currentPackage.packagePrice}</span>
+                  <span className="text-lg sm:text-xl font-bold text-spa-green-600">{formatMexicanPrice(currentPackage.packagePrice)}</span>
                 </div>
               </div>
 
@@ -206,7 +207,7 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
               <div className="bg-gradient-to-r from-punto-rosa-50 to-spa-green-50 rounded-2xl p-3 sm:p-4 border border-punto-rosa-200 mb-4 sm:mb-6">
                 <div className="flex items-center justify-between">
                   <span className="text-text-deep-700 font-medium text-sm sm:text-base">Ahorro total:</span>
-                  <span className="text-xl sm:text-2xl font-bold text-punto-rosa-600">${currentPackage.savings}</span>
+                  <span className="text-xl sm:text-2xl font-bold text-punto-rosa-600">{formatMexicanPrice(currentPackage.savings)}</span>
                 </div>
               </div>
 
@@ -224,12 +225,12 @@ const PackagesSection: React.FC<PackagesSectionProps> = ({
             </div>
 
             {/* Right Column - Image with Gradient and Description */}
-            <div className="relative min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
+            <div className="relative min-h-[250px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[400px]">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${currentPackage.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent"></div>
+              <div className="absolute inset-0 lg:bg-gradient-to-r lg:from-white lg:via-transparent lg:to-transparent"></div>
             </div>
           </div>
         </div>

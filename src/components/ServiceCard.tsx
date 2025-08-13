@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatMexicanPrice } from '../lib/utils';
 import { Clock, Calendar, Star } from 'lucide-react';
 
 interface Service {
@@ -50,7 +51,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-punto-rosa-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute top-4 right-4 bg-punto-rosa-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-          ${service.price}
+          {formatMexicanPrice(service.price)}
         </div>
         <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-text-deep-800 px-3 py-1 rounded-full text-xs font-medium">
           <Clock className="w-3 h-3 inline mr-1" />

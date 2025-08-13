@@ -51,7 +51,7 @@ const PressurePointModal: React.FC<PressurePointModalProps> = ({
       <DialogContent className={`
         bg-spa-soft-50 border-punto-rosa-200
         ${isMobile 
-          ? 'max-w-[95vw] max-h-[90vh] mx-2 my-4 overflow-y-auto' 
+          ? 'max-w-[90vw] max-h-[85vh] mx-auto my-2 overflow-y-auto rounded-2xl p-4 sm:p-6' 
           : 'max-w-md mx-4'
         }
       `}>
@@ -139,17 +139,7 @@ const PressurePointModal: React.FC<PressurePointModalProps> = ({
           </div>
         </div>
 
-        {/* Mobile-optimized close button */}
-        {isMobile && (
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-neutral-warm-200 hover:bg-neutral-warm-300 
-              transition-colors duration-200 touch-manipulation"
-            aria-label={t.close}
-          >
-            <X className="h-5 w-5 text-neutral-warm-700" />
-          </button>
-        )}
+
       </DialogContent>
     </Dialog>
   );

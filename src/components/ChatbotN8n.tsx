@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '@n8n/chat/style.css';
 import { createChat } from '@n8n/chat';
 
@@ -7,57 +7,83 @@ interface ChatbotN8nProps {
 }
 
 const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
-  // Instancia del chat guardada en un ref
   const chatInstanceRef = useRef<any>(null);
-  // Contenedor donde se renderizará el chat
-  const chatContainerRef = useRef<HTMLDivElement | null>(null);
-  // Estado para controlar la visibilidad del contenedor del chat
-  const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const initializeChat = useCallback(() => {
-    // Verificar que el contenedor esté montado
-    if (!chatContainerRef.current) {
-      console.warn('Chat container not mounted yet');
-      return;
-    }
-
+  useEffect(() => {
     // Limpiar instancia anterior para evitar duplicados
     if (chatInstanceRef.current) {
       chatInstanceRef.current.destroy();
       chatInstanceRef.current = null;
     }
 
-    // Tema de estilos completo para una personalización total
+    // Tema completo con colores de Punto Rosa
     const theme = {
+      // Colores principales
       '--chat--color-primary': '#e399a3',
       '--chat--color-primary-shade-50': '#d18a94',
+      '--chat--color-primary-shade-100': '#bf7b85',
       '--chat--color-secondary': '#324345',
+      '--chat--color-secondary-shade-50': '#2a3839',
       '--chat--color-white': '#ffffff',
       '--chat--color-light': '#fdf8f5',
+      '--chat--color-light-shade-50': '#f5e8e3',
+      '--chat--color-light-shade-100': '#e8d1c9',
+      '--chat--color-medium': '#d2d4d9',
       '--chat--color-dark': '#324345',
+      '--chat--color-disabled': '#777980',
+      '--chat--color-typing': '#404040',
+
+      // Espaciado y bordes
+      '--chat--spacing': '1rem',
+      '--chat--border-radius': '0.75rem',
+      '--chat--transition-duration': '0.3s',
+
+      // Dimensiones de la ventana
       '--chat--window--width': '400px',
       '--chat--window--height': '600px',
+
+      // Header
+      '--chat--header-height': 'auto',
+      '--chat--header--padding': 'var(--chat--spacing)',
+      '--chat--header--background': 'var(--chat--color-primary)',
+      '--chat--header--color': 'var(--chat--color-white)',
+      '--chat--header--border-top': 'none',
+      '--chat--header--border-bottom': 'none',
+      '--chat--heading--font-size': '1.5em',
+      '--chat--subtitle--font-size': '0.9em',
+      '--chat--subtitle--line-height': '1.4',
+
+      // Textarea
+      '--chat--textarea--height': '50px',
+
+      // Mensajes
+      '--chat--message--font-size': '0.95rem',
+      '--chat--message--padding': 'var(--chat--spacing)',
+      '--chat--message--border-radius': 'var(--chat--border-radius)',
+      '--chat--message-line-height': '1.5',
+      '--chat--message--bot--background': 'var(--chat--color-light)',
+      '--chat--message--bot--color': 'var(--chat--color-dark)',
+      '--chat--message--bot--border': 'none',
+      '--chat--message--user--background': 'var(--chat--color-primary)',
+      '--chat--message--user--color': 'var(--chat--color-white)',
+      '--chat--message--user--border': 'none',
+      '--chat--message--pre--background': 'rgba(227, 153, 163, 0.1)',
+
+      // Botón toggle
+      '--chat--toggle--background': 'var(--chat--color-primary)',
+      '--chat--toggle--hover--background': 'var(--chat--color-primary-shade-50)',
+      '--chat--toggle--active--background': 'var(--chat--color-primary-shade-100)',
+      '--chat--toggle--color': 'var(--chat--color-white)',
+      '--chat--toggle--size': '64px',
     };
 
-    // Se usa `mode: 'window'` con target personalizado para controlar el contenedor
-    chatInstanceRef.current = createChat({
+    // Crear el chat con botón nativo de n8n
+      chatInstanceRef.current = createChat({
       webhookUrl: 'https://n8n-n8n.mggfaf.easypanel.host/webhook/719fe441-73d5-42cb-92fd-5b417e4bc723/chat',
-      mode: 'window',
-      target: chatContainerRef.current, // Apuntamos al div que controlamos
+      mode: 'window', // n8n renderiza su propio botón
+      defaultLanguage: 'en', // n8n solo acepta 'en' como predeterminado
       theme,
         i18n: {
-          en: {
-            title: 'Punto Rosa Assistant',
-          subtitle: "Start a chat. We're here to help you 24/7.",
-            footer: '', // Eliminar completamente el texto "Powered by n8n"
-            getStarted: 'New Conversation',
-            inputPlaceholder: 'Type your message...',
-            closeButtonTooltip: 'Close chat',
-            sendButton: 'Send',
-            typingIndicator: 'Typing...',
-            errorMessage: 'Sorry, something went wrong. Please try again.',
-            noMessages: 'No messages yet. Start a conversation!'
-          },
           es: {
             title: 'Asistente Punto Rosa',
             subtitle: 'Inicia una conversación. Estamos aquí para ayudarte 24/7.',
@@ -69,6 +95,18 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
             typingIndicator: 'Escribiendo...',
             errorMessage: 'Lo siento, algo salió mal. Por favor intenta de nuevo.',
             noMessages: 'Aún no hay mensajes. ¡Inicia una conversación!'
+          },
+          en: {
+            title: 'Punto Rosa Assistant',
+          subtitle: "Start a chat. We're here to help you 24/7.",
+            footer: '', // Eliminar completamente el texto "Powered by n8n"
+            getStarted: 'New Conversation',
+            inputPlaceholder: 'Type your message...',
+            closeButtonTooltip: 'Close chat',
+            sendButton: 'Send',
+            typingIndicator: 'Typing...',
+            errorMessage: 'Sorry, something went wrong. Please try again.',
+            noMessages: 'No messages yet. Start a conversation!'
           }
         },
       initialMessages:
@@ -76,61 +114,117 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
           ? ['¡Hola! 👋', 'Soy tu asistente de Punto Rosa. ¿En qué puedo ayudarte hoy?']
           : ['Hi there! 👋', "I'm your Punto Rosa assistant. How can I help you today?"],
     });
-  }, [currentLanguage]);
 
-  // useEffect para inicializar y destruir el chat
-  useEffect(() => {
-    // Pequeño delay para asegurar que el contenedor esté montado
-    const timer = setTimeout(() => {
-      initializeChat();
+    // Cambiar idioma del chat después de crearlo
+    setTimeout(() => {
+      if (chatInstanceRef.current && currentLanguage === 'es') {
+        // Cambiar a español si es necesario
+        chatInstanceRef.current.setLanguage?.('es');
+      }
+    }, 200);
+
+    // Aplicar estilos CSS personalizados después de crear el chat
+      setTimeout(() => {
+      const style = document.createElement('style');
+      style.id = 'n8n-chat-custom-styles';
+      style.textContent = `
+        /* Estilos personalizados para el header del chat */
+        .chat-layout .chat-header {
+          background: #e399a3 !important;
+          color: #ffffff !important;
+          font-family: 'Inter', sans-serif !important;
+          border-radius: 0.75rem 0.75rem 0 0 !important;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          gap: 0.5rem !important;
+          height: auto !important;
+          padding: 1rem !important;
+        }
+
+        .chat-layout .chat-header h1,
+        .chat-layout .chat-header h2,
+        .chat-layout .chat-header h3 {
+          color: #ffffff !important;
+          font-weight: 600 !important;
+          margin: 0 !important;
+          font-size: 1.25rem !important;
+        }
+
+        .chat-layout .chat-header p {
+          color: rgba(255, 255, 255, 0.9) !important;
+          font-size: 0.9rem !important;
+          margin: 0 !important;
+          line-height: 1.4 !important;
+        }
+
+        /* Estilos personalizados para el botón toggle */
+        .chat-window-wrapper .chat-window-toggle {
+          background: #e399a3 !important;
+          color: #ffffff !important;
+          width: 64px !important;
+          height: 64px !important;
+          border-radius: 50% !important;
+          box-shadow: 0 4px 12px rgba(227, 153, 163, 0.4) !important;
+          transition: all 0.3s ease !important;
+          border: none !important;
+          cursor: pointer !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .chat-window-wrapper .chat-window-toggle:hover {
+          background: #d18a94 !important;
+          transform: scale(1.05) !important;
+          box-shadow: 0 6px 16px rgba(227, 153, 163, 0.5) !important;
+        }
+
+        .chat-window-wrapper .chat-window-toggle:active {
+          background: #bf7b85 !important;
+          transform: scale(0.95) !important;
+        }
+
+        /* Estilos para el ícono del botón */
+        .chat-window-wrapper .chat-window-toggle svg {
+          width: 24px !important;
+          height: 24px !important;
+          fill: none !important;
+          stroke: currentColor !important;
+          stroke-width: 2 !important;
+        }
+
+        /* Asegurar que el contenedor del chat tenga bordes redondeados */
+        .chat-window-wrapper .chat-window {
+          border-radius: 0.75rem !important;
+          overflow: hidden !important;
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(227, 153, 163, 0.1) !important;
+        }
+      `;
+      
+      // Verificar si ya existe el estilo antes de agregarlo
+      if (!document.getElementById('n8n-chat-custom-styles')) {
+        document.head.appendChild(style);
+      }
     }, 100);
 
+    // Función de limpieza
     return () => {
-      clearTimeout(timer);
-      chatInstanceRef.current?.destroy();
+      if (chatInstanceRef.current) {
+        chatInstanceRef.current.destroy();
+      }
+      
+      // Limpiar estilos personalizados
+      const existingStyle = document.getElementById('n8n-chat-custom-styles');
+      if (existingStyle && existingStyle.parentNode) {
+        existingStyle.parentNode.removeChild(existingStyle);
+      }
     };
-  }, [currentLanguage]); // Solo depende de currentLanguage, no de initializeChat
+  }, [currentLanguage]);
 
-  // La función de clic ahora solo cambia el estado de visibilidad
-  const handleToggleChat = () => {
-    setIsChatOpen((prev) => !prev);
-  };
-
-  return (
-    <>
-      {/* Contenedor del chat, su visibilidad depende del estado `isChatOpen` */}
-      <div
-        ref={chatContainerRef}
-        className="fixed bottom-24 right-6 z-[9999] w-[400px] h-[600px] transition-all duration-300 ease-in-out"
-        style={{
-          transform: isChatOpen ? 'translateY(0)' : 'translateY(20px)',
-          opacity: isChatOpen ? 1 : 0,
-          pointerEvents: isChatOpen ? 'auto' : 'none',
-        }}
-      />
-
-      {/* Nuestro único botón FAB. El ícono cambia según el estado. */}
-      <button
-        onClick={handleToggleChat}
-        className="fixed bottom-6 right-6 z-[99999] w-16 h-16 bg-[#e399a3] hover:bg-[#d18a94] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#e399a3]/30"
-        style={{
-          boxShadow: '0 10px 25px -5px rgba(227, 153, 163, 0.4)',
-        }}
-        aria-label={isChatOpen ? 'Cerrar chat' : 'Abrir chat'}
-        title={isChatOpen ? 'Cerrar chat' : 'Abrir chat'}
-      >
-        {isChatOpen ? (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-        )}
-      </button>
-    </>
-  );
+  // n8n renderiza todo, no necesitamos JSX
+  return null;
 };
 
 export default ChatbotN8n;

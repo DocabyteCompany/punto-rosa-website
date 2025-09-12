@@ -12,7 +12,7 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
   useEffect(() => {
     // Limpiar instancia anterior para evitar duplicados
     if (chatInstanceRef.current) {
-      chatInstanceRef.current.destroy();
+      chatInstanceRef.current.unmount();
       chatInstanceRef.current = null;
     }
 
@@ -84,6 +84,7 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
       defaultLanguage: 'en', // n8n solo acepta 'en' como predeterminado
       theme,
         i18n: {
+        // Solo configuración en español - eliminar inglés
           es: {
             title: 'Asistente Punto Rosa',
             subtitle: 'Inicia una conversación. Estamos aquí para ayudarte 24/7.',
@@ -95,33 +96,27 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
             typingIndicator: 'Escribiendo...',
             errorMessage: 'Lo siento, algo salió mal. Por favor intenta de nuevo.',
             noMessages: 'Aún no hay mensajes. ¡Inicia una conversación!'
-          },
-          en: {
-            title: 'Punto Rosa Assistant',
-          subtitle: "Start a chat. We're here to help you 24/7.",
-            footer: '', // Eliminar completamente el texto "Powered by n8n"
-            getStarted: 'New Conversation',
-            inputPlaceholder: 'Type your message...',
-            closeButtonTooltip: 'Close chat',
-            sendButton: 'Send',
-            typingIndicator: 'Typing...',
-            errorMessage: 'Sorry, something went wrong. Please try again.',
-            noMessages: 'No messages yet. Start a conversation!'
           }
         },
-      initialMessages:
-        currentLanguage === 'es'
-          ? ['¡Hola! 👋', 'Soy tu asistente de Punto Rosa. ¿En qué puedo ayudarte hoy?']
-          : ['Hi there! 👋', "I'm your Punto Rosa assistant. How can I help you today?"],
+      initialMessages: [
+        '¡Hola! 👋', 
+        'Soy tu asistente de Punto Rosa. ¿En qué puedo ayudarte hoy?'
+      ],
     });
 
-    // Cambiar idioma del chat después de crearlo
+    // Forzar español después de crear el chat
     setTimeout(() => {
       if (chatInstanceRef.current && currentLanguage === 'es') {
-        // Cambiar a español si es necesario
-        chatInstanceRef.current.setLanguage?.('es');
+        // Intentar cambiar a español usando diferentes métodos posibles
+        if (chatInstanceRef.current.setLanguage) {
+          chatInstanceRef.current.setLanguage('es');
+        } else if (chatInstanceRef.current.changeLanguage) {
+          chatInstanceRef.current.changeLanguage('es');
+        } else if (chatInstanceRef.current.updateLanguage) {
+          chatInstanceRef.current.updateLanguage('es');
+        }
       }
-    }, 200);
+    }, 300);
 
     // Aplicar estilos CSS personalizados después de crear el chat
       setTimeout(() => {
@@ -157,6 +152,95 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
           font-size: 0.9rem !important;
           margin: 0 !important;
           line-height: 1.4 !important;
+        }
+
+        /* Forzar header en español usando CSS */
+        .chat-layout .chat-header h1::before {
+          content: "Asistente Punto Rosa" !important;
+          display: block !important;
+        }
+        
+        .chat-layout .chat-header h1 {
+          font-size: 0 !important;
+          line-height: 0 !important;
+          overflow: hidden !important;
+        }
+        
+        .chat-layout .chat-header p::before {
+          content: "Inicia una conversación. Estamos aquí para ayudarte 24/7." !important;
+          display: block !important;
+        }
+        
+        .chat-layout .chat-header p {
+          font-size: 0 !important;
+          line-height: 0 !important;
+          overflow: hidden !important;
+        }
+
+        /* Estilos para el botón de enviar */
+        .chat-layout .chat-input button[type="submit"],
+        .chat-layout .chat-input .send-button,
+        .chat-layout .chat-input button[aria-label*="send"],
+        .chat-layout .chat-input button[aria-label*="Send"],
+        .chat-layout .chat-input button[title*="send"],
+        .chat-layout .chat-input button[title*="Send"],
+        .chat-layout .chat-input button:last-child,
+        .chat-layout .chat-input .chat-send-button,
+        .chat-layout .chat-input .send-btn,
+        .chat-layout .chat-input button[class*="send"],
+        .chat-layout .chat-input button[class*="Send"] {
+          background: #e399a3 !important;
+          color: #ffffff !important;
+          border: none !important;
+          border-radius: 50% !important;
+          width: 40px !important;
+          height: 40px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          cursor: pointer !important;
+          transition: all 0.3s ease !important;
+          box-shadow: 0 2px 4px rgba(227, 153, 163, 0.3) !important;
+        }
+
+        .chat-layout .chat-input button[type="submit"]:hover,
+        .chat-layout .chat-input .send-button:hover,
+        .chat-layout .chat-input button[aria-label*="send"]:hover,
+        .chat-layout .chat-input button[aria-label*="Send"]:hover,
+        .chat-layout .chat-input button[title*="send"]:hover,
+        .chat-layout .chat-input button[title*="Send"]:hover,
+        .chat-layout .chat-input button:last-child:hover,
+        .chat-layout .chat-input .chat-send-button:hover,
+        .chat-layout .chat-input .send-btn:hover,
+        .chat-layout .chat-input button[class*="send"]:hover,
+        .chat-layout .chat-input button[class*="Send"]:hover {
+          background: #d18a94 !important;
+          transform: scale(1.05) !important;
+          box-shadow: 0 4px 8px rgba(227, 153, 163, 0.4) !important;
+        }
+
+        .chat-layout .chat-input button[type="submit"]:active,
+        .chat-layout .chat-input .send-button:active,
+        .chat-layout .chat-input button[aria-label*="send"]:active,
+        .chat-layout .chat-input button[aria-label*="Send"]:active,
+        .chat-layout .chat-input button[title*="send"]:active,
+        .chat-layout .chat-input button[title*="Send"]:active,
+        .chat-layout .chat-input button:last-child:active,
+        .chat-layout .chat-input .chat-send-button:active,
+        .chat-layout .chat-input .send-btn:active,
+        .chat-layout .chat-input button[class*="send"]:active,
+        .chat-layout .chat-input button[class*="Send"]:active {
+          background: #bf7b85 !important;
+          transform: scale(0.95) !important;
+        }
+
+        /* Estilos para el ícono del botón de enviar */
+        .chat-layout .chat-input button svg,
+        .chat-layout .chat-input .send-button svg {
+          width: 20px !important;
+          height: 20px !important;
+          fill: #ffffff !important;
+          stroke: #ffffff !important;
         }
 
         /* Estilos personalizados para el botón toggle */
@@ -212,7 +296,7 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
     // Función de limpieza
     return () => {
       if (chatInstanceRef.current) {
-        chatInstanceRef.current.destroy();
+        chatInstanceRef.current.unmount();
       }
       
       // Limpiar estilos personalizados

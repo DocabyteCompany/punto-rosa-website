@@ -392,42 +392,34 @@ Notes: ${formData.notes}`;
 
               <div className="space-y-4">
                 <a
-                  href="https://instagram.com/puntorosamassage"
+                  href="https://www.instagram.com/masajes_toque_rosa/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 p-4 border border-neutral-warm-200 rounded-xl hover:border-pink-300 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 transition-all duration-300"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale group"
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{
-                    backgroundColor: '#e399a3'
-                  }}>
-                    <Instagram className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-text-deep-800 group-hover:text-pink-600 transition-colors duration-300">
+                  <Instagram className="w-6 h-6 text-white" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-white mb-1">
                       {currentContent.followInstagram}
                     </h4>
-                    <p className="text-sm text-text-deep-600">
+                    <p className="text-sm text-white/80">
                       {currentContent.instagramDesc}
                     </p>
                   </div>
                 </a>
 
                 <a
-                  href="https://facebook.com/puntorosamassage"
+                  href="https://www.facebook.com/CentraldeEnfermeria.93?mibextid=wwXIfr&rdid=LXFIXAlXmJ7gbhhb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CUeKS2d8y%2F%3Fmibextid%3DwwXIfr#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 p-4 border border-neutral-warm-200 rounded-xl hover:border-blue-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale group"
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{
-                    backgroundColor: '#e399a3'
-                  }}>
-                    <Facebook className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-text-deep-800 group-hover:text-blue-600 transition-colors duration-300">
+                  <Facebook className="w-6 h-6 text-white" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-white mb-1">
                       {currentContent.followFacebook}
                     </h4>
-                    <p className="text-sm text-text-deep-600">
+                    <p className="text-sm text-white/80">
                       {currentContent.facebookDesc}
                     </p>
                   </div>

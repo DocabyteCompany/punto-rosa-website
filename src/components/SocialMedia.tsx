@@ -46,18 +46,18 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ currentLanguage }) => {
     {
       name: content[currentLanguage as keyof typeof content].instagram,
       icon: Instagram,
-      url: "https://instagram.com/puntorosamassage",
+      url: "https://www.instagram.com/masajes_toque_rosa/",
       color: "from-pink-500 to-purple-600",
-      hoverColor: "hover:shadow-pink-500/25",
+      hoverColor: "from-pink-600 to-purple-700",
       description: content[currentLanguage as keyof typeof content].instagramDesc,
       priority: true
     },
     {
       name: content[currentLanguage as keyof typeof content].facebook,
       icon: Facebook,
-      url: "https://facebook.com/puntorosamassage",
-      color: "from-blue-600 to-blue-700", 
-      hoverColor: "hover:shadow-blue-600/25",
+      url: "https://www.facebook.com/CentraldeEnfermeria.93?mibextid=wwXIfr&rdid=LXFIXAlXmJ7gbhhb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CUeKS2d8y%2F%3Fmibextid%3DwwXIfr#",
+      color: "from-blue-600 to-blue-700",
+      hoverColor: "from-blue-700 to-blue-800",
       description: content[currentLanguage as keyof typeof content].facebookDesc,
       priority: false
     },

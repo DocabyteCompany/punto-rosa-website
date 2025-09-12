@@ -69,12 +69,24 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
               {content[currentLanguage as keyof typeof content].tagline}
             </p>
             <div className="flex items-center space-x-4">
-              <button className="p-3 bg-sage-700 hover:bg-sage-600 rounded-full transition-colors">
+              <a 
+                href="https://www.instagram.com/masajes_toque_rosa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-sage-700 hover:bg-sage-600 rounded-full transition-colors hover:scale-105"
+                title="Seguir en Instagram"
+              >
                 <Instagram className="w-5 h-5" />
-              </button>
-              <button className="p-3 bg-sage-700 hover:bg-sage-600 rounded-full transition-colors">
+              </a>
+              <a
+                href="https://www.facebook.com/CentraldeEnfermeria.93?mibextid=wwXIfr&rdid=LXFIXAlXmJ7gbhhb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CUeKS2d8y%2F%3Fmibextid%3DwwXIfr#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-punto-rosa-primary hover:text-punto-rosa-secondary transition-colors"
+                title="Seguir en Facebook"
+              >
                 <Facebook className="w-5 h-5" />
-              </button>
+              </a>
               <button 
                 className="p-3 bg-sage-700 hover:bg-sage-600 rounded-full transition-colors"
                 title={content[currentLanguage as keyof typeof content].soundToggle}

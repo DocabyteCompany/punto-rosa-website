@@ -101,7 +101,7 @@ const TherapeuticPointsSection: React.FC<TherapeuticPointsSectionProps> = ({ cur
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-spa-green-200/30 to-transparent"></div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }

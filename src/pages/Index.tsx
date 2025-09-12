@@ -10,7 +10,8 @@ import AboutSection from '../components/AboutSection';
 import InstagramGallery from '../components/InstagramGallery';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
-import Chatbot from '../components/Chatbot';
+import ChatbotN8n from '../components/ChatbotN8n';
+
 
 interface Service {
   id: number;
@@ -284,7 +285,7 @@ const Index = () => {
 
       <Footer currentLanguage={currentLanguage} />
 
-      <Chatbot currentLanguage={currentLanguage} />
+      <ChatbotN8n currentLanguage={currentLanguage} />
     </div>
   );
 };

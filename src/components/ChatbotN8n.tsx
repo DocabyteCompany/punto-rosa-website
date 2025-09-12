@@ -98,10 +98,15 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
             noMessages: 'Aún no hay mensajes. ¡Inicia una conversación!'
           }
         },
-      initialMessages: [
-        '¡Hola! 👋', 
-        'Soy tu asistente de Punto Rosa. ¿En qué puedo ayudarte hoy?'
-      ],
+      initialMessages: currentLanguage === 'es' 
+        ? [
+            '¡Hola! 👋', 
+            'Soy tu asistente de Punto Rosa. ¿En qué puedo ayudarte hoy?'
+          ]
+        : [
+            'Hello! 👋', 
+            'I am your Punto Rosa assistant. How can I help you today?'
+          ],
     });
 
     // Forzar español después de crear el chat

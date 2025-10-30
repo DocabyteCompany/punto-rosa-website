@@ -395,14 +395,14 @@ Notes: ${formData.notes}`;
                   href="https://www.instagram.com/masajes_toque_rosa/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale group"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-r from-punto-rosa-400 to-punto-rosa-600 rounded-lg transition-all duration-300 hover-scale group hover:from-punto-rosa-500 hover:to-punto-rosa-700 hover:shadow-xl text-white text-sm md:text-base font-medium leading-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[.98]"
                 >
-                  <Instagram className="w-6 h-6 text-white" />
+                  <Instagram className="w-6 h-6 md:w-7 md:h-7 text-white" />
                   <div className="flex-1">
-                    <h4 className="font-semibold text-white mb-1">
+                    <h4 className="text-base md:text-base font-medium text-white mb-1">
                       {currentContent.followInstagram}
                     </h4>
-                    <p className="text-sm text-white/80">
+                    <p className="text-sm text-white/85">
                       {currentContent.instagramDesc}
                     </p>
                   </div>
@@ -412,14 +412,14 @@ Notes: ${formData.notes}`;
                   href="https://www.facebook.com/CentraldeEnfermeria.93?mibextid=wwXIfr&rdid=LXFIXAlXmJ7gbhhb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CUeKS2d8y%2F%3Fmibextid%3DwwXIfr#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale group"
+                  className="flex items-center gap-3 p-4 bg-white border border-punto-rosa-300 rounded-lg transition-all duration-300 hover-scale group hover:bg-punto-rosa-50 hover:border-punto-rosa-500 hover:shadow-xl text-punto-rosa-600 hover:text-punto-rosa-700 text-sm md:text-base font-medium leading-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[.98]"
                 >
-                  <Facebook className="w-6 h-6 text-white" />
+                  <Facebook className="w-6 h-6 md:w-7 md:h-7 text-punto-rosa-600 group-hover:text-punto-rosa-700" />
                   <div className="flex-1">
-                    <h4 className="font-semibold text-white mb-1">
+                    <h4 className="text-base md:text-base font-medium text-punto-rosa-700 mb-1">
                       {currentContent.followFacebook}
                     </h4>
-                    <p className="text-sm text-white/80">
+                    <p className="text-sm text-punto-rosa-600/85">
                       {currentContent.facebookDesc}
                     </p>
                   </div>

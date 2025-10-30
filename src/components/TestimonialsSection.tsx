@@ -54,14 +54,6 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ currentLangua
       name: "Dennis G",
       designation: currentLanguage === 'es' ? "Cliente Satisfecho" : "Satisfied Client",
       src: "/imgs/testimonies/testimony_6.webp",
-    },
-    {
-      quote: currentLanguage === 'es'
-        ? "Les súper recomiendo los servicios de: \"Masajes toque rosa\" ☺. Cuenta con una amplia cartera de servicios y precios accesibles. Me dedico a dar clases de Indoor Cycling y mis piernas estaban mega contracturadas 😩 pero, con los masajes de descarga y con la presoterapia he sentido mucho alivio. No duden en probar los diferentes servicios que ofrecen."
-        : "I super recommend the services of: \"Masajes toque rosa\" ☺. They have a wide portfolio of services and accessible prices. I dedicate myself to teaching Indoor Cycling classes and my legs were mega contracted 😩 but, with the discharge massages and with pressotherapy I have felt much relief. Don't hesitate to try the different services they offer.",
-      name: "Yesenia Pertalta",
-      designation: currentLanguage === 'es' ? "Instructora de Cycling" : "Cycling Instructor",
-      src: "/imgs/testimonies/testimony_7.webp",
     }
   ];
 

@@ -50,9 +50,9 @@ const Navigation: React.FC<NavigationProps> = ({
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
-              src="/toque-rosa-logo.png"
+              src="/imgs/nuevo_logo_toque.webp"
               alt="Punto Rosa"
-              className="h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105"
+              className="h-12 sm:h-14 md:h-16 w-auto cursor-pointer transition-transform duration-200 hover:scale-105"
               onClick={() => handleSectionChange('home')}
             />
           </div>

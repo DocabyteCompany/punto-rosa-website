@@ -182,6 +182,13 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
           overflow: hidden !important;
         }
 
+        /* Estilos para el contenedor del input */
+        .chat-layout .chat-input {
+          display: flex !important;
+          align-items: center !important;
+          gap: 0.5rem !important;
+        }
+
         /* Estilos para el botón de enviar */
         .chat-layout .chat-input button[type="submit"],
         .chat-layout .chat-input .send-button,
@@ -198,14 +205,19 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
           color: #ffffff !important;
           border: none !important;
           border-radius: 50% !important;
-          width: 40px !important;
-          height: 40px !important;
+          width: 36px !important;
+          height: 36px !important;
+          min-width: 36px !important;
+          min-height: 36px !important;
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
           cursor: pointer !important;
-          transition: all 0.3s ease !important;
+          transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
           box-shadow: 0 2px 4px rgba(227, 153, 163, 0.3) !important;
+          flex-shrink: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
 
         .chat-layout .chat-input button[type="submit"]:hover,
@@ -219,9 +231,8 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
         .chat-layout .chat-input .send-btn:hover,
         .chat-layout .chat-input button[class*="send"]:hover,
         .chat-layout .chat-input button[class*="Send"]:hover {
-          background: #d18a94 !important;
-          transform: scale(1.05) !important;
-          box-shadow: 0 4px 8px rgba(227, 153, 163, 0.4) !important;
+          background: #eaa3ae !important;
+          box-shadow: 0 3px 6px rgba(227, 153, 163, 0.4) !important;
         }
 
         .chat-layout .chat-input button[type="submit"]:active,
@@ -235,15 +246,15 @@ const ChatbotN8n: React.FC<ChatbotN8nProps> = ({ currentLanguage }) => {
         .chat-layout .chat-input .send-btn:active,
         .chat-layout .chat-input button[class*="send"]:active,
         .chat-layout .chat-input button[class*="Send"]:active {
-          background: #bf7b85 !important;
-          transform: scale(0.95) !important;
+          background: #d18a94 !important;
+          box-shadow: 0 1px 2px rgba(227, 153, 163, 0.3) !important;
         }
 
         /* Estilos para el ícono del botón de enviar */
         .chat-layout .chat-input button svg,
         .chat-layout .chat-input .send-button svg {
-          width: 20px !important;
-          height: 20px !important;
+          width: 18px !important;
+          height: 18px !important;
           fill: #ffffff !important;
           stroke: #ffffff !important;
         }

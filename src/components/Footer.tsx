@@ -64,7 +64,11 @@ const Footer: React.FC<FooterProps> = ({ currentLanguage }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-serif text-white mb-4">Punto Rosa</h2>
+            <img 
+              src="/imgs/nuevo_logo_toque.webp"
+              alt="Punto Rosa"
+              className="h-32 sm:h-40 w-auto mb-4"
+            />
             <p className="text-text-deep-300 mb-6 max-w-md">
               {content[currentLanguage as keyof typeof content].tagline}
             </p>
